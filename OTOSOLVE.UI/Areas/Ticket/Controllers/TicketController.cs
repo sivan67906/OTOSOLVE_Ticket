@@ -18,7 +18,7 @@ public class TicketController : Controller
 
         // Breadcrumb
         ViewData["bGParent"] = "Ticket";
-        ViewData["bParent"] = "Ticket Process";
+        ViewData["bParent"] = "Management";
         ViewData["bChild"] = "Create";
 
         return View();
@@ -26,11 +26,11 @@ public class TicketController : Controller
 
     public IActionResult TProcess()
     {
-        ViewData["pTitle"] = "Ticket Process Index";
+        ViewData["pTitle"] = "Ticket Index";
 
         // Breadcrumb
         ViewData["bGParent"] = "Ticket";
-        ViewData["bParent"] = "Ticket Process";
+        ViewData["bParent"] = "Process";
         ViewData["bChild"] = "View";
 
         return View();
@@ -38,11 +38,11 @@ public class TicketController : Controller
 
     public IActionResult TPCreate()
     {
-        ViewData["pTitle"] = "Ticket Creation";
+        ViewData["pTitle"] = "Ticket Process Creation";
 
         // Breadcrumb
         ViewData["bGParent"] = "Ticket";
-        ViewData["bParent"] = "Ticket Creation";
+        ViewData["bParent"] = "Process";
         ViewData["bChild"] = "Create";
         return View();
     }
