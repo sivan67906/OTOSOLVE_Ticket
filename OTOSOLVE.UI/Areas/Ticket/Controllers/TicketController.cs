@@ -96,4 +96,15 @@ public class TicketController : Controller
 
         return View();
     }
+    public IActionResult TicketView()
+    {
+        ViewData["pTitle"] = "Tickets Index";
+
+        // Breadcrumb
+        ViewData["bGParent"] = "Ticket";
+        ViewData["bParent"] = "List";
+        ViewData["bChild"] = "View";
+
+        return View();
+    }
 }
