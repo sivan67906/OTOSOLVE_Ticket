@@ -88,14 +88,14 @@
 			$('#sltLeftList option:selected').each(function () { selIndex = selIndex + 1 });
 			if (selIndex != 0) {
 				$('#sltLeftList option:selected').remove().appendTo('#sltRightList').removeAttr('selected');
-			} else { alert({ message: 'Please Select List' }); }
+			} else { alert('Please Select List'); }
 		});
 		$('#moveLeft').click(function (i, selected) {
 			var selIndex = 0;
 			$('#sltRightList option:selected').each(function () { selIndex = selIndex + 1 });
 			if (selIndex != 0) {
 				$('#sltRightList option:selected').remove().appendTo('#sltLeftList').removeAttr('selected');
-			} else { alert({ message: 'Please Select List' }); }
+			} else { alert('Please Select List'); }
 		});
 		$('#moveAllRight').click(function () { $('#sltLeftList option').remove().appendTo('#sltRightList').removeAttr('selected'); });
 		$('#moveAllLeft').click(function () { $('#sltRightList option').remove().appendTo('#sltLeftList').removeAttr('selected'); });
@@ -103,13 +103,13 @@
 			var selIndex = 0; $('#sltRightList option:selected').each(function () { selIndex = selIndex + 1; });
 			if (selIndex != 0) {
 				$('#sltRightList option:selected').each(function () { $(this).insertBefore($(this).prev()); });
-			} else { alert({ message: 'Please Select List' }); }
+			} else { alert('Please Select List'); }
 		});
 		$('#moveDown').click(function (i, selected) {
 			var selIndex = 0; $('#sltRightList option:selected').each(function () { selIndex = selIndex + 1; });
 			if (selIndex != 0) {
 				$('#sltRightList option:selected').each(function () { $(this).insertAfter($(this).next()); });
-			} else { alert({ message: 'Please Select List' }); }
+			} else { alert('Please Select List'); }
 		});
 		$('#sltLeftList').dblclick(function () { $('#sltLeftList option:selected').remove().appendTo('#sltRightList').removeAttr('selected'); });
 		$('#sltRightList').dblclick(function () { $('#sltRightList option:selected').remove().appendTo('#sltLeftList').removeAttr('selected'); });
