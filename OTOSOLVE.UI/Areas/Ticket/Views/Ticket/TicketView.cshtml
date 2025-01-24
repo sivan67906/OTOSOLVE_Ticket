@@ -14,10 +14,7 @@
 						<h4 class="card-title">Tickets Index</h4>
 					</div><!--end col-->
 					<div class="col-auto">
-						<button type="button" class="btn btn-de-primary" data-toggle="ajax-modal"
-								data-target="#mdlTPShow" data-url="@Url.Action("Create")">
-							<i class="fas fa-plus me-2"></i>Add Ticket
-						</button>
+						
 					</div><!--end col-->
 				</div> <!--end row-->
 			</div><!--end card-header-->
@@ -28,88 +25,109 @@
 							<thead class="thead-light">
 								<tr>
 									<th class="d-none"></th>
-									<th>Ticket</th>
-									<th>Department</th>
-									<th>Designation</th>
-									<th>Role</th>
-									<th>Employee</th>
-									<th>Access Level</th>
+									<th>Ticket Code</th>
+									<th>Topic</th>
+									<th>Requester Name</th>
+									<th>Assignee Name & Group</th>
+									<th>Current Status</th>
+									<th>DueDate</th>
+									<th>IsMapped</th>
+									<th>Workflow</th>
+									<th>Process Name</th>
 									<th>Action</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td>Order Management</td>
-									<td>Sales</td>
-									<td>Manager</td>
-									<td>Administrator</td>
-									<td>John Doe</td>
-									<td>Approver</td>
-									<td>
-										<a id="deleteLS" name="Id" href="#" class="ms-2" data-toggle="ajax-modal"
-										   data-url="@Url.Action($"Delete/")">
-											<i class="las la-trash-alt text-secondary font-16"></i>
-										</a>
-									</td>
-								</tr>
-								<tr>
-									<td>Inventory Tracking</td>
-									<td>Operations</td>
-									<td>Supervisor</td>
-									<td>Editor</td>
-									<td>Jane Smith</td>
-									<td>Approver</td>
-									<td>
-										<a id="deleteLS" name="Id" href="#" class="ms-2" data-toggle="ajax-modal"
-										   data-url="@Url.Action($"Delete/")">
-											<i class="las la-trash-alt text-secondary font-16"></i>
-										</a>
-									</td>
-								</tr>
-								<tr>
-									<td>Customer Support</td>
-									<td>Support</td>
-									<td>Executive</td>
-									<td>Viewer</td>
-									<td>Robert Brown</td>
-									<td>Notification Recipient</td>
-									<td>
-										<a id="deleteLS" name="Id" href="#" class="ms-2" data-toggle="ajax-modal"
-										   data-url="@Url.Action($"Delete/")">
-											<i class="las la-trash-alt text-secondary font-16"></i>
-										</a>
-									</td>
-								</tr>
-								<tr>
-									<td>Billing System</td>
-									<td>Finance</td>
-									<td>Analyst</td>
-									<td>Editor</td>
-									<td>Emily Clark</td>
-									<td>Approver</td>
-									<td>
-										<a id="deleteLS" name="Id" href="#" class="ms-2" data-toggle="ajax-modal"
-										   data-url="@Url.Action($"Delete/")">
-											<i class="las la-trash-alt text-secondary font-16"></i>
-										</a>
-									</td>
-								</tr>
-								<tr>
-									<td>HR Portal</td>
-									<td>Human Resources</td>
-									<td>Coordinator</td>
-									<td>Viewer</td>
-									<td>Michael Johnson</td>
-									<td>Notification Recipient</td>
-									<td>
-										<a id="deleteLS" name="Id" href="#" class="ms-2" data-toggle="ajax-modal"
-										   data-url="@Url.Action($"Delete/")">
-											<i class="las la-trash-alt text-secondary font-16"></i>
-										</a>
-									</td>
-								</tr>
-								<tr>
-								</tr>
+                                <tr>
+                                    <td>OTOSOL-NET-01-001</td>
+                                    <td>System Issue</td>
+                                    <td>John Doe</td>
+                                    <td>Jane Smith (IT Support)</td>
+                                    <td>Open</td>
+                                    <td>2025-01-25</td>
+                                    <td>Yes</td>
+                                    <td>Incident Management</td>
+                                    <td></td>
+                                    <td>
+                                       
+                                        <a id="deleteLS" name="Id" href="#" class="ms-2" data-toggle="ajax-modal"
+                                           data-url="@Url.Action($"Delete")">
+                                            <i class="las la-trash-alt text-secondary font-16"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>OTOSOL-NET-01-002</td>
+                                    <td>Account Setup</td>
+                                    <td>Mary Johnson</td>
+                                    <td>Robert Brown (HR Team)</td>
+                                    <td>In Progress</td>
+                                    <td>2025-01-30</td>
+                                    <td>No</td>
+                                    <td></td>
+                                    <td>Account Creation</td>
+                                    <td>
+                                        
+                                        <a id="deleteLS" name="Id" href="#" class="ms-2" data-toggle="ajax-modal"
+                                           data-url="@Url.Action($"Delete")">
+                                            <i class="las la-trash-alt text-secondary font-16"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>OTOSOL-NET-01-003</td>
+                                    <td>Payment Delay</td>
+                                    <td>Michael Lee</td>
+                                    <td>Emily Davis (Finance)</td>
+                                    <td>Resolved</td>
+                                    <td>2025-01-20</td>
+                                    <td>Yes</td>
+                                    <td>Order Fulfillment</td>
+                                    <td></td>
+                                    <td>
+                                        
+                                        <a id="deleteLS" name="Id" href="#" class="ms-2" data-toggle="ajax-modal"
+                                           data-url="@Url.Action($"Delete")">
+                                            <i class="las la-trash-alt text-secondary font-16"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>OTOSOL-NET-01-004</td>
+                                    <td>Access Request</td>
+                                    <td>Anna Wilson</td>
+                                    <td>David Kim (Admin Team)</td>
+                                    <td>Pending</td>
+                                    <td>2025-02-01</td>
+                                    <td>No</td>
+                                    <td></td>
+                                    <td>Permission Assignment</td>
+                                    <td>
+                                        
+                                        <a id="deleteLS" name="Id" href="#" class="ms-2" data-toggle="ajax-modal"
+                                           data-url="@Url.Action($"Delete")">
+                                            <i class="las la-trash-alt text-secondary font-16"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>OTOSOL-NET-01-005</td>
+                                    <td>Software Installation</td>
+                                    <td>Chris Martin</td>
+                                    <td>Susan Clark (IT Support)</td>
+                                    <td>Open</td>
+                                    <td>2025-01-27</td>
+                                    <td>Yes</td>
+                                    <td>IT Support</td>
+                                    <td></td>
+                                    <td>
+                                      
+                                        <a id="deleteLS" name="Id" href="#" class="ms-2" data-toggle="ajax-modal"
+                                           data-url="@Url.Action($"Delete")">
+                                            <i class="las la-trash-alt text-secondary font-16"></i>
+                                        </a>
+                                    </td>
+                                </tr>
 							</tbody>
 						</table>
 					</div>
