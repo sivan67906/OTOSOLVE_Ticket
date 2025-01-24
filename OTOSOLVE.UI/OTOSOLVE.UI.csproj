@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\matrica\assets\images\.DS_Store" />
+    <None Include="wwwroot\matrica\assets\js\.DS_Store" />
+    <None Include="wwwroot\matrica\assets\scss\.DS_Store" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Areas\Ticket\Views\Shared\_Layout.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\matrica\assets\libs\chart.js\docs\" />
+    <Folder Include="wwwroot\matrica\assets\libs\code-prettify\src\" />
+    <Folder Include="wwwroot\matrica\assets\libs\gmaps\docs\" />
+    <Folder Include="wwwroot\matrica\assets\libs\gmaps\examples\" />
+    <Folder Include="wwwroot\matrica\assets\libs\gmaps\test\" />
+    <Folder Include="wwwroot\matrica\assets\libs\litepicker\types\" />
+    <Folder Include="wwwroot\matrica\assets\libs\raphael\dev\test\" />
+    <Folder Include="wwwroot\matrica\assets\libs\starability\starability-scss\starability\" />
+  </ItemGroup>
+
+</Project>

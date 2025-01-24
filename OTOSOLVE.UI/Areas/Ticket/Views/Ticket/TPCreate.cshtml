@@ -1,0 +1,195 @@
+﻿@model OTOSOLVE.UI.Areas.Environment.ViewModels.TicketVM
+
+
+<div class="row">
+	<div class="col-12 col-lg-12">
+		<div class="card" style="">
+			<div class="card-header">
+				<div class="row align-items-center">
+					<div class="col">
+						<h4 class="card-title">Create Ticket Process</h4>
+					</div><!--end col-->
+				</div> <!--end row-->
+			</div><!--end card-header-->
+
+			<div class="card-body">
+				<div class="row">
+					<div class="form-group">
+						<label for="processName" class="form-label">Process Name</label>
+						<input type="text" class="form-control" id="processName" placeholder="Enter process name">
+					</div>
+					<div class="mt-3" id="divTicketProcessMain">
+						<div class="card" id="divTktHierarcyProcess">
+							<div class="card-header shadow">
+								<div class="form-group mt-2">
+									<div class="row">
+										<div class="col-lg-3">
+											<label class="form-label mt-2" for="sltDepartment">Select Department</label>
+											<select id="sltDepartment" class="form-select">
+												<option>--</option>
+												<option>Human Resources</option>
+												<option>Marketing</option>
+												<option>Finance</option>
+												<option>Customer Support</option>
+											</select>
+										</div><!--end col-->
+										<div class="col-lg-3">
+											<label class="form-label mt-2" for="sltDesignation">Select Designation</label>
+											<select id="sltDesignation" class="form-select">
+												<option>--</option>
+												<option>Intern</option>
+												<option>
+													Junior Executive
+												</option>
+												<option>Senior Executive</option>
+												<option>Assistant Manager</option>
+												<option>Manager</option>
+											</select>
+										</div><!--end col-->
+										<div class="col-lg-3">
+											<label class="form-label mt-2" for="sltRole">Select Role</label>
+											<select id="sltRole" class="form-select">
+												<option>--</option>
+												<option>Developer</option>
+												<option>Analyst</option>
+												<option>Coordinator</option>
+												<option>Administrator</option>
+												<option>Specialist</option>
+											</select>
+										</div><!--end col-->
+										<div class="col-lg-3">
+											<label class="form-label mt-2" for="sltEmployee">Select Employee</label>
+											<select id="sltEmployee" class="form-select">
+												<option>--</option>
+												<option>Alice Johnson</option>
+												<option>Bob Smith</option>
+												<option>Carol Davis</option>
+												<option>David Martinez</option>
+												<option>Eve Thompson</option>
+												<option>Frank Wilson</option>
+												<option>Grace Brown</option>
+											</select>
+										</div><!--end col-->
+									</div><!--end row-->
+								</div>
+								<div class="form-group row mt-2">
+									<label class="col-xl-2 col-form-label">Access Level</label>
+									<div id="radio-group" class="col-xl-10 mt-2 radio-group" data-group="">
+										<div class="form-check form-check-inline">
+											<input class="form-check-input" type="radio" name="accessLevelOptions" id="ipApprover" value="Approver">
+											<label class="form-check-label" for="ipApprover">Approver</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input class="form-check-input" type="radio" name="accessLevelOptions" id="ipNotificationRecipient" value="Notification Recipient">
+											<label class="form-check-label" for="ipNotificationRecipient">Notification Recipient</label>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-12 text-end">
+						<button id="addRow" class="btn btn-sm btn-de-primary" data-save="">
+							<i class="mdi mdi-check-all me-2"></i>
+							Add more User
+						</button>
+					</div>
+				</div>
+			</div>
+			<div class="card-footer">
+				<div class="row text-end ">
+					<div class="col-lg-12 ">
+						<button id="submitBtn" class="btn btn-de-primary"><i class="mdi mdi-check-all me-2"></i>Create</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+@section Scripts {
+		<script src="~/lib/jquery/dist/jquery.js"></script>
+		<script type="text/javascript">
+			 $(document).ready(function() {
+				 let cloneCount = 1;
+				  const swalWithBootstrapButtons = Swal.mixin({
+				  customClass: {
+					 confirmButton: "btn btn-de-primary",
+					 cancelButton: "btn btn-de-danger me-2"
+				  },
+				  buttonsStyling: false
+			   });
+
+			// Function to update the ID and 'for' attribute of the element
+			function updateIdAndFor(element, number) {
+			  let currentId = $(element).attr("id");
+			  let currentFor = $(element).attr("for");
+			  let currentName = $(element).attr("name");
+			  if (currentId) {
+				$(element).attr("id", currentId + number);
+			  }
+			  if (currentFor) {
+				$(element).attr("for", currentFor + number);
+			  }
+			  if (currentName) {
+				$(element).attr("name", currentName + number);
+			  }
+			}
+
+			$("#addRow").on("click", function() {
+			let clonedDiv = $("#divTktHierarcyProcess").clone(true);
+
+			// Update the ID of the cloned div
+			clonedDiv.attr("id", $("#divTktHierarcyProcess").attr("id") + cloneCount);
+			// Uncheck all radio buttons within the cloned div
+			clonedDiv.find("input[type='radio']").prop("checked", false);
+
+			// Update the IDs, name and 'for' attributes of all label, select, and input elements within the div
+			clonedDiv.find("div, label, select, input").each(function() {
+			  updateIdAndFor(this, cloneCount);
+			});
+
+			// let rdgroup = "radio-group" + cloneCount;
+			// $("#"+rdgroup).attr('data-group', parseInt(cloneCount, 10));
+			// $("#"+rdgroup).data('group', parseInt(cloneCount, 10));
+
+			clonedDiv.appendTo("#divTicketProcessMain");
+			cloneCount++;
+			});
+
+
+
+			$('#submitBtn').click(function() {
+				var checkedApprover = false;
+				$('.radio-group').each(function() {
+					var groupid = $(this).attr('id');
+					var originalgroupid = groupid.replace("radio-group", "");
+					if ($('input[name="accessLevelOptions' + originalgroupid + '"]:checked').val() == 'Approver') {
+						checkedApprover = true;
+					}
+				});
+					if (checkedApprover) {
+					// Perform your desired action here
+						swalWithBootstrapButtons.fire({ title: "Process Created!",
+							 text: "Process created successfully!",
+						 icon: "success",
+							  allowOutsideClick: false}).then(okay => {
+						   if (okay) {
+							location.reload();
+						  }
+						});
+				} else {
+					swalWithBootstrapButtons.fire({ title: "Approver Warning!",
+					 text: "Choose atleast one approver!",
+					 icon: "warning",
+						  allowOutsideClick: false}).then(okay => {
+					   if (okay) {
+						// location.reload();
+					  }
+					});
+				}
+			});
+			});
+		</script>
+}
