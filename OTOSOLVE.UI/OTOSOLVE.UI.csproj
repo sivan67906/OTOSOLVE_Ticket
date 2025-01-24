@@ -30,4 +30,8 @@
     <Folder Include="wwwroot\matrica\assets\libs\starability\starability-scss\starability\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
 </Project>

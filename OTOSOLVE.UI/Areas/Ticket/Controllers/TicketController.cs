@@ -10,6 +10,24 @@ public class TicketController : Controller
     }
     public IActionResult Dashboard()
     {
+        // Page Titles
+        ViewData["pTitle"] = "Dashboard";
+
+        // Breadcrumb
+        ViewData["bGParent"] = "Admin";
+        ViewData["bParent"] = "Dashboard";
+        ViewData["bChild"] = "Index";
+
+        // Sample data for the chart
+        string[] months = new[] { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
+        int[] ticketRequests = new[] { 60, 70, 80, 90, 85, 88, 92, 87, 84, 78, 75, 80 }; // Ticket Requests (%)
+        int[] ticketApprovals = new[] { 50, 65, 75, 85, 80, 83, 88, 82, 80, 72, 70, 76 }; // Ticket Approvals (%)
+
+        // Pass data to the view using ViewBag
+        ViewBag.Months = months;
+        ViewBag.TicketRequests = ticketRequests;
+        ViewBag.TicketApprovals = ticketApprovals;
+
         return View();
     }
     public IActionResult TCreate()
