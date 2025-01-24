@@ -11,9 +11,9 @@
     <link href="~/matrica/assets/css/bootstrap-material.min.css" rel="stylesheet" type="text/css">
     <link href="~/matrica/assets/css/icons.min.css" rel="stylesheet" type="text/css">
     <link href="~/matrica/assets/css/app-material.min.css" rel="stylesheet" type="text/css">
-    <link href="~/matrica/assets/css/app.min.css" rel="stylesheet" type="text/css" />
+    @* <link href="~/matrica/assets/css/app.min.css" rel="stylesheet" type="text/css" /> *@
     <link href="~/matrica/assets/css/app-font.css" rel="stylesheet" type="text/css" />
-    <link href="~/matrica/assets/css/app-custom.css" rel="stylesheet" type="text/css" />
+    @* <link href="~/matrica/assets/css/app-custom.css" rel="stylesheet" type="text/css" /> *@
     <link href="~/matrica/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css">
     <link href="~/matrica/assets/libs/animate.css/animate.min.css" rel="stylesheet" type="text/css">
 
@@ -58,20 +58,18 @@
                             <div class="simplebar-content" style="padding: 0px 0px 60px;">
                                 <div class="menu-body navbar-vertical tab-content menuitem-active">
                                     <div class="collapse navbar-collapse show" id="sidebarCollapse">
-
                                         <!-- Navigation -->
                                         <ul class="navbar-nav">
                                             <li class="menu-label mt-0">T<span>icket System</span></li>
-
-                                            <li class="nav-item menuitem-active">
-                                                <a class="nav-link collapsed" href="#sidebarDashboards" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarAnalytics">
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#sidebarAdministrator" data-bs-toggle="collapse" role="button" aria-expanded="true" aria-controls="sidebarAdministrator">
                                                     <i class="ti ti-home menu-icon"></i>
-                                                    <span>Dashboards</span>
+                                                    <span>Administrator</span>
                                                 </a>
-                                                <div class="collapse" id="sidebarDashboards">
+                                                <div class="collapse show" id="sidebarAdministrator">
                                                     <ul class="nav flex-column">
                                                         <li class="nav-item menuitem-active">
-                                                            <a class="nav-link active" href="#" aria-expanded="true">Analytics</a>
+                                                            <a class="nav-link active" href="#" aria-expanded="true">Dashboard</a>
                                                         </li><!--end nav-item-->
                                                         <li class="nav-item">
                                                             <a class="nav-link" asp-area="Ticket" asp-controller="Ticket" asp-action="TPCreate"> Process</a>
@@ -83,44 +81,118 @@
                                                             <a class="nav-link" asp-area="Ticket" asp-controller="Ticket" asp-action="TCreate"> Ticket</a>
                                                         </li><!--end nav-item-->
                                                         <li class="nav-item">
-                                                            <a class="nav-link" asp-area="Ticket" asp-controller="Ticket" asp-action="TPView">Process Tickets</a>
+                                                            <a class="nav-link" asp-area="Ticket" asp-controller="Ticket" asp-action="TPView">Process View</a>
                                                         </li><!--end nav-item-->
                                                         <li class="nav-item">
-                                                            <a class="nav-link" asp-area="Ticket" asp-controller="Ticket" asp-action="WFView">Workflow Tickets</a>
+                                                            <a class="nav-link" asp-area="Ticket" asp-controller="Ticket" asp-action="WFView">Workflow Rule View</a>
                                                         </li><!--end nav-item-->
                                                         <li class="nav-item">
-                                                            <a class="nav-link" asp-area="Ticket" asp-controller="Ticket" asp-action="WFView">Workflow Tickets</a>
-                                                        </li><!--end nav-item-->
-                                                        <li class="nav-item">
-                                                            <a class="nav-link" href="#">Helpdesk</a>
-                                                        </li><!--end nav-item-->
-                                                        <li class="nav-item">
-                                                            <a class="nav-link" href="#">Setting</a>
+                                                            <a class="nav-link" href="#">Ticket View</a>
                                                         </li><!--end nav-item-->
                                                     </ul><!--end nav-->
                                                 </div><!--end sidebarDashboards-->
                                             </li><!--end nav-item-->
-
-                                            <li class="menu-label mt-0">C<span>onfiguration</span></li>
                                             <li class="nav-item">
-                                                <a class="nav-link" href="#sidebarAnalytics" data-bs-toggle="collapse" role="button" aria-expanded="true" aria-controls="sidebarAnalytics">
-                                                    <i class="ti ti-stack menu-icon"></i>
-                                                    <span>Settings</span>
+                                                <a class="nav-link" href="#sidebarTeamLead" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarTeamLead">
+                                                    <i class="ti ti-home menu-icon"></i>
+                                                    <span>Team Lead</span>
                                                 </a>
-                                                <div class="collapse show" id="sidebarAnalytics">
+                                                <div class="collapse" id="sidebarTeamLead">
                                                     <ul class="nav flex-column">
-                                                        <li class="nav-item">
-                                                            <a href="#" class="nav-link ">Customers</a>
+                                                        <li class="nav-item menuitem-active">
+                                                            <a class="nav-link active" href="#" aria-expanded="true">Dashboard</a>
                                                         </li><!--end nav-item-->
                                                         <li class="nav-item">
-                                                            <a href="#" class="nav-link ">Administration</a>
+                                                            <a class="nav-link" href="#">Create Ticket</a>
+                                                        </li><!--end nav-item-->
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" href="#">Process View</a>
+                                                        </li><!--end nav-item-->
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" href="#">Workflow Rule View</a>
+                                                        </li><!--end nav-item-->
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" href="#">Ticket View</a>
                                                         </li><!--end nav-item-->
                                                     </ul><!--end nav-->
-                                                </div><!--end sidebarAnalytics-->
+                                                </div><!--end sidebarDashboards-->
                                             </li><!--end nav-item-->
-
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#sidebarSupport" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarSupport">
+                                                    <i class="ti ti-home menu-icon"></i>
+                                                    <span>Support Team</span>
+                                                </a>
+                                                <div class="collapse" id="sidebarSupport">
+                                                    <ul class="nav flex-column">
+                                                        <li class="nav-item menuitem-active">
+                                                            <a class="nav-link active" href="#" aria-expanded="true">Dashboard</a>
+                                                        </li><!--end nav-item-->
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" href="#">Create Ticket</a>
+                                                        </li><!--end nav-item-->
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" href="#">Process View</a>
+                                                        </li><!--end nav-item-->
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" href="#">Workflow Rule View</a>
+                                                        </li><!--end nav-item-->
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" href="#">Ticket View</a>
+                                                        </li><!--end nav-item-->
+                                                    </ul><!--end nav-->
+                                                </div><!--end sidebarDashboards-->
+                                            </li><!--end nav-item-->
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#sidebarEmployee" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarEmployee">
+                                                    <i class="ti ti-home menu-icon"></i>
+                                                    <span>Employee</span>
+                                                </a>
+                                                <div class="collapse" id="sidebarEmployee">
+                                                    <ul class="nav flex-column">
+                                                        <li class="nav-item menuitem-active">
+                                                            <a class="nav-link active" href="#" aria-expanded="true">Dashboard</a>
+                                                        </li><!--end nav-item-->
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" href="#">Create Ticket</a>
+                                                        </li><!--end nav-item-->
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" href="#">Process View</a>
+                                                        </li><!--end nav-item-->
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" href="#">Workflow Rule View</a>
+                                                        </li><!--end nav-item-->
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" href="#">Ticket View</a>
+                                                        </li><!--end nav-item-->
+                                                    </ul><!--end nav-->
+                                                </div><!--end sidebarDashboards-->
+                                            </li><!--end nav-item-->
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#sidebarCustom" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarCustom">
+                                                    <i class="ti ti-home menu-icon"></i>
+                                                    <span>HR(Custom Role)</span>
+                                                </a>
+                                                <div class="collapse" id="sidebarCustom">
+                                                    <ul class="nav flex-column">
+                                                        <li class="nav-item menuitem-active">
+                                                            <a class="nav-link active" href="#" aria-expanded="true">Dashboard</a>
+                                                        </li><!--end nav-item-->
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" href="#">Create Ticket</a>
+                                                        </li><!--end nav-item-->
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" href="#">Process View</a>
+                                                        </li><!--end nav-item-->
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" href="#">Workflow Rule View</a>
+                                                        </li><!--end nav-item-->
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" href="#">Ticket View</a>
+                                                        </li><!--end nav-item-->
+                                                    </ul><!--end nav-->
+                                                </div><!--end sidebarDashboards-->
+                                            </li><!--end nav-item-->
                                         </ul><!--end navbar-nav--->
-
                                     </div>
                                 </div><!--endmenu-body--->
                             </div>
@@ -193,14 +265,14 @@
                 <script>
                     document.write(new Date().getFullYear())
                 </script>
-                Urben Techies <span class="d-none d-sm-inline-block float-end"> Crafted with <i class="mdi mdi-heart text-danger"></i> by Aviv Solutions Inc </span>
+                UrbnTeki <span class="d-none d-sm-inline-block float-end"> Crafted with <i class="mdi mdi-heart text-danger"></i> by Aviv Solutions Inc </span>
             </footer><!-- End Footer -->
         </div>
         <!-- end page content -->
     </div>
     <!-- Footer Start -->
     @* <footer class="footer text-center text-sm-start">
-        © <script>
+          <script>
               document.write(new Date().getFullYear())
         </script>2025 OtoSolve <span class="text-muted d-none d-sm-inline-block float-end">Crafted with <i class="mdi mdi-heart text-warning"></i> by Aviv Solutions Inc</span>
     </footer> *@
