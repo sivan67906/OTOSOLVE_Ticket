@@ -56,4 +56,26 @@ public class TicketController : Controller
         ViewData["bChild"] = "Create";
         return View();
     }
+    public IActionResult TPView()
+    {
+        ViewData["pTitle"] = "Ticket Process Index";
+
+        // Breadcrumb
+        ViewData["bGParent"] = "Ticket";
+        ViewData["bParent"] = "Process";
+        ViewData["bChild"] = "View";
+
+        return View();
+    }
+    public IActionResult WFView()
+    {
+        ViewData["pTitle"] = "WorkFlow Rule Index";
+
+        // Breadcrumb
+        ViewData["bGParent"] = "Ticket";
+        ViewData["bParent"] = "WorkFlow";
+        ViewData["bChild"] = "View";
+
+        return View();
+    }
 }
