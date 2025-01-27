@@ -1,307 +1,371 @@
+@using OTOSOLVE.UI.Areas.Ticket.ViewModels
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- App favicon -->
-    <link rel="shortcut icon" href="~/matrica/assets/images/favicon.ico">
-    <title>OTOSOLVE</title>
+	<!-- App favicon -->
+	<link rel="shortcut icon" href="~/matrica/assets/images/favicon.ico">
+	<title>OTOSOLVE</title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta content="Premium CRM Tool by ::OtoSolve" name="description" />
-    <meta content="Firstlin s Joseph" name="author" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta content="Premium CRM Tool by ::OtoSolve" name="description" />
+	<meta content="Firstlin s Joseph" name="author" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<!-- App css -->
+	<link href="~/matrica/assets/css/bootstrap-material.min.css" rel="stylesheet" type="text/css">
+	<link href="~/matrica/assets/css/icons.min.css" rel="stylesheet" type="text/css">
+	<link href="~/matrica/assets/css/app-material.min.css" rel="stylesheet" type="text/css">
+	<link href="~/matrica/assets/fonts/font-awesome/css/fontawesome.min.css" rel="stylesheet" />
 
-    <!-- App css -->
-    <link href="~/matrica/assets/css/bootstrap-material.min.css" rel="stylesheet" type="text/css">
-    <link href="~/matrica/assets/css/icons.min.css" rel="stylesheet" type="text/css">
-    <link href="~/matrica/assets/css/app-material.min.css" rel="stylesheet" type="text/css">
-    @* <link href="~/matrica/assets/css/app.min.css" rel="stylesheet" type="text/css" /> *@
-    <link href="~/matrica/assets/css/app-font.css" rel="stylesheet" type="text/css" />
-    <link href="~/matrica/assets/css/app-custom.css" rel="stylesheet" type="text/css" />
-    <link href="~/matrica/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css">
-    <link href="~/matrica/assets/libs/animate.css/animate.min.css" rel="stylesheet" type="text/css">
+	@* <link href="~/matrica/assets/css/app.css" rel="stylesheet" type="text/css" /> *@
+	<link href="~/matrica/assets/css/app-font.css" rel="stylesheet" type="text/css" />
+	<link href="~/matrica/assets/css/app-custom.css" rel="stylesheet" type="text/css" />
+	<link href="~/matrica/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css">
+	<link href="~/matrica/assets/libs/animate.css/animate.min.css" rel="stylesheet" type="text/css">
 
-    <title>::OtoSolve - Ticket System::</title>
-    @if (IsSectionDefined("Styles"))
-    {
-        @await RenderSectionAsync("Styles", true)
-    }
-    else
-    {
-        @await RenderSectionAsync("Styles", false)
-    }
+	<title>::OtoSolve - Ticket System::</title>
+	@if (IsSectionDefined("Styles"))
+	{
+		@await RenderSectionAsync("Styles", true)
+	}
+	else
+	{
+		@await RenderSectionAsync("Styles", false)
+	}
+
 </head>
 <body id="body" class="menuitem-active">
 
-    <!-- Left Side-Bar Start -->
-    <div class="left-sidebar show">
+	<!-- Left Side-Bar Start -->
+	<div class="left-sidebar show">
 
-        <!-- LOGO -->
-        <div class="brand">
-            <a asp-area="" asp-controller="Login" asp-action="Login" class="logo">
-                <span>
-                    <img src="~/matrica/assets/images/logo-sm.png" alt="logo-small" class="logo-sm">
-                </span>
-                <span>
-                    <img src="~/matrica/assets/images/logo.png" alt="logo-large" class="logo-lg logo-light">
-                    <img src="~/matrica/assets/images/logo-dark.png" alt="logo-large" class="logo-lg logo-dark">
-                </span>
-            </a>
-        </div><!--end logo-->
-        <!-- Menu -->
-        <div class="menu-content h-100" data-simplebar="init">
-            <div class="simplebar-wrapper" style="margin: 0px 0px -60px;">
+		<!-- LOGO -->
+		<div class="brand">
+			<a asp-area="" asp-controller="Login" asp-action="Login" class="logo">
+				<span>
+					<img src="~/matrica/assets/images/logo-sm.png" alt="logo-small" class="logo-sm">
+				</span>
+				<span>
+					<img src="~/matrica/assets/images/logo.png" alt="logo-large" class="logo-lg logo-light">
+					<img src="~/matrica/assets/images/logo-dark.png" alt="logo-large" class="logo-lg logo-dark">
+				</span>
+			</a>
+		</div><!--end logo-->
+		<!-- Menu -->
+		<div class="menu-content h-100" data-simplebar="init">
+			<div class="simplebar-wrapper" style="margin: 0px 0px -60px;">
 
-                <div class="simplebar-height-auto-observer-wrapper">
-                    <div class="simplebar-height-auto-observer"></div>
-                </div>
+				<div class="simplebar-height-auto-observer-wrapper">
+					<div class="simplebar-height-auto-observer"></div>
+				</div>
 
-                <div class="simplebar-mask">
-                    <div class="simplebar-offset" style="right: -16.6667px; bottom: 0px;">
-                        <div class="simplebar-content-wrapper" style="height: 100%; overflow: hidden scroll;">
-                            <div class="simplebar-content" style="padding: 0px 0px 60px;">
-                                <div class="menu-body navbar-vertical tab-content menuitem-active">
-                                    <div class="collapse navbar-collapse show" id="sidebarCollapse">
-                                        <!-- Navigation -->
-                                        <ul class="navbar-nav">
-                                            <li class="menu-label mt-0">T<span>icket System</span></li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="#sidebarAdministrator" data-bs-toggle="collapse" role="button" aria-expanded="true" aria-controls="sidebarAdministrator">
-                                                    <i class="ti ti-home menu-icon"></i>
-                                                    <span>Administrator</span>
-                                                </a>
-                                                <div class="collapse show" id="sidebarAdministrator">
-                                                    <ul class="nav flex-column">
-                                                        <li class="nav-item menuitem-active">
-                                                            <a class="nav-link active" asp-area="Ticket" asp-controller="Ticket" asp-action="Dashboard" aria-expanded="true">Dashboard</a>
-                                                        </li><!--end nav-item-->
-                                                        <li class="nav-item">
-                                                            <a class="nav-link" asp-area="Ticket" asp-controller="Ticket" asp-action="TPCreate"> Process</a>
-                                                        </li><!--end nav-item-->
-                                                         <li class="nav-item">
-                                                            <a class="nav-link" asp-area="Ticket" asp-controller="Ticket" asp-action="TMWorkFlowRule"> Workflow Rule</a>
-                                                        </li><!--end nav-item-->
-                                                        <li class="nav-item">
-                                                            <a class="nav-link" asp-area="Ticket" asp-controller="Ticket" asp-action="TCreate"> Ticket</a>
-                                                        </li><!--end nav-item-->
-                                                        <li class="nav-item">
-                                                            <a class="nav-link" asp-area="Ticket" asp-controller="Ticket" asp-action="TPView">Process View</a>
-                                                        </li><!--end nav-item-->
-                                                        <li class="nav-item">
-                                                            <a class="nav-link" asp-area="Ticket" asp-controller="Ticket" asp-action="WFView">Workflow Rule View</a>
-                                                        </li><!--end nav-item-->
-                                                        <li class="nav-item">
-                                                            <a class="nav-link" asp-area="Ticket" asp-controller="Ticket" asp-action="TicketView">Ticket View</a>
-                                                        </li><!--end nav-item-->
-                                                    </ul><!--end nav-->
-                                                </div><!--end sidebarDashboards-->
-                                            </li><!--end nav-item-->
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="#sidebarTeamLead" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarTeamLead">
-                                                    <i class="ti ti-home menu-icon"></i>
-                                                    <span>Team Lead</span>
-                                                </a>
-                                                <div class="collapse" id="sidebarTeamLead">
-                                                    <ul class="nav flex-column">
-                                                        <li class="nav-item menuitem-active">
-                                                            <a class="nav-link active" href="#" aria-expanded="true">Dashboard</a>
-                                                        </li><!--end nav-item-->
-                                                        <li class="nav-item">
-                                                            <a class="nav-link" href="#">Create Ticket</a>
-                                                        </li><!--end nav-item-->
-                                                        <li class="nav-item">
-                                                            <a class="nav-link" href="#">Process View</a>
-                                                        </li><!--end nav-item-->
-                                                        <li class="nav-item">
-                                                            <a class="nav-link" href="#">Workflow Rule View</a>
-                                                        </li><!--end nav-item-->
-                                                        <li class="nav-item">
-                                                            <a class="nav-link" href="#">Ticket View</a>
-                                                        </li><!--end nav-item-->
-                                                    </ul><!--end nav-->
-                                                </div><!--end sidebarDashboards-->
-                                            </li><!--end nav-item-->
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="#sidebarSupport" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarSupport">
-                                                    <i class="ti ti-home menu-icon"></i>
-                                                    <span>Support Team</span>
-                                                </a>
-                                                <div class="collapse" id="sidebarSupport">
-                                                    <ul class="nav flex-column">
-                                                        <li class="nav-item menuitem-active">
-                                                            <a class="nav-link active" href="#" aria-expanded="true">Dashboard</a>
-                                                        </li><!--end nav-item-->
-                                                        <li class="nav-item">
-                                                            <a class="nav-link" href="#">Create Ticket</a>
-                                                        </li><!--end nav-item-->
-                                                        <li class="nav-item">
-                                                            <a class="nav-link" href="#">Process View</a>
-                                                        </li><!--end nav-item-->
-                                                        <li class="nav-item">
-                                                            <a class="nav-link" href="#">Workflow Rule View</a>
-                                                        </li><!--end nav-item-->
-                                                        <li class="nav-item">
-                                                            <a class="nav-link" href="#">Ticket View</a>
-                                                        </li><!--end nav-item-->
-                                                    </ul><!--end nav-->
-                                                </div><!--end sidebarDashboards-->
-                                            </li><!--end nav-item-->
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="#sidebarEmployee" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarEmployee">
-                                                    <i class="ti ti-home menu-icon"></i>
-                                                    <span>Employee</span>
-                                                </a>
-                                                <div class="collapse" id="sidebarEmployee">
-                                                    <ul class="nav flex-column">
-                                                        <li class="nav-item menuitem-active">
-                                                            <a class="nav-link active" href="#" aria-expanded="true">Dashboard</a>
-                                                        </li><!--end nav-item-->
-                                                        <li class="nav-item">
-                                                            <a class="nav-link" href="#">Create Ticket</a>
-                                                        </li><!--end nav-item-->
-                                                        <li class="nav-item">
-                                                            <a class="nav-link" href="#">Process View</a>
-                                                        </li><!--end nav-item-->
-                                                        <li class="nav-item">
-                                                            <a class="nav-link" href="#">Workflow Rule View</a>
-                                                        </li><!--end nav-item-->
-                                                        <li class="nav-item">
-                                                            <a class="nav-link" href="#">Ticket View</a>
-                                                        </li><!--end nav-item-->
-                                                    </ul><!--end nav-->
-                                                </div><!--end sidebarDashboards-->
-                                            </li><!--end nav-item-->
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="#sidebarCustom" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarCustom">
-                                                    <i class="ti ti-home menu-icon"></i>
-                                                    <span>HR(Custom Role)</span>
-                                                </a>
-                                                <div class="collapse" id="sidebarCustom">
-                                                    <ul class="nav flex-column">
-                                                        <li class="nav-item menuitem-active">
-                                                            <a class="nav-link active" href="#" aria-expanded="true">Dashboard</a>
-                                                        </li><!--end nav-item-->
-                                                        <li class="nav-item">
-                                                            <a class="nav-link" href="#">Create Ticket</a>
-                                                        </li><!--end nav-item-->
-                                                        <li class="nav-item">
-                                                            <a class="nav-link" href="#">Process View</a>
-                                                        </li><!--end nav-item-->
-                                                        <li class="nav-item">
-                                                            <a class="nav-link" href="#">Workflow Rule View</a>
-                                                        </li><!--end nav-item-->
-                                                        <li class="nav-item">
-                                                            <a class="nav-link" href="#">Ticket View</a>
-                                                        </li><!--end nav-item-->
-                                                    </ul><!--end nav-->
-                                                </div><!--end sidebarDashboards-->
-                                            </li><!--end nav-item-->
-                                        </ul><!--end navbar-nav--->
-                                    </div>
-                                </div><!--endmenu-body--->
-                            </div>
-                        </div>
-                    </div>
+				<div class="simplebar-mask">
+					<div class="simplebar-offset" style="right: -16.6667px; bottom: 0px;">
+						<div class="simplebar-content-wrapper" style="height: 100%; overflow: hidden scroll;">
+							<div class="simplebar-content" style="padding: 0px 0px 60px;">
+								<div class="menu-body navbar-vertical tab-content menuitem-active">
+									<div class="collapse navbar-collapse show" id="sidebarCollapse">
+										<!-- Navigation -->
+										<ul class="navbar-nav">
+											<li class="menu-label mt-0">T<span>icket System</span></li>
+											<li class="nav-item">
+												<a id="" class="nav-link gmailStyler" href="#sidebarAdministrator" data-bs-toggle="collapse" role="button" aria-expanded="true" aria-controls="sidebarAdministrator">
+													<span class="pseudoAvatar">A</span>
+													<span>Administrator</span>
+												</a>
+												<div class="collapse show" id="sidebarAdministrator">
+													<ul class="nav flex-column">
+														<li class="nav-item menuitem-active">
+															<a class="nav-link active" asp-area="Ticket" asp-controller="Ticket" asp-action="Dashboard" aria-expanded="true">Dashboard</a>
+														</li><!--end nav-item-->
+														<li class="nav-item">
+															<a class="nav-link" asp-area="Ticket" asp-controller="Ticket" asp-action="TPCreate"> Process</a>
+														</li><!--end nav-item-->
+														<li class="nav-item">
+															<a class="nav-link" asp-area="Ticket" asp-controller="Ticket" asp-action="TMWorkFlowRule"> Workflow Rule</a>
+														</li><!--end nav-item-->
+														<li class="nav-item">
+															<a class="nav-link" asp-area="Ticket" asp-controller="Ticket" asp-action="TCreate"> Ticket</a>
+														</li><!--end nav-item-->
+														<li class="nav-item">
+															<a class="nav-link" asp-area="Ticket" asp-controller="Ticket" asp-action="TPView">Process View</a>
+														</li><!--end nav-item-->
+														<li class="nav-item">
+															<a class="nav-link" asp-area="Ticket" asp-controller="Ticket" asp-action="WFView">Workflow Rule View</a>
+														</li><!--end nav-item-->
+														<li class="nav-item">
+															<a class="nav-link" asp-area="Ticket" asp-controller="Ticket" asp-action="TicketView">Ticket View</a>
+														</li><!--end nav-item-->
+													</ul><!--end nav-->
+												</div><!--end sidebarDashboards-->
+											</li><!--end nav-item-->
+											<li class="nav-item">
+												<a class="nav-link gmailStyler" href="#sidebarTeamLead" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarTeamLead">
+													<span class="pseudoAvatar">TL</span>
+													<span>Team Lead</span>
+												</a>
+												<div class="collapse" id="sidebarTeamLead">
+													<ul class="nav flex-column">
+														<li class="nav-item menuitem-active">
+															<a class="nav-link active" href="#" aria-expanded="true">Dashboard</a>
+														</li><!--end nav-item-->
+														<li class="nav-item">
+															<a class="nav-link" href="#">Create Ticket</a>
+														</li><!--end nav-item-->
+														<li class="nav-item">
+															<a class="nav-link" href="#">Process View</a>
+														</li><!--end nav-item-->
+														<li class="nav-item">
+															<a class="nav-link" href="#">Workflow Rule View</a>
+														</li><!--end nav-item-->
+														<li class="nav-item">
+															<a class="nav-link" href="#">Ticket View</a>
+														</li><!--end nav-item-->
+													</ul><!--end nav-->
+												</div><!--end sidebarDashboards-->
+											</li><!--end nav-item-->
+											<li class="nav-item">
+												<a class="nav-link gmailStyler" href="#sidebarSupport" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarSupport">
+													<span class="pseudoAvatar">ST</span>
+													<span>Support Team</span>
+												</a>
+												<div class="collapse" id="sidebarSupport">
+													<ul class="nav flex-column">
+														<li class="nav-item menuitem-active">
+															<a class="nav-link active" href="#" aria-expanded="true">Dashboard</a>
+														</li><!--end nav-item-->
+														<li class="nav-item">
+															<a class="nav-link" href="#">Create Ticket</a>
+														</li><!--end nav-item-->
+														<li class="nav-item">
+															<a class="nav-link" href="#">Process View</a>
+														</li><!--end nav-item-->
+														<li class="nav-item">
+															<a class="nav-link" href="#">Workflow Rule View</a>
+														</li><!--end nav-item-->
+														<li class="nav-item">
+															<a class="nav-link" href="#">Ticket View</a>
+														</li><!--end nav-item-->
+													</ul><!--end nav-->
+												</div><!--end sidebarDashboards-->
+											</li><!--end nav-item-->
+											<li class="nav-item">
+												<a class="nav-link gmailStyler" href="#sidebarEmployee" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarEmployee">
+													<span class="pseudoAvatar">E</span>
+													<span>Employee</span>
+												</a>
+												<div class="collapse" id="sidebarEmployee">
+													<ul class="nav flex-column">
+														<li class="nav-item menuitem-active">
+															<a class="nav-link active" href="#" aria-expanded="true">Dashboard</a>
+														</li><!--end nav-item-->
+														<li class="nav-item">
+															<a class="nav-link" href="#">Create Ticket</a>
+														</li><!--end nav-item-->
+														<li class="nav-item">
+															<a class="nav-link" href="#">Process View</a>
+														</li><!--end nav-item-->
+														<li class="nav-item">
+															<a class="nav-link" href="#">Workflow Rule View</a>
+														</li><!--end nav-item-->
+														<li class="nav-item">
+															<a class="nav-link" href="#">Ticket View</a>
+														</li><!--end nav-item-->
+													</ul><!--end nav-->
+												</div><!--end sidebarDashboards-->
+											</li><!--end nav-item-->
+											<li class="nav-item">
+												<a class="nav-link gmailStyler" href="#sidebarCustom" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarCustom">
+													<span class="pseudoAvatar">HR</span>
+													<span>HR(Custom Role)</span>
+												</a>
+												<div class="collapse" id="sidebarCustom">
+													<ul class="nav flex-column">
+														<li class="nav-item menuitem-active">
+															<a class="nav-link active" href="#" aria-expanded="true">Dashboard</a>
+														</li><!--end nav-item-->
+														<li class="nav-item">
+															<a class="nav-link" href="#">Create Ticket</a>
+														</li><!--end nav-item-->
+														<li class="nav-item">
+															<a class="nav-link" href="#">Process View</a>
+														</li><!--end nav-item-->
+														<li class="nav-item">
+															<a class="nav-link" href="#">Workflow Rule View</a>
+														</li><!--end nav-item-->
+														<li class="nav-item">
+															<a class="nav-link" href="#">Ticket View</a>
+														</li><!--end nav-item-->
+													</ul><!--end nav-->
+												</div><!--end sidebarDashboards-->
+											</li><!--end nav-item-->
+										</ul><!--end navbar-nav--->
+									</div>
+								</div><!--endmenu-body--->
+							</div>
+						</div>
+					</div>
 
-                </div><!-- end simplebar-mask-->
-            </div><!-- end simplebar-wrapper-->
-        </div><!-- end menu-->
-    </div><!-- end left-sidenav-->
-    <!-- Top Bar Start -->
-    <div class="topbar">
-        <nav class="navbar-custom nav-sticky" id="navbar-custom">
-            <ul class="list-unstyled topbar-nav float-end mb-0">
-                <li class="dropdown">
-                    <a class="nav-link dropdown-toggle nav-user" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                        <div class="d-flex align-items-center">
-                            <img src="~/matrica/assets/images/person.png" alt="profile-user" class="rounded-circle me-2 thumb-sm">
-                            <div>
-                                <small class="d-none d-md-block font-11">Admin</small>
-                                <span class="d-none d-md-block fw-semibold font-12">Maria Gibson <i class="mdi mdi-chevron-down"></i></span>
-                            </div>
-                        </div>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-end">
-                        <a class="dropdown-item" href="#"><i class="ti ti-user font-16 me-1 align-text-bottom"></i> Profile</a>
-                        <a class="dropdown-item" href="#"><i class="ti ti-settings font-16 me-1 align-text-bottom"></i> Settings</a>
-                        <div class="dropdown-divider mb-0"></div>
-                        <a class="dropdown-item" href="#"><i class="ti ti-power font-16 me-1 align-text-bottom"></i> Logout</a>
-                    </div>
-                </li><!--end topbar-profile-->
-            </ul><!--end topbar-navbar-item-->
-        </nav><!--end navbar-->
-    </div><!--end top bar-->
-    <!-- Page Start -->
-    <div class="page-wrapper">
-        <!-- Page Content-->
-        <div class="page-content-tab">
-            <div class="container-fluid">
-                <!-- Page-Title -->
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="page-title-box">
-                            <div class="float-end">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item">
-                                        <a asp-area="@ViewData["AreaName"]" asp-controller="@ViewData["ControllerName"]" asp-action="@ViewData["ActionName"]">@ViewData["bGParent"]</a>
-                                    </li><!--end nav-item-->
-                                    <li class="breadcrumb-item">
-                                        <a asp-area="@ViewData["AreaName"]" asp-controller="@ViewData["ControllerName"]" asp-action="@ViewData["ActionName"]">@ViewData["bParent"]</a>
-                                    </li><!--end nav-item-->
-                                    <li class="breadcrumb-item active">@ViewData["bChild"]</li>
-                                </ol>
-                            </div><!--End Breadcrumb-->
-                            <h4 class="page-title">@ViewData["pTitle"]</h4>
-                        </div><!--end page-title-box-->
-                    </div><!--end col-->
-                </div><!-- end page title -->
-                <!--Start Content-->
-                @* <div id="divBlocker" class="d-none">
+				</div><!-- end simplebar-mask-->
+			</div><!-- end simplebar-wrapper-->
+		</div><!-- end menu-->
+	</div><!-- end left-sidenav-->
+	<!-- Top Bar Start -->
+	<div class="topbar">
+		<nav class="navbar-custom nav-sticky" id="navbar-custom">
+			<ul class="list-unstyled topbar-nav float-end mb-0">
+				<li class="dropdown">
+					<a class="nav-link dropdown-toggle nav-user" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+						<div class="d-flex align-items-center">
+							<img src="~/matrica/assets/images/person.png" alt="profile-user" class="rounded-circle me-2 thumb-sm">
+							<div>
+								<small class="d-none d-md-block font-11">Admin</small>
+								<span class="d-none d-md-block fw-semibold font-12">Maria Gibson <i class="mdi mdi-chevron-down"></i></span>
+							</div>
+						</div>
+					</a>
+					<div class="dropdown-menu dropdown-menu-end">
+						<a class="dropdown-item" href="#"><i class="ti ti-user font-16 me-1 align-text-bottom"></i> Profile</a>
+						<a class="dropdown-item" href="#"><i class="ti ti-settings font-16 me-1 align-text-bottom"></i> Settings</a>
+						<div class="dropdown-divider mb-0"></div>
+						<a class="dropdown-item" href="#"><i class="ti ti-power font-16 me-1 align-text-bottom"></i> Logout</a>
+					</div>
+				</li><!--end topbar-profile-->
+			</ul><!--end topbar-navbar-item-->
+			<ul class="list-unstyled topbar-nav mb-0">
+				<li>
+					<button class="nav-link button-menu-mobile nav-icon" id="togglemenu">
+						<i class="ti ti-menu-2"></i>
+					</button>
+				</li>
+				@* <li class="hide-phone app-search">
+                    <form role="search" action="#" method="get">
+                        <input type="search" name="search" class="form-control top-search mb-0" placeholder="Type text...">
+                        <button type="submit"><i class="ti ti-search"></i></button>
+                    </form>
+                </li> *@
+			</ul>
+		</nav><!--end navbar-->
+	</div><!--end top bar-->
+	<!-- Page Start -->
+	<div class="page-wrapper">
+		<!-- Page Content-->
+		<div class="page-content-tab">
+			<div class="container-fluid">
+				<!-- Page-Title -->
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="page-title-box">
+							<div class="float-end">
+								<ol class="breadcrumb">
+									@if (ViewBag.Breadcrumbs != null)
+									{
+										<li class="breadcrumb-item">
+											<a href="@ViewBag.Breadcrumbs[0].Url">@ViewBag.Breadcrumbs[0].Name</a>
+										</li>
+
+										<!--end nav-item-->
+										<li class="breadcrumb-item">
+											<a href="@ViewBag.Breadcrumbs[1].Url">@ViewBag.Breadcrumbs[1].Name</a>
+										</li>
+
+										<!--end nav-item-->
+										<li class="breadcrumb-item active">@ViewBag.Breadcrumbs[2].Name</li>
+									}
+									else
+									{
+										<li class="breadcrumb-item">
+											<a href="#">@ViewData["bGParent"]</a>
+										</li>
+
+										<!--end nav-item-->
+										<li class="breadcrumb-item">
+											<a href="#">@ViewData["bParent"]</a>
+										</li>
+
+										<!--end nav-item-->
+										<li class="breadcrumb-item active">@ViewData["bChild"]</li>
+									}
+								</ol>
+							</div><!--End Breadcrumb-->
+							<h4 class="page-title">@ViewData["pTitle"]</h4>
+						</div><!--end page-title-box-->
+					</div><!--end col-->
+				</div><!-- end page title -->
+				<!--Start Content-->
+				@* <div id="divBlocker" class="d-none">
 					<div id="ldSpinner" class="spinner-border text-primary customspinner" role="status"
 						 style=""></div>
 				</div> *@
-                @RenderBody()
-                <!--end Cotent-->
-            </div><!-- container -->
-            <!-- Footer Start -->
-            <footer class="footer text-center text-sm-start">
-                Office Management System &copy;
-                <script>
-                    document.write(new Date().getFullYear())
-                </script>
-                UrbnTeki <span class="d-none d-sm-inline-block float-end"> Crafted with <i class="mdi mdi-heart text-danger"></i> by Aviv Solutions Inc </span>
-            </footer><!-- End Footer -->
-        </div>
-        <!-- end page content -->
-    </div>
-    <!-- Footer Start -->
-    @* <footer class="footer text-center text-sm-start">
+				@RenderBody()
+				<!--end Cotent-->
+			</div><!-- container -->
+			<!-- Footer Start -->
+			<footer class="footer text-center text-sm-start">
+				Office Management System &copy;
+				<script>
+					document.write(new Date().getFullYear())
+				</script>
+				UrbnTeki <span class="d-none d-sm-inline-block float-end"> Crafted with <i class="mdi mdi-heart text-danger"></i> by Aviv Solutions Inc </span>
+			</footer><!-- End Footer -->
+		</div>
+		<!-- end page content -->
+	</div>
+	<!-- Footer Start -->
+	@* <footer class="footer text-center text-sm-start">
           <script>
               document.write(new Date().getFullYear())
         </script>2025 OtoSolve <span class="text-muted d-none d-sm-inline-block float-end">Crafted with <i class="mdi mdi-heart text-warning"></i> by Aviv Solutions Inc</span>
     </footer> *@
-    <!-- end Footer -->
-    <!--Script-->
-    <!-- vendor js -->
-    <script src="~/matrica/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="~/matrica/assets/libs/feather-icons/feather.min.js"></script>
-    <!-- App js -->
-    <script src="~/matrica/assets/js/app.js"></script>
-    <script src="~/matrica/assets/libs/sweetalert2/sweetalert2.min.js"></script>
-    <script src="~/matrica/assets/js/pages/sweet-alert.init.js"></script>
+	<!-- end Footer -->
+	<!--Script-->
+	<script src="~/lib/jquery/dist/jquery.js"></script>
 
-    <!-- App js -->
-    <script src="~/matrica/assets/js/app.js"></script>
-    @if (IsSectionDefined("Scripts"))
-    {
-        @await RenderSectionAsync("Scripts", true)
-    }
-    else
-    {
-        @await RenderSectionAsync("Scripts", false)
-    }
+	<script type="text/javascript">
+				$(document).ready(function() {
+							$.fn.hasNotClass = function(className) {
+		  return !this.hasClass(className);
+		};
+			$('.pseudoAvatar').addClass('pseudoAvatarbgblue');
+			if ($('a.gmailStyler').hasClass('collapsed')) {
+			$(this).find('.pseudoAvatar').first().removeClass('pseudoAvatarbgblue');
+			$(this).find('.pseudoAvatar').first().addClass('pseudoAvatarbgwhite');
+			}
+			$('a.gmailStyler').click(function() {
+			$('.pseudoAvatar').addClass('pseudoAvatarbgblue');
+			if ($(this).hasClass('collapsed')) {
+			  $(this).find('.pseudoAvatar').first().addClass('pseudoAvatarbgblue');
+			  $(this).find('.pseudoAvatar').first().removeClass('pseudoAvatarbgwhite');
+			} else {
+			  $(this).find('.pseudoAvatar').first().addClass('pseudoAvatarbgwhite');
+			  $(this).find('.pseudoAvatar').first().removeClass('pseudoAvatarbgblue');
+			}
+		});
+		});
+	</script>
+
+	<!-- vendor js -->
+	<script src="~/matrica/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="~/matrica/assets/libs/feather-icons/feather.min.js"></script>
+	<!-- App js -->
+	<script src="~/matrica/assets/js/app.js"></script>
+	<script src="~/matrica/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+	<script src="~/matrica/assets/js/pages/sweet-alert.init.js"></script>
+
+	<!-- App js -->
+	@* <script src="~/matrica/assets/js/app.js"></script> *@
+	@if (IsSectionDefined("Scripts"))
+	{
+		@await RenderSectionAsync("Scripts", true)
+	}
+	else
+	{
+		@await RenderSectionAsync("Scripts", false)
+	}
+
+
 
 </body>
 </html>

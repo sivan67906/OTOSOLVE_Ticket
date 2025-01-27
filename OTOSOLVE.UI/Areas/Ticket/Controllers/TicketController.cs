@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OTOSOLVE.UI.Areas.Ticket.ViewModels;
 
 namespace OTOSOLVE.UI.Areas.Ticket.Controllers;
 [Area("Ticket")]
@@ -13,10 +14,19 @@ public class TicketController : Controller
         // Page Titles
         ViewData["pTitle"] = "Dashboard";
 
-        // Breadcrumb
-        ViewData["bGParent"] = "Admin";
-        ViewData["bParent"] = "Dashboard";
-        ViewData["bChild"] = "Index";
+        //// Breadcrumb
+        //ViewData["bGParent"] = "Admin";
+        //ViewData["bParent"] = "Dashboard";
+        //ViewData["bChild"] = "Index";
+
+        List<BreadcrumbItem> breadcrumbs =
+        [
+            new BreadcrumbItem { Name = "Admin", Url = Url.Action("TicketView", "Ticket", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "Dashboard", Url = Url.Action("Dashboard", "Ticket", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "Index", Url = Url.Action("Dashboard", "Ticket", new { area = "Ticket" }) }
+        ];
+        ViewBag.Breadcrumbs = breadcrumbs;
+
 
         // Sample data for the chart
         string[] months = new[] { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
@@ -34,10 +44,13 @@ public class TicketController : Controller
     {
         ViewData["pTitle"] = "Ticket Create Index";
 
-        // Breadcrumb
-        ViewData["bGParent"] = "Ticket";
-        ViewData["bParent"] = "Management";
-        ViewData["bChild"] = "Create";
+        List<BreadcrumbItem> breadcrumbs =
+        [
+            new BreadcrumbItem { Name = "Ticket", Url = Url.Action("TicketView", "Ticket", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "Management", Url = Url.Action("TPView", "Ticket", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "Create", Url = Url.Action("TProcess", "Ticket", new { area = "Ticket" }) }
+        ];
+        ViewBag.Breadcrumbs = breadcrumbs;
 
         return View();
     }
@@ -46,10 +59,13 @@ public class TicketController : Controller
     {
         ViewData["pTitle"] = "Ticket Index";
 
-        // Breadcrumb
-        ViewData["bGParent"] = "Ticket";
-        ViewData["bParent"] = "Process";
-        ViewData["bChild"] = "View";
+        List<BreadcrumbItem> breadcrumbs =
+        [
+            new BreadcrumbItem { Name = "Ticket", Url = Url.Action("TicketView", "Ticket", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "Process", Url = Url.Action("TPView", "Ticket", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "View", Url = Url.Action("TProcess", "Ticket", new { area = "Ticket" }) }
+        ];
+        ViewBag.Breadcrumbs = breadcrumbs;
 
         return View();
     }
@@ -58,30 +74,39 @@ public class TicketController : Controller
     {
         ViewData["pTitle"] = "Ticket Process Creation";
 
-        // Breadcrumb
-        ViewData["bGParent"] = "Ticket";
-        ViewData["bParent"] = "Process";
-        ViewData["bChild"] = "Create";
+        List<BreadcrumbItem> breadcrumbs =
+        [
+            new BreadcrumbItem { Name = "Ticket", Url = Url.Action("TicketView", "Ticket", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "Process", Url = Url.Action("TPView", "Ticket", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "Create", Url = Url.Action("TPCreate", "Ticket", new { area = "Ticket" }) }
+        ];
+        ViewBag.Breadcrumbs = breadcrumbs;
         return View();
     }
     public IActionResult TMWorkFlowRule()
     {
         ViewData["pTitle"] = "WorkFlow Rule Creation";
 
-        // Breadcrumb
-        ViewData["bGParent"] = "Ticket";
-        ViewData["bParent"] = "WorkFlow Rule";
-        ViewData["bChild"] = "Create";
+        List<BreadcrumbItem> breadcrumbs =
+        [
+            new BreadcrumbItem { Name = "Ticket", Url = Url.Action("TicketView", "Ticket", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "WorkFlow Rule", Url = Url.Action("WFView", "Ticket", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "Create", Url = Url.Action("TMWorkFlowRule", "Ticket", new { area = "Ticket" }) }
+        ];
+        ViewBag.Breadcrumbs = breadcrumbs;
         return View();
     }
     public IActionResult TPView()
     {
         ViewData["pTitle"] = "Ticket Process Index";
 
-        // Breadcrumb
-        ViewData["bGParent"] = "Ticket";
-        ViewData["bParent"] = "Process";
-        ViewData["bChild"] = "View";
+        List<BreadcrumbItem> breadcrumbs =
+        [
+            new BreadcrumbItem { Name = "Ticket", Url = Url.Action("TCreate", "Ticket", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "Process", Url = Url.Action("TPCreate", "Ticket", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "View", Url = Url.Action("TPView", "Ticket", new { area = "Ticket" }) }
+        ];
+        ViewBag.Breadcrumbs = breadcrumbs;
 
         return View();
     }
@@ -89,10 +114,13 @@ public class TicketController : Controller
     {
         ViewData["pTitle"] = "WorkFlow Rule Index";
 
-        // Breadcrumb
-        ViewData["bGParent"] = "Ticket";
-        ViewData["bParent"] = "WorkFlow";
-        ViewData["bChild"] = "View";
+        List<BreadcrumbItem> breadcrumbs =
+        [
+            new BreadcrumbItem { Name = "Ticket", Url = Url.Action("TCreate", "Ticket", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "WorkFlow", Url = Url.Action("TMWorkFlowRule", "Ticket", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "View", Url = Url.Action("WFView", "Ticket", new { area = "Ticket" }) }
+        ];
+        ViewBag.Breadcrumbs = breadcrumbs;
 
         return View();
     }
@@ -100,10 +128,13 @@ public class TicketController : Controller
     {
         ViewData["pTitle"] = "Tickets Index";
 
-        // Breadcrumb
-        ViewData["bGParent"] = "Ticket";
-        ViewData["bParent"] = "List";
-        ViewData["bChild"] = "View";
+        List<BreadcrumbItem> breadcrumbs =
+        [
+            new BreadcrumbItem { Name = "Ticket", Url = Url.Action("TCreate", "Ticket", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "List", Url = Url.Action("TicketView", "Ticket", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "View", Url = Url.Action("TicketView", "Ticket", new { area = "Ticket" }) }
+        ];
+        ViewBag.Breadcrumbs = breadcrumbs;
 
         return View();
     }

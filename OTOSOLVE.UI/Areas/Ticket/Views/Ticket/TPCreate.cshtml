@@ -9,6 +9,11 @@
 					<div class="col">
 						<h4 class="card-title">Create Ticket Process</h4>
 					</div><!--end col-->
+					<div class="col-auto">
+						<a asp-area="Ticket" asp-controller="Ticket" asp-action="TPView" class="btn btn-de-primary">
+							<i class="mdi mdi-eye-outline me-2"></i>View Ticket Processes
+						</a>
+					</div><!--end col-->
 				</div> <!--end row-->
 			</div><!--end card-header-->
 
@@ -86,7 +91,7 @@
 									</div>
 								</div>
 								<div class="col-lg-12 text-end">
-									<button id="addRow" class="btn btn-de-primary" data-save="">
+									<button id="addTicketAccess" class="btn btn-de-primary" data-save="">
 										<i class="mdi mdi-check-all me-2"></i>
 										Add more User
 									</button>
@@ -109,7 +114,7 @@
 				</div><!--end card-header-->
 				<div class="card-body">
 					<div class="table-responsive">
-						<table class="table mb-0">
+						<table class="table mb-0" id="tblCurrentTktProcessData">
 							<thead class="thead-light">
 								<tr>
 									<th>#</th>
@@ -124,42 +129,7 @@
 							</thead>
 
 							<tbody>
-								<tr>
-									<td>1</td>
-									<td>Pr_Finance</td>
-									<td>Human Resources</td>
-									<td>Intern</td>
-									<td>Developer</td>
-									<td>Alice Johnson</td>
-									<td>Notification Recipient</td>
-									<td>
-										<a href="#" class="ms-2" onclick="executeExample('warningConfirm')" data-toggle="tooltip" data-placement="top" title="Delete"><i class="las la-trash-alt text-secondary font-16"></i></a>
-									</td>
-								</tr><!--end tr-->
-								<tr>
-									<td>2</td>
-									<td>Pr_Finance</td>
-									<td>Marketing</td>
-									<td>Junior Executive</td>
-									<td>Analyst</td>
-									<td>Bob Smith<</td>
-									<td>Approver</td>
-									<td>
-										<a href="#" class="ms-2" onclick="executeExample('warningConfirm')" data-toggle="tooltip" data-placement="top" title="Delete"><i class="las la-trash-alt text-secondary font-16"></i></a>
-									</td>
-								</tr><!--end tr-->
-								<tr>
-									<td>3</td>
-									<td>Pr_Finance</td>
-									<td>Finance</td>
-									<td>Assistant Manager</td>
-									<td>Administrator</td>
-									<td>David Martinez</td>
-									<td>Approver</td>
-									<td>
-										<a href="#" class="ms-2" onclick="executeExample('warningConfirm')" data-toggle="tooltip" data-placement="top" title="Delete"><i class="las la-trash-alt text-secondary font-16"></i></a>
-									</td>
-								</tr><!--end tr-->
+								<tr><td class="text-warning">No data found</td></tr>
 							</tbody>
 						</table>
 					</div>
@@ -169,7 +139,7 @@
 			<div class="card-footer">
 				<div class="row text-end ">
 					<div class="col-lg-12 ">
-						<button id="submitBtn" class="btn btn-de-primary"><i class="mdi mdi-check-all me-2"></i>Create</button>
+						<button id="submitTicketProcess" class="btn btn-de-primary"><i class="mdi mdi-check-all me-2"></i>Create</button>
 					</div>
 				</div>
 			</div>
@@ -181,66 +151,97 @@
 		<script src="~/lib/jquery/dist/jquery.js"></script>
 		<script type="text/javascript">
 			 $(document).ready(function() {
-				 let cloneCount = 1;
-				  const swalWithBootstrapButtons = Swal.mixin({
-				  customClass: {
-					 confirmButton: "btn btn-de-primary",
-					 cancelButton: "btn btn-de-danger me-2"
-				  },
-				  buttonsStyling: false
-			   });
-
-			// Function to update the ID and 'for' attribute of the element
-			function updateIdAndFor(element, number) {
-			  let currentId = $(element).attr("id");
-			  let currentFor = $(element).attr("for");
-			  let currentName = $(element).attr("name");
-			  if (currentId) {
-				$(element).attr("id", currentId + number);
-			  }
-			  if (currentFor) {
-				$(element).attr("for", currentFor + number);
-			  }
-			  if (currentName) {
-				$(element).attr("name", currentName + number);
-			  }
-			}
-		$("#addRow").on("click", function() {
-
+			var sequenceNumber = 1; // Initialize sequence number
+					 //SweetAlert Declaration
+		const swalWithBootstrapButtons = Swal.mixin({
+			customClass: {
+				confirmButton: "btn btn-de-primary",
+				cancelButton: "btn btn-de-danger me-2"
+			},
+			buttonsStyling: false
 		});
-			$("#addRow1").on("click", function() {
-			let clonedDiv = $("#divTktHierarcyProcess").clone(true);
+		
+			// let cloneCount = 1;
+			// Function to update the ID and 'for' attribute of the element
+			// function updateIdAndFor(element, number) {
+			//   let currentId = $(element).attr("id");
+			//   let currentFor = $(element).attr("for");
+			//   let currentName = $(element).attr("name");
+			//   if (currentId) {
+			// 	$(element).attr("id", currentId + number);
+			//   }
+			//   if (currentFor) {
+			// 	$(element).attr("for", currentFor + number);
+			//   }
+			//   if (currentName) {
+			// 	$(element).attr("name", currentName + number);
+			//   }
+			// }
+	
+			// $("#addTicketAccess").on("click", function() {
+			// let clonedDiv = $("#divTktHierarcyProcess").clone(true);
 
-			// Update the ID of the cloned div
-			clonedDiv.attr("id", $("#divTktHierarcyProcess").attr("id") + cloneCount);
-			// Uncheck all radio buttons within the cloned div
-			clonedDiv.find("input[type='radio']").prop("checked", false);
+			// // Update the ID of the cloned div
+			// clonedDiv.attr("id", $("#divTktHierarcyProcess").attr("id") + cloneCount);
+			// // Uncheck all radio buttons within the cloned div
+			// clonedDiv.find("input[type='radio']").prop("checked", false);
 
-			// Update the IDs, name and 'for' attributes of all label, select, and input elements within the div
-			clonedDiv.find("div, label, select, input").each(function() {
-			  updateIdAndFor(this, cloneCount);
-			});
+			// // Update the IDs, name and 'for' attributes of all label, select, and input elements within the div
+			// clonedDiv.find("div, label, select, input").each(function() {
+			//   updateIdAndFor(this, cloneCount);
+			// });
 
-			// let rdgroup = "radio-group" + cloneCount;
-			// $("#"+rdgroup).attr('data-group', parseInt(cloneCount, 10));
-			// $("#"+rdgroup).data('group', parseInt(cloneCount, 10));
+			// clonedDiv.appendTo("#divTicketProcessMain");
+			// cloneCount++;
+			// });
 
-			clonedDiv.appendTo("#divTicketProcessMain");
-			cloneCount++;
-			});
+			
+			$('#addTicketAccess').click(function(event){
+				event.preventDefault(); // Prevent form from submitting normally
 
+				// Get form values
+				var processName = $('#processName').val();
+				var sltDepartment = $('#sltDepartment option:selected').text();
+				var sltDesignation = $('#sltDesignation option:selected').text();
+				var sltRole = $('#sltRole option:selected').text();
+				var sltEmployee = $('#sltEmployee option:selected').text();
+				var isApprover = $('input[name="accessLevelOptions"]:checked').next('label').text();
 
-
-			$('#submitBtn').click(function() {
-				var checkedApprover = false;
-				$('.radio-group').each(function() {
-					var groupid = $(this).attr('id');
-					var originalgroupid = groupid.replace("radio-group", "");
-					if ($('input[name="accessLevelOptions' + originalgroupid + '"]:checked').val() == 'Approver') {
-						checkedApprover = true;
+				$('#tblCurrentTktProcessData tbody tr').each(function(){
+					var noData = $(this).find('td:eq(0)').text(); // Get the value of the 1th column
+							if (noData == 'No data found') {
+						$('#tblCurrentTktProcessData tbody').empty();
 					}
 				});
-				checkedApprover = true; //hardcoded value for demo
+
+				// Append values to the table
+				var newRow = '<tr><td>' + sequenceNumber + '</td><td>' + processName + '</td><td>' + sltDepartment + '</td><td>' + sltDesignation
+				+ '</td><td>' + sltRole + '</td><td>' + sltEmployee + '</td><td>' + isApprover + `</td><td><a href="#" class="ms-2" onclick="deleteRowData(this);"
+				data-toggle="tooltip" data-placement="top" title="Delete"><i class="las la-trash-alt text-secondary font-16"></i></a> </td></tr>`;
+
+				$('#tblCurrentTktProcessData tbody').append(newRow);
+
+				// Increment sequence number for next entry
+				sequenceNumber++;
+				resetTblSequence();
+			});
+
+			$('#submitTicketProcess').click(function() {
+				var checkedApprover = false;
+					// var groupid = $(this).attr('id');
+					// var originalgroupid = groupid.replace("radio-group", "");
+					// if ($('input[name="accessLevelOptions' + originalgroupid + '"]:checked').val() == 'Approver') {
+					// 	checkedApprover = true;
+					// }
+
+
+					$('#tblCurrentTktProcessData tbody tr').each(function(){
+                    var accessLevel = $(this).find('td:eq(6)').text(); // Get the value of the 4th column (Age)
+					if (accessLevel == 'Approver') {
+						checkedApprover = true;
+                    }
+                });
+				resetTblSequence();
 					if (checkedApprover) {
 					// Perform your desired action here
 						swalWithBootstrapButtons.fire({ title: "Process Created!",
@@ -262,6 +263,54 @@
 					});
 				}
 			});
+
+
 			});
+
+
+			function resetTblSequence(){
+				$('#tblCurrentTktProcessData tbody tr').each(function(index){
+					$(this).find('td:eq(0)').text(index + 1); // Update the sequence number
+				});
+			}
+
+			const swalWithBootstrapButtons1 = Swal.mixin({
+			customClass: {
+				confirmButton: "btn btn-de-primary",
+				cancelButton: "btn btn-de-danger me-2"
+			},
+			buttonsStyling: false
+		});
+
+
+			function deleteRowData(comp){
+			swalWithBootstrapButtons1.fire({
+				title: "Are you sure?",
+				text: "Do You want to delete this?",
+				icon: "warning",
+				showCancelButton: true,
+				confirmButtonText: '<i class="mdi mdi-check-all me-2"></i>Delete',
+				cancelButtonText: '<i class="mdi mdi-window-close me-2"></i>Close',
+				// confirmButtonText: "Yes, delete it!",
+				// cancelButtonText: "No, cancel!",
+				reverseButtons: true,
+				allowOutsideClick: false
+			}).then((result) => {
+				if (result.isConfirmed) {
+					$(comp).closest('tr')[0].remove();
+					 swalWithBootstrapButtons1.fire({
+								title: "Deleted!",
+								text: "Deleted successfully!",
+								icon: "success",
+								allowOutsideClick: false
+							}).then(okay => {
+								if (okay) {
+									resetTblSequence();
+								}
+							});
+				}
+			});
+		}
+
 		</script>
 }
