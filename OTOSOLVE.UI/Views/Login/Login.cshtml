@@ -1,4 +1,5 @@
-﻿@section Scripts {
+﻿@* @model LoginVM
+@section Scripts {
 	<script>
 		$('#customSwitchSASuccess').click(function() {
 				  if ($(this).is(':checked')) {
@@ -22,21 +23,24 @@
 	</div>
 </div>
 <div class="card-body pt-0">
-	<form class="my-4" action="">
+	<form class="my-4" action="" method="post">
+		<div class="text-danger" asp-validation-summary="All"></div>
 		<div class="form-group mb-2">
 			<label class="form-label" for="username">Username</label>
-			<input type="text" class="form-control" id="username" name="username" placeholder="Enter username">
+			<input type="text" class="form-control" asp-for="Email" id="username" name="Email" placeholder="Enter username">
+			<span class="text-danger" asp-validation-for="Email"></span>
 		</div><!--end form-group-->
 
 		<div class="form-group">
 			<label class="form-label" for="userpassword">Password</label>
-			<input type="password" class="form-control" name="password" id="userpassword" placeholder="Enter password">
+			<input type="password" class="form-control"asp-for="Password" name="Password" id="userpassword" placeholder="Enter password">
+			<span class="text-danger" asp-validation-for="Password"></span>
 		</div><!--end form-group-->
 
 				<div class="form-group row mt-3">
 					<div class="col-sm-6">
 						<div class="form-check form-switch form-switch-success">
-							<input class="form-check-input" type="checkbox" id="customSwitchRMSuccess">
+							<input class="form-check-input" asp-for="RememberMe" name="RememberMe" type="checkbox" id="customSwitchRMSuccess">
 							<label class="form-check-label" for="customSwitchRMSuccess">Remember me</label>
 						</div>
 					</div><!--end col-->
@@ -66,3 +70,4 @@
 		</div>
 	</div>
 </div><!--end card-body-->
+ *@

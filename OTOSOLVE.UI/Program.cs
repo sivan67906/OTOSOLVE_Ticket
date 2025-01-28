@@ -11,6 +11,23 @@ builder.Services.AddHttpClient("ApiGatewayCall", client =>
     client.BaseAddress = new Uri("http://localhost:6301/api/"); //Environment WebApi
 });
 
+builder.Services.AddAuthentication().AddCookie("AvivClaimCookie", options =>
+{
+    options.Cookie.Name = "AvivClaimCookie";
+    options.LoginPath = "/Account/Login";
+    options.AccessDeniedPath = "/Account/AccessDenied";
+});
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("AdminPolicy", policy => policy.RequireRole("Admin"));
+    options.AddPolicy("TeamLeadPolicy", policy => policy.RequireRole("TeamLead"));
+    options.AddPolicy("SupportPolicy", policy => policy.RequireRole("SupportTeam"));
+    options.AddPolicy("HRPolicy", policy => policy.RequireRole("HR"));
+    options.AddPolicy("EmployeePolicy", policy => policy.RequireRole("Employee"));
+});
+
+
 WebApplication? app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -25,6 +42,7 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapStaticAssets();
@@ -46,7 +64,7 @@ app.MapControllerRoute(
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Login}/{action=Login}/{id:int?}")
+    pattern: "{controller=Account}/{action=Login}/{id:int?}")
     //pattern: "{area:exists}/{controller=Dashboard}/{action=Index}/{id?}")
     .WithStaticAssets();
 

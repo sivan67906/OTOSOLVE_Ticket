@@ -1,0 +1,890 @@
+﻿
+
+@* <link href="~/matrica/assets/css/Apex.css" rel="stylesheet" id="apexcharts-css" type="text/css" /> *@
+@section Styles {
+    <style type="text/css">
+        /* Gradient background for card header */
+        .bg-gradient-primary {
+            background: linear-gradient(90deg, rgba(58,123,213,1) 0%, rgba(58,213,183,1) 100%);
+        }
+
+        /* Box shadow for card */
+        .card.shadow-lg {
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Chart container adjustments */
+        .chart-container {
+            margin: 0 auto;
+            height: auto;
+            width: 100%;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 400px; /* Set this to any appropriate height */
+            width: 100%;
+        }
+
+        .total-tickets {
+            margin-top: 0px;
+            margin-bottom: 0px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .card-widget {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+            .card-widget:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            }
+
+        .card-header {
+            background-color: #007bff;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+        }
+
+        .card-footer {
+            background-color: #f8f9fa;
+            font-size: 14px;
+            color: #6c757d;
+        }
+
+        .avatar-title {
+            font-size: 24px;
+        }
+
+        .text-success-subtle {
+            background-color: rgba(40, 167, 69, 0.1);
+        }
+
+        .text-warning-subtle {
+            background-color: rgba(255, 193, 7, 0.1);
+        }
+
+        .text-primary-subtle {
+            background-color: rgba(0, 123, 255, 0.1);
+        }
+
+        .text-danger-subtle {
+            background-color: rgba(220, 53, 69, 0.1);
+        }
+
+        .card-animate {
+            position: relative;
+            height: 130px; /* Set this to any appropriate height */
+            width: 100%;
+        }
+    </style>
+}
+<div class="container-fluid">
+    <div class="row enlarge-menu menuitem-active">
+        <div class="col-lg-12">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div class="card card-widget resposive overflow-hidden shadow p-0 mb-5 bg-white rounded">
+                                <div class="card-body">
+                                    <div class="row d-flex justify-content-center">
+                                        <div class="col">
+                                            <p class="text-dark mb-0 text-uppercase fw-semibold">New Tickets</p>
+                                            <h4 class="my-1">380</h4>
+                                            <p class="mb-0 text-truncate text-muted"><span class="text-success"><i class="mdi mdi-trending-up"></i>15.2%</span> up from Yesterday</p>
+                                        </div>
+                                        <div class="col-auto align-self-center">
+                                            <div class="d-flex justify-content-center align-items-center thumb-md bg-light-alt rounded-circle mx-auto">
+                                                <i class="ti ti-tag font-24 align-self-center text-success"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!--end card-body-->
+                            </div><!--end card-->
+                        </div>
+                        <!-- Open Ticket -->
+                        <div class="col-lg-3 ">
+                            <div class="card card-widget resposive overflow-hidden shadow p-0 mb-5 bg-white rounded">
+                                <div class="card-body">
+                                    <div class="row d-flex justify-content-center">
+                                        <div class="col">
+                                            <p class="text-dark mb-0 text-uppercase fw-semibold">Resolved Tickets</p>
+                                            <h4 class="my-1">205</h4>
+                                            <p class="mb-0 text-truncate text-muted"><span class="text-info"><i class="mdi mdi-trending-up"></i>12.7%</span> up from Yesterday</p>
+                                        </div>
+                                        <div class="col-auto align-self-center">
+                                            <div class="d-flex justify-content-center align-items-center thumb-md bg-light-alt rounded-circle mx-auto">
+                                                <i class="ti ti-checkbox font-24 align-self-center text-info"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!--end card-body-->
+                            </div><!--end card-->
+                        </div>
+                        <!-- On-Hold Ticket -->
+                        <div class="col-lg-3">
+                            <div class="card card-widget resposive overflow-hidden shadow p-0 mb-5 bg-white rounded">
+                                <div class="card-body">
+                                    <div class="row d-flex justify-content-center">
+                                        <div class="col">
+                                            <p class="text-dark mb-0 text-uppercase fw-semibold">On-Hold Tickets</p>
+                                            <h4 class="my-1">107</h4>
+                                            <p class="mb-0 text-truncate text-muted"><span class="text-warning"><i class="mdi mdi-trending-up"></i>4.5%</span> up from Yesterday</p>
+                                        </div>
+                                        <div class="col-auto align-self-center">
+                                            <div class="d-flex justify-content-center align-items-center thumb-md bg-light-alt rounded-circle mx-auto">
+                                                <i class="ti ti-clock font-24 align-self-center text-warning"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!--end card-body-->
+                            </div><!--end card-->
+                        </div>
+
+                        <!-- Unassigned Ticket -->
+                        <div class="col-lg-3">
+                            <div class="card card-widget resposive overflow-hidden shadow p-0 mb-5 bg-white rounded">
+                                <div class="card-body">
+                                    <div class="row d-flex justify-content-center">
+                                        <div class="col">
+                                            <p class="text-dark mb-0 text-uppercase fw-semibold">Overdue Ticket</p>
+                                            <h4 class="my-1">72</h4>
+                                            <p class="mb-0 text-truncate text-muted"><span class="text-danger"><i class="mdi mdi-trending-down"></i>3.5%</span> up from Yesterday</p>
+                                        </div>
+                                        <div class="col-auto align-self-center">
+                                            <div class="d-flex justify-content-center align-items-center thumb-md bg-light-alt rounded-circle mx-auto">
+                                                <i class="ti ti-bug font-24 align-self-center text-danger"></i>
+                                            </div>
+                                        </div>
+                                    </div><!--end card-body-->
+                                </div><!--end card-->
+                            </div>
+                        </div>
+                    </div>
+                    <!--end card-->
+                    <!--end col-->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card resposive overflow-hidden shadow p-0 mb-5 bg-white rounded">
+                                <div class="card-header">
+                                    <div class="row align-items-center">
+                                        <div class="col">
+                                            <h4 class="card-title">Tickets Approvel Status</h4>
+                                        </div>
+                                        <!--end col-->
+                                    </div>
+                                    <!--end row-->
+                                </div>
+                                <!--end card-header-->
+                                <div class="card-body">
+                                    <div class="chart-container" style="position: relative; height: 400px; width: 100%;">
+                                        <canvas id="ticketChart"></canvas>
+                                    </div>
+                                </div>
+                                <!--end card-body-->
+                            </div>
+                            <!--end card-->
+                        </div>
+                    </div>
+                </div>
+                <!--end col-->
+                <div class="col-lg-4">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card overflow-hidden shadow p-0 mb-5 bg-white rounded">
+                                <div class="card-header">
+                                    <div class="row align-items-center">
+                                        <div class="col">
+                                            <h4 class="card-title">This Month Report</h4>
+                                        </div>
+                                        <!--end col-->
+                                    </div>
+                                    <!--end row-->
+                                </div>
+                                <!--end card-header-->
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="chart-container" style="position: relative; height: 361px; width: 70%;">
+                                            <canvas id="ticketDonutChart"></canvas>
+                                        </div>
+                                    </div>
+                                    @* <div class="row">
+                                        <div class="row text-center">
+                                            <div id="labelsContainer" class="col-lg-6">
+                                                <!-- Labels will be dynamically generated here -->
+                                            </div>
+                                        </div>
+                                    </div> *@
+                                </div>
+                                <div class="card-footer b-0 m-0 border-light">
+                                    <div id="totalTickets" class="total-tickets b-0 " style="font-size:14px;"></div>
+                                </div>
+                                <!--end card-body-->
+                            </div>
+                        </div>
+                    </div>
+                    <!--end card-->
+                </div>
+                <!--end col-->
+            </div>
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="row">
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="card card-widget overflow-hidden shadow p-3 mb-5 bg-white rounded" style=" position: relative; height: 200px; width: 100%;">
+                                <div class="card-body">
+                                    <div class="media mb-3">
+                                        <img src="~/matrica/assets/images/users/user-4.png" class="me-3 thumb-md align-self-center rounded-circle" alt="...">
+                                        <div class="media-body align-self-center input-group">
+                                            <div class="row ">
+                                                <div class="col-8">
+                                                    <h4 class="mt-0 mb-0 font-15">
+                                                        Donald Gardner
+                                                    </h4>
+                                                </div>
+                                                <div class="col-4">
+                                                    <span class="badge badge-soft-warning font-12">
+                                                        4.8 <i class="mdi mdi-star text-warning ms-1"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+
+                                            <p class="text-muted mb-0 font-12">ID : #78459, donald@@gmail.com </p>
+                                        </div><!--end media body-->
+                                    </div> <!--end media-->
+
+                                    <p class="text-muted  mb-0">
+                                        <span class="text-dark fw-semibold">No.of Ticket Responded :</span> <span class="text-success fw-semibold">43</span>
+                                    </p>
+                                    <p class="text-muted  mt-2">
+                                        <span class="text-dark fw-semibold">Position :</span> Sales Manager
+                                    </p>
+
+                                </div><!--end card-body-->
+                            </div>
+
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="card card-widget overflow-hidden shadow p-3 mb-5 bg-white rounded" style=" position: relative; height: 200px; width: 100%;">
+                                <div class="card-body">
+                                    <div class="media mb-3">
+                                        <img src="~/matrica/assets/images/users/user-9.png" class="me-3 thumb-md align-self-center rounded-circle" alt="...">
+                                        <div class="media-body align-self-center ">
+                                            <div class="row">
+                                                <div class="col-8">
+                                                    <h4 class="mt-0 mb-0 font-15 ">
+                                                        William Smith
+                                                    </h4>
+                                                </div>
+                                                <div class="col-4">
+                                                    <span class="badge badge-soft-warning font-12 ">
+                                                        4.7 <i class="mdi mdi-star text-warning ms-1"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <p class="text-muted mb-0 font-12">ID : #78459, smith@@gmail.com </p>
+                                        </div><!--end media body-->
+                                    </div> <!--end media-->
+
+                                    <p class="text-muted  mb-0">
+                                        <span class="text-dark fw-semibold">No.of Ticket Responded :</span> <span class="text-success fw-semibold">39</span>
+                                    </p>
+                                    <p class="text-muted  mt-2">
+                                        <span class="text-dark fw-semibold">Position :</span> Finance Admin
+
+                                </div><!--end card-body-->
+                            </div>
+
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="card card-widget overflow-hidden shadow p-3 mb-5 bg-white rounded" style=" position: relative; height: 200px; width: 100%;">
+                                <div class="card-body">
+                                    <div class="media mb-3">
+                                        <img src="~/matrica/assets/images/users/user-2.png" class="me-3 thumb-md align-self-center rounded-circle" alt="...">
+                                        <div class="media-body align-self-center ">
+                                            <div class="row">
+                                                <div class="col-8">
+                                                    <h4 class="mt-0 mb-0 font-15">
+                                                        Joseph Rust
+                                                    </h4>
+                                                </div>
+                                                <div class="col-4">
+                                                    <span class="badge badge-soft-warning font-12">
+                                                        4.6 <i class="mdi mdi-star text-warning ms-1"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <p class="text-muted mb-0 font-12">ID : #78459, rustj@@gmail.com </p>
+                                        </div><!--end media body-->
+                                    </div> <!--end media-->
+
+                                    <p class="text-muted  mb-0">
+                                        <span class="text-dark fw-semibold">No.of Ticket Responded :</span> <span class="text-success fw-semibold">43</span>
+                                    </p>
+                                    <p class="text-muted  mt-2">
+                                        <span class="text-dark fw-semibold">Position :</span> Purchase Manager
+                                    </p>
+
+                                </div><!--end card-body-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card overflow-hidden shadow p-0 mb-5 bg-white rounded" style=" position: relative; height: 200px; width: 100%;">
+                        <div class="card-header">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <h4 class="card-title">Department Overall Information</h4>
+                                </div><!--end col-->
+                            </div>  <!--end row-->
+                        </div><!--end card-header-->
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <div class="align-self-center">
+                                    <h4 class="mt-0 mb-1 text-dark">530</h4>
+                                    <h4 class="mt-0 text-truncate font-14 mb-0">Tickets</h4>
+                                </div>
+                                <div>
+                                    <ul class="list-unstyled mb-2">
+                                        <li class="mb-2">
+                                            <i class="fas fa-minus text-pink"></i>
+                                            <span>Open Tickets</span>
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="fas fa-minus text-primary"></i>
+                                            <span>Pending Tickets</span>
+                                        </li>
+                                        <li>
+                                            <i class="fas fa-minus text-success"></i>
+                                            <span>Unassigned Tickets</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">70%</div>
+                                <div class="progress-bar bg-pink" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 5%" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100">5%</div>
+                            </div>
+                        </div><!--end card-body-->
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="card overflow-hidden shadow p-0 mb-5 bg-white rounded" style=" position: relative; height: 429px; width: 100%; overflow: hidden scroll;">
+                        <div class="card-header">
+                            <div class="row align-items-center">
+                                <div class="col align-items-center">
+                                    <h4 class="card-title">Today Tickets</h4>
+                                </div><!--end col-->
+                            </div>  <!--end row-->
+                        </div><!--end card-header-->
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th style="max-width: 95px;">
+                                                S.No
+                                            </th>
+                                            <th>ID</th>
+                                            <th>Customers</th>
+                                            <th>Subject</th>
+                                            <th>Priority</th>
+                                            <th>Status</th>
+                                            <th>Respose Time</th>
+                                        </tr><!--end tr-->
+                                    </thead>
+
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                1
+                                            </td>
+                                            <td>#1236</td>
+                                            <td style="display: flex; width: 100%;">
+                                                <img src="~/matrica/assets/images/users/user-10.png" style="width: 24% !important; height: 33px !important;" alt="" class="thumb-sm rounded-circle me-2 w-25 h-25">
+                                                <span style="align-content: center;width: 76%;" class="text-truncate">Donald Gardner</span>
+                                            </td>
+                                            <td>Bug-report simply dummy text of the printing and typesetting</td>
+                                            <td>Medium</td>
+                                            <td><span class="badge badge-soft-warning p-2">New</span></td>
+                                            <td>14 min</td>
+                                        </tr><!--end tr-->
+                                        <tr>
+                                            <td>
+                                                2
+                                            </td>
+                                            <td>#3569</td>
+                                            <td style="display: flex; width: 100%;">
+                                                <img src="~/matrica/assets/images/users/user-9.png" style="width: 24% !important; height: 33px !important;" alt="" class="thumb-sm rounded-circle me-2">
+                                                <span style="align-content: center;width: 76%;" class="text-truncate">Kevin J. Heal</span>
+                                            </td>
+                                            <td>The application continuous is a long established fact that a reader.</td>
+                                            <td class="text-danger">Critical</td>
+                                            <td><span class="badge badge-soft-success p-2">Solved</span></td>
+                                            <td>45 min</td>
+                                        </tr><!--end tr-->
+                                        <tr>
+                                            <td>
+                                                3
+                                            </td>
+                                            <td>#9874</td>
+
+                                            <td style="display: flex; width: 100%;">
+                                                <img src="~/matrica/assets/images/users/user-8.png" style="width: 24% !important;height: 33px !important;" alt="" class="thumb-sm rounded-circle me-2">
+                                                <span style="align-content: center;width: 76%;" class="text-truncate">Frank M. Lyons</span>
+                                            </td>
+                                            <td>See how it work start are many variations of passages of Lorem Ipsum available.</td>
+                                            <td>Low</td>
+                                            <td><span class="badge badge-soft-primary p-2">Open</span></td>
+                                            <td>1 hour</td>
+                                        </tr><!--end tr-->
+                                        <tr>
+                                            <td>
+                                                4
+                                            </td>
+                                            <td>#5412</td>
+
+                                            <td style="display: flex; width: 100%;">
+                                                <img src="~/matrica/assets/images/users/user-7.png" style="width: 24% !important;height: 33px !important;" alt="" class="thumb-sm rounded-circle me-2">
+                                                <span style="align-content: center;width: 76%;" class="text-truncate">Robert C. Golding</span>
+                                            </td>
+                                            <td>I can't upload file first line of Ipsum lorem ipsum dolor sit amet.</td>
+                                            <td>Medium</td>
+                                            <td><span class="badge badge-soft-warning p-2">New</span></td>
+                                            <td>2 hour</td>
+                                        </tr><!--end tr-->
+                                        <tr>
+                                            <td>
+                                                5
+                                            </td>
+                                            <td>#3258</td>
+
+                                            <td style="display: flex; width: 100%;">
+                                                <img src="~/matrica/assets/images/users/user-6.png" style="width: 24% !important;height: 33px !important;" alt="" class="thumb-sm rounded-circle me-2">
+                                                <span style="align-content: center;width: 76%;" class="text-truncate">Hyman M. Cross</span>
+                                            </td>
+                                            <td>How do i upgrade my profile?</td>
+                                            <td>Low</td>
+                                            <td><span class="badge badge-soft-success p-2">Solved</span></td>
+                                            <td>4 hour</td>
+                                        </tr><!--end tr-->
+                                        @*  <tr>
+                                            <td>
+                                                6
+                                            </td>
+                                            <td>#6636</td>
+                                            <td>
+                                                <img src="assets/images/users/user-5.png" alt="" class="thumb-sm rounded-circle me-2">
+                                                Phillip T. Morse
+                                            </td>
+                                            <td>Can i help you in this project?</td>
+                                            <td class="text-danger">Critical</td>
+                                            <td><span class="badge badge-soft-primary p-2">Open</span></td>
+                                            <td>4 hour</td>
+                                        </tr><!--end tr--> *@
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div><!--end card-body-->
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card overflow-hidden shadow p-0 mb-5 bg-white rounded" style="position: relative; height: 429px; width: 100%;">
+                        <div class="card-header">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <h4 class="card-title">Recent Activity</h4>
+                                </div><!--end col-->
+                                @* <div class="col-auto">
+                                    <div class="dropdown">
+                                        <a href="#" class="btn btn-sm btn-outline-light dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            All<i class="las la-angle-down ms-1"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-end">
+                                            <a class="dropdown-item" href="#">Purchases</a>
+                                            <a class="dropdown-item" href="#">Emails</a>
+                                        </div>
+                                    </div>
+                                </div><!--end col--> *@
+                            </div>  <!--end row-->
+                        </div><!--end card-header-->
+                        <div class="card-body p-0">
+                            <div class="p-3" style="height:385px;" data-simplebar="init">
+                                <div class="simplebar-wrapper" style="margin: -16px;">
+                                    <div class="simplebar-height-auto-observer-wrapper"><div class="simplebar-height-auto-observer"></div></div><div class="simplebar-mask">
+                                        <div class="simplebar-offset" style="right: -16.6667px; bottom: 0px;">
+                                            <div class="simplebar-content-wrapper" style="height: 100%; overflow: hidden scroll;">
+                                                <div class="simplebar-content" style="padding: 16px;">
+                                                    <div class="activity">
+                                                        <div class="activity-info">
+                                                            <div class="icon-info-activity">
+                                                                <i class="las la-user-clock bg-soft-warning"></i>
+                                                            </div>
+                                                            <div class="activity-info-text">
+                                                                <div class="d-flex justify-content-between align-items-center">
+                                                                    <p class="text-muted mb-0 font-13 w-75">
+                                                                        <span>Donald</span>
+                                                                        updated the status of <a href="">Refund #1234</a> to awaiting customer response
+                                                                    </p>
+                                                                    <small class="text-info">10 Min ago</small>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="activity-info">
+                                                            <div class="icon-info-activity">
+                                                                <i class="mdi mdi-timer-off bg-soft-success"></i>
+                                                            </div>
+                                                            <div class="activity-info-text">
+                                                                <div class="d-flex justify-content-between align-items-center">
+                                                                    <p class="text-muted mb-0 font-13 w-75">
+                                                                        <span>Lucy Peterson</span>
+                                                                        was added to the group, group name is <a href="">Overtake</a>
+                                                                    </p>
+                                                                    <small class="text-info">50 Min ago</small>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="activity-info">
+                                                            <div class="icon-info-activity">
+                                                                <img src="~/matrica/assets/images/users/user-5.png" alt="" class="rounded-circle thumb-sm">
+                                                            </div>
+                                                            <div class="activity-info-text">
+                                                                <div class="d-flex justify-content-between align-items-center">
+                                                                    <p class="text-muted mb-0 font-13 w-75">
+                                                                        <span>Joseph Rust</span>
+                                                                        opened new showcase <a href="">Mannat #112233</a> with theme market
+                                                                    </p>
+                                                                    <small class="text-info">10 hours ago</small>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="activity-info">
+                                                            <div class="icon-info-activity">
+                                                                <img src="~/matrica/assets/images/users/user-4.png" alt="" class="rounded-circle thumb-sm">
+                                                            </div>
+                                                            <div class="activity-info-text">
+                                                                <div class="d-flex justify-content-between align-items-center">
+                                                                    <p class="text-muted mb-0 font-13 w-75">
+                                                                        <span>Donald</span>
+                                                                        updated the status of <a href="">Refund #1234</a> to awaiting customer response
+                                                                    </p>
+                                                                    <small class="text-info">Yesterday</small>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="activity-info">
+                                                            <div class="icon-info-activity">
+                                                                <i class="mdi mdi-alert-outline bg-soft-warning"></i>
+                                                            </div>
+                                                            <div class="activity-info-text">
+                                                                <div class="d-flex justify-content-between align-items-center">
+                                                                    <p class="text-muted mb-0 font-13 w-75">
+                                                                        <span>Lucy Peterson</span>
+                                                                        was added to the group, group name is <a href="">Overtake</a>
+                                                                    </p>
+                                                                    <small class="text-info">14 Nov 2021</small>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        @*  <div class="activity-info">
+                                                            <div class="icon-info-activity">
+                                                                <img src="~/matrica/assets/images/users/user-4.png" alt="" class="rounded-circle thumb-sm">
+                                                            </div>
+                                                            <div class="activity-info-text">
+                                                                <div class="d-flex justify-content-between align-items-center">
+                                                                    <p class="text-muted mb-0 font-13 w-75">
+                                                                        <span>Joseph Rust</span>
+                                                                        opened new showcase <a href="">Mannat #112233</a> with theme market
+                                                                    </p>
+                                                                    <small class="text-info">15 Nov 2021</small>
+                                                                </div>
+                                                            </div>
+                                                        </div> *@
+                                                    </div><!--end activity-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><div class="simplebar-placeholder" style="width: auto; height: 432px;"></div>
+                                </div><div class="simplebar-track simplebar-horizontal" style="visibility: hidden;"><div class="simplebar-scrollbar" style="transform: translate3d(0px, 0px, 0px); display: none;"></div></div><div class="simplebar-track simplebar-vertical" style="visibility: visible;"><div class="simplebar-scrollbar" style="height: 343px; transform: translate3d(0px, 41px, 0px); display: block;"></div></div>
+                            </div><!--end analytics-dash-activity-->
+                        </div>  <!--end card-body-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+
+    <script type="text/javascript" src="~/matrica/assets/libs/simplebar/simplebar.min.js"></script>
+    <script type="text/javascript" src="~/matrica/assets/libs/feather-icons/feather.min.js"></script>
+    <script type="text/javascript" src="~/matrica/assets/libs/apexcharts/apexcharts.min.js"></script>
+    <script type="text/javascript" src="~/matrica/assets/js/pages/helpdesk-index.init.js"></script>
+    @* <script type="text/javascript" src="~/matrica/assets/js/app.js"></script> *@
+    @* <script type="text/javascript" src="~/matrica/assets/js/pages/apexcharts.init.js"></script>
+<script type="text/javascript" src="~/matrica/assets/js/pages/analytics-index.init.js"></script> *@
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script type="text/javascript">
+        // Data passed from the controller
+        const months = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(ViewBag.Months));
+        const ticketRequests = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(ViewBag.TicketRequests));
+        const ticketApprovals = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(ViewBag.TicketApprovals));
+
+        // Get canvas context
+        const ctx = document.getElementById('ticketChart').getContext('2d');
+
+        // Create gradient for the datasets
+        const gradientRequest = ctx.createLinearGradient(0, 0, 0, 400);
+        gradientRequest.addColorStop(0, 'rgba(58,123,213,0.8)');
+        gradientRequest.addColorStop(1, 'rgba(58,123,213,0.2)');
+
+        const gradientApproval = ctx.createLinearGradient(0, 0, 0, 400);
+        gradientApproval.addColorStop(0, 'rgba(58,213,183,0.8)');
+        gradientApproval.addColorStop(1, 'rgba(58,213,183,0.2)');
+
+        // Chart.js configuration
+        const data = {
+            labels: months,
+            datasets: [
+                {
+                    label: 'Ticket Requests (%)',
+                    data: ticketRequests,
+                    borderColor: 'rgba(58,123,213,1)',
+                    backgroundColor: gradientRequest,
+                    borderWidth: 3,
+                    tension: 0.4,
+                    pointBackgroundColor: 'rgba(58,123,213,1)',
+                    pointBorderColor: '#fff',
+                    pointHoverRadius: 6,
+                },
+                {
+                    label: 'Ticket Approvals (%)',
+                    data: ticketApprovals,
+                    borderColor: 'rgba(58,213,183,1)',
+                    backgroundColor: gradientApproval,
+                    borderWidth: 3,
+                    tension: 0.4,
+                    pointBackgroundColor: 'rgba(58,213,183,1)',
+                    pointBorderColor: '#fff',
+                    pointHoverRadius: 6,
+                },
+            ],
+        };
+
+        const config = {
+            type: 'line',
+            data: data,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                       labels: {
+                            color: '#333',
+                            font: {
+                                size: 14,
+                                family: 'Arial', // Optional: Change font family
+                                weight: 'bold', // Optional: Make labels bold
+                            },
+
+                        usePointStyle: true, // Enables using point styles
+                        pointStyle: 'circle', // Changes shape to circle (dot)
+                        boxWidth: 12, // Width of the marker
+                        boxHeight: 12, // Height of the marker
+                        padding: 20, // Space between labels
+                        }
+                    },
+                    title: {
+                        display: true,
+                        text: 'Ticket Status (Jan - Dec)',
+                        font: {
+                            size: 16,
+                            family: 'Arial, sans-serif',
+                        },
+                        color: '#333',
+                    },
+                     tooltip: {
+                        mode: 'nearest', // Allow tooltip to show continuously along the line
+                        intersect: false, // Show tooltip even if cursor isn't over a data point
+                        backgroundColor: 'rgba(255, 255, 255, 0.9)', // White background
+                        titleColor: '#333', // Title color
+                        bodyColor: '#333', // Body text color
+                        borderColor: '#ddd', // Border color
+                        borderWidth: 1, // Border width
+                        callbacks: {
+                            label: function (context) {
+                                const label = context.dataset.label || '';
+                                const value = context.raw || 0;
+                                return `${label}: $${value.toFixed(2)}`; // Adding $ symbol and formatting
+                            },
+                        },
+                    },
+
+                },
+                scales: {
+                    x: {
+                        grid: {
+                            display: false,
+                        },
+                        title: {
+                            display: true,
+                            text: 'Months',
+                            font: {
+                                size: 14,
+                            },
+                        },
+                    },
+                    y: {
+                        min: 0,
+                        max: 100,
+                        ticks: {
+                            stepSize: 10,
+                        },
+                        title: {
+                            display: true,
+                            text: 'Percentage (%)',
+                            font: {
+                                size: 14,
+                            },
+                        },
+                    },
+                },
+            },
+        };
+
+        // Render chart
+        new Chart(ctx, config);
+    </script>
+    <script type="text/javascript">
+        const ctx1 = document.getElementById('ticketDonutChart').getContext('2d');
+
+        // Data for the Donut Chart
+        const data1 = {
+            labels: ['Open Ticket', 'On-Hold Ticket', 'Rejected Ticket', 'Overdue Ticket'],
+            datasets: [{
+                label: 'Ticket',
+                data: [45, 25, 15, 15], // Adjust values here
+                backgroundColor: [
+                    'rgba(75, 192, 192, 1)', // Teal
+                    'rgba(255, 205, 86, 1)', // Yellow
+                    'rgba(255, 99, 132, 1)', // Red
+                    'rgba(54, 162, 235, 1)', // Blue
+                ],
+                borderColor: [
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 205, 86, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                ],
+                borderWidth: 2
+            }]
+        };
+
+        // Configuration for the Donut Chart
+        const config1 = {
+            type: 'doughnut',
+            data: data1,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                         //display: false // Hide the default legend
+                        position: 'top',
+                        labels: {
+                            color: '#333',
+                            font: {
+                                size: 14,
+                                family: 'Arial', // Optional: Change font family
+                                weight: 'normal', // Optional: Make labels bold
+                            },
+
+                        usePointStyle: true, // Enables using point styles
+                        pointStyle: 'circle', // Changes shape to circle (dot)
+                        boxWidth: 12, // Width of the marker
+                        boxHeight: 12, // Height of the marker
+                        padding: 20, // Space between labels
+                        }
+                        },
+
+                    tooltip: {
+                        backgroundColor: 'rgba(255, 255, 255, 0.9)', // Tooltip background color
+                        titleColor: '#333',
+                        bodyColor: '#333',
+                        borderColor: '#ddd',
+                        borderWidth: 1
+                    }
+                },
+                cutout: '90%' // Thickness of the donut ring
+
+            }
+        };
+
+        // Create the chart
+        new Chart(ctx1, config1);
+
+        // Generate Labels in the Div
+            // const labelsContainer = document.getElementById('labelsContainer');
+            // data1.labels.forEach((label, index) => {
+            //     const color = data1.datasets[0].backgroundColor[index];
+            //     const value = data1.datasets[0].data[index];
+
+            //     // Create label element
+            //     const labelElement = document.createElement('div');
+            //     labelElement.classList.add('gap-2');
+
+            //     // Add color box
+            //     const colorBox = document.createElement('span');
+            //     colorBox.style.width = '16px';
+            //     colorBox.style.height = '16px';
+            //     colorBox.style.backgroundColor = color;
+            //     colorBox.style.borderRadius = '50%';
+            //     colorBox.style.display = 'inline-block';
+
+            //     // Add text
+            //     const text = document.createElement('span');
+            //     text.innerText = `${label}: ${value}`;
+
+            //     // Append to the label element
+            //     labelElement.appendChild(colorBox);
+            //     labelElement.appendChild(text);
+
+            //     // Append label element to the container
+            //     labelsContainer.appendChild(labelElement);
+            //     });
+        // Calculate total tickets and display below the chart
+         const totalTickets = data1.datasets[0].data.reduce((sum, value) => sum + value, 0);
+         document.getElementById('totalTickets').innerText = `Total Tickets: ${totalTickets}`;
+    </script>
+}
