@@ -1,3 +1,4 @@
+@using System.Security.Claims
 @using OTOSOLVE.UI.Areas.Ticket.ViewModels
 <!DOCTYPE html>
 <html lang="en">
@@ -236,8 +237,11 @@
 						<div class="d-flex align-items-center">
 							<img src="~/matrica/assets/images/person.png" alt="profile-user" class="rounded-circle me-2 thumb-sm">
 							<div>
-								<small class="d-none d-md-block font-11">Admin</small>
-								<span class="d-none d-md-block fw-semibold font-12">Maria Gibson <i class="mdi mdi-chevron-down"></i></span>
+								 @if (User.Identity.IsAuthenticated)
+								 {
+								<small class="d-none d-md-block font-11">@User.FindFirst(ClaimTypes.Role)?.Value</small>
+								<span class="d-none d-md-block fw-semibold font-12">@User.Identity.Name <i class="mdi mdi-chevron-down"></i></span>
+								 }
 							</div>
 						</div>
 					</a>
@@ -245,7 +249,14 @@
 						<a class="dropdown-item" href="#"><i class="ti ti-user font-16 me-1 align-text-bottom"></i> Profile</a>
 						<a class="dropdown-item" href="#"><i class="ti ti-settings font-16 me-1 align-text-bottom"></i> Settings</a>
 						<div class="dropdown-divider mb-0"></div>
-						<a class="dropdown-item" href="#"><i class="ti ti-power font-16 me-1 align-text-bottom"></i> Logout</a>
+						@if (User.Identity.IsAuthenticated)
+						{
+							<form asp-controller="Account" asp-action="Logout" method="post" style="display:inline;">
+								<button type="submit" class="dropdown-item">
+									<i class="ti ti-power font-16 me-1 align-text-bottom"></i> Logout
+								</button>
+							</form>
+						}
 					</div>
 				</li><!--end topbar-profile-->
 			</ul><!--end topbar-navbar-item-->

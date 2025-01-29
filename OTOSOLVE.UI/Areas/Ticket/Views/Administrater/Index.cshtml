@@ -1,0 +1,91 @@
+﻿<style>
+    .chart-container {
+        margin: 0 auto;
+        height: auto;
+        width: 100%;
+    }
+</style>
+<div class="card">
+    <giv class="card-body">
+        <div class="row">
+            <div class="chart-container" >
+                <canvas id="ticketDonutChart"></canvas>
+            </div>
+            <p>hi</p>
+        </div>
+    </giv>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script type="text/javascript">
+    const ctx11 = document.getElementById('ticketDonutChart').getContext('2d');
+
+    // Data for the Donut Chart
+    const data11 = {
+        labels: ['Open Ticket', 'On-Hold Ticket', 'Rejected Ticket', 'Overdue Ticket'],
+        datasets: [{
+            label: 'Ticket',
+            data: [45, 25, 15, 15], // Adjust values here
+            backgroundColor: [
+                'rgba(75, 192, 192, 1)', // Teal
+                'rgba(255, 205, 86, 1)', // Yellow
+                'rgba(255, 99, 132, 1)', // Red
+                'rgba(54, 162, 235, 1)', // Blue
+            ],
+            borderColor: [
+                'rgba(75, 192, 192, 1)',
+                'rgba(255, 205, 86, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+            ],
+            borderWidth: 2
+        }]
+    };
+
+    // Configuration for the Donut Chart
+    const config11 = {
+        type: 'doughnut',
+        data: data11,
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                     //display: false // Hide the default legend
+                    position: 'top',
+                    labels: {
+                        color: '#333',
+                        font: {
+                            size: 14,
+                            family: 'Arial', // Optional: Change font family
+                            weight: 'normal', // Optional: Make labels bold
+                        },
+
+                    usePointStyle: true, // Enables using point styles
+                    pointStyle: 'circle', // Changes shape to circle (dot)
+                    boxWidth: 12, // Width of the marker
+                    boxHeight: 12, // Height of the marker
+                    padding: 20, // Space between labels
+                    }
+                    },
+
+                tooltip: {
+                    backgroundColor: 'rgba(255, 255, 255, 0.9)', // Tooltip background color
+                    titleColor: '#333',
+                    bodyColor: '#333',
+                    borderColor: '#ddd',
+                    borderWidth: 1
+                }
+            },
+            cutout: '90%' // Thickness of the donut ring
+
+        }
+    };
+
+    // Create the chart
+    new Chart(ctx11, config11);
+
+    // Calculate total tickets and display below the chart
+     const totalTickets = data11.datasets[0].data.reduce((sum, value) => sum + value, 0);
+     document.getElementById('totalTickets').innerText = `Total Tickets: ${totalTickets}`;
+</script>

@@ -79,7 +79,7 @@ public class SupportTeamController : Controller
         ViewBag.Breadcrumbs = breadcrumbs;
         return View();
     }
-    public IActionResult TicketViewSTST()
+    public IActionResult TicketViewST()
     {
         ViewData["pTitle"] = "Tickets Index";
 

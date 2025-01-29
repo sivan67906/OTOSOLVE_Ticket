@@ -251,7 +251,7 @@
                                 <div class="card-body">
                                     <div class="media mb-3">
                                         <img src="~/matrica/assets/images/users/user-4.png" class="me-3 thumb-md align-self-center rounded-circle" alt="...">
-                                        <div class="media-body align-self-center input-group">
+                                        <div class="media-body align-self-center">
                                             <div class="row ">
                                                 <div class="col-8">
                                                     <h4 class="mt-0 mb-0 font-15">
@@ -390,7 +390,7 @@
 
             <div class="row">
                 <div class="col-lg-8">
-                    <div class="card overflow-hidden shadow p-0 mb-5 bg-white rounded" style=" position: relative; height: 429px; width: 100%; overflow: hidden scroll;">
+                    <div class="card shadow p-0 mb-5 bg-white rounded" style=" position: relative; height: 100%; width: 100%;">
                         <div class="card-header">
                             <div class="row align-items-center">
                                 <div class="col align-items-center">
@@ -400,7 +400,7 @@
                         </div><!--end card-header-->
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table">
+                                <table class="table table-centered">
                                     <thead class="thead-light">
                                         <tr>
                                             <th style="max-width: 95px;">
@@ -408,10 +408,12 @@
                                             </th>
                                             <th>ID</th>
                                             <th>Customers</th>
-                                            <th>Subject</th>
+                                            <th><label class="d-none d-xl-block">Subject</label></th>
+                                            <th>Type</th>
                                             <th>Priority</th>
                                             <th>Status</th>
                                             <th>Respose Time</th>
+
                                         </tr><!--end tr-->
                                     </thead>
 
@@ -422,10 +424,11 @@
                                             </td>
                                             <td>#1236</td>
                                             <td style="display: flex; width: 100%;">
-                                                <img src="~/matrica/assets/images/users/user-10.png" style="width: 24% !important; height: 33px !important;" alt="" class="thumb-sm rounded-circle me-2 w-25 h-25">
+                                                <img src="~/matrica/assets/images/users/user-10.png" alt="" class="thumb-sm rounded-circle me-2 w-25 h-25">
                                                 <span style="align-content: center;width: 76%;" class="text-truncate">Donald Gardner</span>
                                             </td>
-                                            <td>Bug-report simply dummy text of the printing and typesetting</td>
+                                            <td><span class="text-truncate d-none d-xl-block">Bug-report simply dummy text of the printing and typesetting</span></td>
+                                            <td><span class="text-truncate">Application Release-QA</span></td>
                                             <td>Medium</td>
                                             <td><span class="badge badge-soft-warning p-2">New</span></td>
                                             <td>14 min</td>
@@ -436,10 +439,11 @@
                                             </td>
                                             <td>#3569</td>
                                             <td style="display: flex; width: 100%;">
-                                                <img src="~/matrica/assets/images/users/user-9.png" style="width: 24% !important; height: 33px !important;" alt="" class="thumb-sm rounded-circle me-2">
+                                                <img src="~/matrica/assets/images/users/user-9.png" alt="" class="thumb-sm rounded-circle me-2">
                                                 <span style="align-content: center;width: 76%;" class="text-truncate">Kevin J. Heal</span>
                                             </td>
-                                            <td>The application continuous is a long established fact that a reader.</td>
+                                            <td><span class="text-truncate d-none d-xl-block">The application continuous is a long established fact that a reader.</span></td>
+                                            <td><span class="text-truncate">Application Release-UAT</span></td>
                                             <td class="text-danger">Critical</td>
                                             <td><span class="badge badge-soft-success p-2">Solved</span></td>
                                             <td>45 min</td>
@@ -451,10 +455,11 @@
                                             <td>#9874</td>
 
                                             <td style="display: flex; width: 100%;">
-                                                <img src="~/matrica/assets/images/users/user-8.png" style="width: 24% !important;height: 33px !important;" alt="" class="thumb-sm rounded-circle me-2">
+                                                <img src="~/matrica/assets/images/users/user-8.png" alt="" class="thumb-sm rounded-circle me-2">
                                                 <span style="align-content: center;width: 76%;" class="text-truncate">Frank M. Lyons</span>
                                             </td>
-                                            <td>See how it work start are many variations of passages of Lorem Ipsum available.</td>
+                                            <td><span class="text-truncate d-none d-xl-block">See how it work start are many variations of passages of Lorem Ipsum available.</span></td>
+                                            <td><span class="text-truncate">Enquiry</span></td>
                                             <td>Low</td>
                                             <td><span class="badge badge-soft-primary p-2">Open</span></td>
                                             <td>1 hour</td>
@@ -466,10 +471,11 @@
                                             <td>#5412</td>
 
                                             <td style="display: flex; width: 100%;">
-                                                <img src="~/matrica/assets/images/users/user-7.png" style="width: 24% !important;height: 33px !important;" alt="" class="thumb-sm rounded-circle me-2">
+                                                <img src="~/matrica/assets/images/users/user-7.png" alt="" class="thumb-sm rounded-circle me-2">
                                                 <span style="align-content: center;width: 76%;" class="text-truncate">Robert C. Golding</span>
                                             </td>
-                                            <td>I can't upload file first line of Ipsum lorem ipsum dolor sit amet.</td>
+                                            <td><span class="text-truncate d-none d-xl-block">I can't upload file first line of Ipsum lorem ipsum dolor sit amet.</span></td>
+                                            <td><span class="text-truncate">Application Release-QA.</span></td>
                                             <td>Medium</td>
                                             <td><span class="badge badge-soft-warning p-2">New</span></td>
                                             <td>2 hour</td>
@@ -481,30 +487,34 @@
                                             <td>#3258</td>
 
                                             <td style="display: flex; width: 100%;">
-                                                <img src="~/matrica/assets/images/users/user-6.png" style="width: 24% !important;height: 33px !important;" alt="" class="thumb-sm rounded-circle me-2">
+                                                <img src="~/matrica/assets/images/users/user-6.png" alt="" class="thumb-sm rounded-circle me-2">
                                                 <span style="align-content: center;width: 76%;" class="text-truncate">Hyman M. Cross</span>
                                             </td>
-                                            <td>How do i upgrade my profile?</td>
+                                            <td><span class="text-truncate d-none d-xl-block">How do i upgrade my profile?</span></td>
+                                            <td><span class="text-truncate">Application Release-QA</span></td>
                                             <td>Low</td>
                                             <td><span class="badge badge-soft-success p-2">Solved</span></td>
                                             <td>4 hour</td>
                                         </tr><!--end tr-->
-                                        @*  <tr>
+                                        <tr>
                                             <td>
                                                 6
                                             </td>
                                             <td>#6636</td>
-                                            <td>
-                                                <img src="assets/images/users/user-5.png" alt="" class="thumb-sm rounded-circle me-2">
-                                                Phillip T. Morse
+                                            <td style="display: flex; width: 100%;">
+                                                <img src="~/matrica/assets/images/users/user-5.png" alt="" class="thumb-sm rounded-circle me-2">
+                                                <span style="align-content: center;width: 76%;" class="text-truncate">Phillip T. Morse</span>
                                             </td>
-                                            <td>Can i help you in this project?</td>
+                                            <td><span class="text-truncate d-none d-xl-block">Can i help you in this project?</span></td>
+                                            <td><span class="text-truncate">Enquiry</span></td>
                                             <td class="text-danger">Critical</td>
                                             <td><span class="badge badge-soft-primary p-2">Open</span></td>
                                             <td>4 hour</td>
-                                        </tr><!--end tr--> *@
+                                        </tr><!--end tr-->
                                     </tbody>
+
                                 </table>
+
                             </div>
                         </div><!--end card-body-->
                     </div>
@@ -530,7 +540,7 @@
                             </div>  <!--end row-->
                         </div><!--end card-header-->
                         <div class="card-body p-0">
-                            <div class="p-3" style="height:385px;" data-simplebar="init">
+                            <div class="p-3" style="height:100%;" data-simplebar="init">
                                 <div class="simplebar-wrapper" style="margin: -16px;">
                                     <div class="simplebar-height-auto-observer-wrapper"><div class="simplebar-height-auto-observer"></div></div><div class="simplebar-mask">
                                         <div class="simplebar-offset" style="right: -16.6667px; bottom: 0px;">
@@ -547,7 +557,7 @@
                                                                         <span>Donald</span>
                                                                         updated the status of <a href="">Refund #1234</a> to awaiting customer response
                                                                     </p>
-                                                                    <small class="text-info">10 Min ago</small>
+                                                                    <small class="text-info  ms-3">10 Min ago</small>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -562,7 +572,7 @@
                                                                         <span>Lucy Peterson</span>
                                                                         was added to the group, group name is <a href="">Overtake</a>
                                                                     </p>
-                                                                    <small class="text-info">50 Min ago</small>
+                                                                    <small class="text-info  ms-3">50 Min ago</small>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -577,7 +587,7 @@
                                                                         <span>Joseph Rust</span>
                                                                         opened new showcase <a href="">Mannat #112233</a> with theme market
                                                                     </p>
-                                                                    <small class="text-info">10 hours ago</small>
+                                                                    <small class="text-info  ms-3">10 hours ago</small>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -592,7 +602,7 @@
                                                                         <span>Donald</span>
                                                                         updated the status of <a href="">Refund #1234</a> to awaiting customer response
                                                                     </p>
-                                                                    <small class="text-info">Yesterday</small>
+                                                                    <small class="text-info  ms-3">Yesterday</small>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -606,11 +616,11 @@
                                                                         <span>Lucy Peterson</span>
                                                                         was added to the group, group name is <a href="">Overtake</a>
                                                                     </p>
-                                                                    <small class="text-info">14 Nov 2021</small>
+                                                                    <small class="text-info  ms-3">14 Nov 2021</small>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        @*  <div class="activity-info">
+                                                         <div class="activity-info">
                                                             <div class="icon-info-activity">
                                                                 <img src="~/matrica/assets/images/users/user-4.png" alt="" class="rounded-circle thumb-sm">
                                                             </div>
@@ -620,15 +630,29 @@
                                                                         <span>Joseph Rust</span>
                                                                         opened new showcase <a href="">Mannat #112233</a> with theme market
                                                                     </p>
-                                                                    <small class="text-info">15 Nov 2021</small>
+                                                                    <small class="text-info  ms-3">15 Nov 2021</small>
                                                                 </div>
                                                             </div>
-                                                        </div> *@
+                                                        </div>
+                                                        <div class="activity-info">
+                                                            <div class="icon-info-activity">
+                                                                <i class="mdi mdi-timer-off bg-soft-success"></i>
+                                                            </div>
+                                                            <div class="activity-info-text">
+                                                                <div class="d-flex justify-content-between align-items-center">
+                                                                    <p class="text-muted mb-0 font-13 w-75">
+                                                                        <span>Lucy Peterson</span>
+                                                                        was added to the group, group name is <a href="">Overtake</a>
+                                                                    </p>
+                                                                    <small class="text-info  ms-3">11 Nov 2021</small>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div><!--end activity-->
                                                 </div>
                                             </div>
                                         </div>
-                                    </div><div class="simplebar-placeholder" style="width: auto; height: 432px;"></div>
+                                    </div><div class="simplebar-placeholder" style="width: auto; height: 100px;"></div>
                                 </div><div class="simplebar-track simplebar-horizontal" style="visibility: hidden;"><div class="simplebar-scrollbar" style="transform: translate3d(0px, 0px, 0px); display: none;"></div></div><div class="simplebar-track simplebar-vertical" style="visibility: visible;"><div class="simplebar-scrollbar" style="height: 343px; transform: translate3d(0px, 41px, 0px); display: block;"></div></div>
                             </div><!--end analytics-dash-activity-->
                         </div>  <!--end card-body-->

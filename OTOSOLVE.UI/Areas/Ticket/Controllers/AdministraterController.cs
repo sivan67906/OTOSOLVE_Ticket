@@ -136,4 +136,9 @@ public class AdministraterController : Controller
 
         return View();
     }
+
+    public IActionResult Index()
+    {
+        return View();
+    }
 }

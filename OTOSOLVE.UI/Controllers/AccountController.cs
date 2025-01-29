@@ -18,12 +18,12 @@ public class AccountController : Controller
         if (!ModelState.IsValid) return View(new Models.LoginVM());
 
 
-        if ((loginModel.Email.ToString() == "admin@gmail.com") && (loginModel.Password == "admin@123"))
+        if ((loginModel.Email.ToString() == "admin@oto.com") && (loginModel.Password == "admin@123"))
         {
             // Creating Security Context
             var claims = new List<Claim>
     {
-        new Claim(ClaimTypes.Name, "Admin1"),
+        new Claim(ClaimTypes.Name, "Firstlin"),
         new Claim(ClaimTypes.Role, "Admin"),
     };
             var identity = new ClaimsIdentity(claims, "AvivClaimCookie");
@@ -34,12 +34,12 @@ public class AccountController : Controller
             return RedirectToAction("Dashboard", "Administrater", new { area = "Ticket" });
         }
 
-        else if ((loginModel.Email.ToString() == "teamlead@gmail.com") && (loginModel.Password == "teamlead@123"))
+        else if ((loginModel.Email.ToString() == "teamlead@oto.com") && (loginModel.Password == "teamlead@123"))
         {
             // Creating Security Context
             var claims = new List<Claim>
     {
-        new Claim(ClaimTypes.Name, "TeamLeadUser1"),
+        new Claim(ClaimTypes.Name, "Sivan"),
         new Claim(ClaimTypes.Role, "TeamLead"),
     };
             var identity = new ClaimsIdentity(claims, "AvivClaimCookie");
@@ -50,12 +50,12 @@ public class AccountController : Controller
             return RedirectToAction("Dashboard", "TeamLead", new { area = "Ticket" });
         }
 
-        else if ((loginModel.Email.ToString() == "support@gmail.com") && (loginModel.Password == "support@123"))
+        else if ((loginModel.Email.ToString() == "support@oto.com") && (loginModel.Password == "support@123"))
         {
             // Creating Security Context
             var claims = new List<Claim>
     {
-        new Claim(ClaimTypes.Name, "SupportUser1"),
+        new Claim(ClaimTypes.Name, "Kansheyam"),
         new Claim(ClaimTypes.Role, "SupportTeam"),
     };
             var identity = new ClaimsIdentity(claims, "AvivClaimCookie");
@@ -66,12 +66,12 @@ public class AccountController : Controller
             return RedirectToAction("Dashboard", "SupportTeam", new { area = "Ticket" });
         }
 
-        else if ((loginModel.Email.ToString() == "hr@gmail.com") && (loginModel.Password == "hr@123"))
+        else if ((loginModel.Email.ToString() == "hr@oto.com") && (loginModel.Password == "hr@123"))
         {
             // Creating Security Context
             var claims = new List<Claim>
     {
-        new Claim(ClaimTypes.Name, "HRUser1"),
+        new Claim(ClaimTypes.Name, "William"),
         new Claim(ClaimTypes.Role, "HR"),
     };
             var identity = new ClaimsIdentity(claims, "AvivClaimCookie");
@@ -82,12 +82,12 @@ public class AccountController : Controller
             return RedirectToAction("Dashboard", "HumanResource", new { area = "Ticket" });
         }
 
-        else if ((loginModel.Email.ToString() == "employee@gmail.com") && (loginModel.Password == "employee@123"))
+        else if ((loginModel.Email.ToString() == "employee@oto.com") && (loginModel.Password == "employee@123"))
         {
             // Creating Security Context
             var claims = new List<Claim>
     {
-        new Claim(ClaimTypes.Name, "EmployeeUser1"),
+        new Claim(ClaimTypes.Name, "Robert"),
         new Claim(ClaimTypes.Role, "Employee"),
     };
             var identity = new ClaimsIdentity(claims, "AvivClaimCookie");
@@ -110,6 +110,6 @@ public class AccountController : Controller
     {
         await HttpContext.SignOutAsync("AvivClaimCookie");
 
-        return RedirectToAction("Index", "Home");
+        return RedirectToAction("Login", "Account");
     }
 }

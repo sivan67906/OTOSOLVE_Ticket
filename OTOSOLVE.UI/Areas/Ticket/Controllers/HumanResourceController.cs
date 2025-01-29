@@ -79,7 +79,7 @@ public class HumanResourceController : Controller
         ViewBag.Breadcrumbs = breadcrumbs;
         return View();
     }
-    public IActionResult TicketViewHRHR()
+    public IActionResult TicketViewHR()
     {
         ViewData["pTitle"] = "Tickets Index";
 
