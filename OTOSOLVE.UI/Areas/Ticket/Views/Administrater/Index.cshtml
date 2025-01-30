@@ -1,22 +1,25 @@
-﻿<style>
-    .chart-container {
-        margin: 0 auto;
-        height: auto;
-        width: 100%;
-    }
-</style>
-<div class="card">
-    <giv class="card-body">
-        <div class="row">
-            <div class="chart-container" >
-                <canvas id="ticketDonutChart"></canvas>
+﻿<div class="row">
+    <div class="col-4 offset-4">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">
+                    Donut Chart
+                </h4>
             </div>
-            <p>hi</p>
+            <div class="card-body">
+                <div class="chart-container" style="position: relative; height: 361px; width: 100%;">
+                    <div id="ticketDonutChart1" class="row"></div>
+                    <canvas id="ticketDonutChart"></canvas>
+                </div>
+            </div>
+            <div class="card-footer b-0 m-0 border-light">
+                <div id="totalTickets" class="total-tickets b-0 " style="font-size:14px;"></div>
+            </div>
         </div>
-    </giv>
+
+    </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
 <script type="text/javascript">
     const ctx11 = document.getElementById('ticketDonutChart').getContext('2d');
 
@@ -51,24 +54,8 @@
             maintainAspectRatio: false,
             plugins: {
                 legend: {
-                     //display: false // Hide the default legend
-                    position: 'top',
-                    labels: {
-                        color: '#333',
-                        font: {
-                            size: 14,
-                            family: 'Arial', // Optional: Change font family
-                            weight: 'normal', // Optional: Make labels bold
-                        },
-
-                    usePointStyle: true, // Enables using point styles
-                    pointStyle: 'circle', // Changes shape to circle (dot)
-                    boxWidth: 12, // Width of the marker
-                    boxHeight: 12, // Height of the marker
-                    padding: 20, // Space between labels
-                    }
-                    },
-
+                    display: false // Hide the default legend
+                },
                 tooltip: {
                     backgroundColor: 'rgba(255, 255, 255, 0.9)', // Tooltip background color
                     titleColor: '#333',
@@ -78,14 +65,315 @@
                 }
             },
             cutout: '90%' // Thickness of the donut ring
-
         }
     };
 
     // Create the chart
-    new Chart(ctx11, config11);
+    const myChart = new Chart(ctx11, config11);
+
+    // Generate Custom Legend
+    const customLegendContainer = document.getElementById('ticketDonutChart1');
+    data11.labels.forEach((label, index) => {
+        const color = data11.datasets[0].backgroundColor[index];
+        const value = data11.datasets[0].data[index];
+
+        // Create legend item
+        const legendItem = document.createElement('div');
+        legendItem.classList.add('col-lg-3', 'col-md-6', 'col-12', 'mb-1', 'text-truncate'); // Bootstrap grid classes for responsiveness
+
+         legendItem.style.cursor = 'pointer'; // Add pointer cursor to indicate clickability
+
+        // Create color box
+        const colorBox = document.createElement('span');
+        colorBox.style.width = '16px';
+        colorBox.style.height = '16px';
+        colorBox.style.backgroundColor = color;
+        colorBox.style.borderRadius = '50%';
+        colorBox.style.display = 'inline-block';
+        colorBox.style.marginRight = '8px';
+
+        // Create text
+        const text = document.createElement('span');
+        text.innerText = `${label}: ${value}`;
+
+        // Append color box and text to legend item
+        legendItem.appendChild(colorBox);
+        legendItem.appendChild(text);
+
+        // Add click event to toggle visibility
+        legendItem.addEventListener('click', () => {
+            const meta = myChart.getDatasetMeta(0); // Get metadata for the dataset
+            meta.data[index].hidden = !meta.data[index].hidden; // Toggle visibility
+            myChart.update(); // Update the chart
+        });
+        // Append legend item to the container
+        customLegendContainer.appendChild(legendItem);
+    });
 
     // Calculate total tickets and display below the chart
-     const totalTickets = data11.datasets[0].data.reduce((sum, value) => sum + value, 0);
-     document.getElementById('totalTickets').innerText = `Total Tickets: ${totalTickets}`;
+    const totalTickets = data11.datasets[0].data.reduce((sum, value) => sum + value, 0);
+    document.getElementById('totalTickets').innerText = `Total Tickets: ${totalTickets}`;
 </script>
+    <script type="text/javascript" src="~/matrica/assets/libs/simplebar/simplebar.min.js"></script>
+     <script type="text/javascript" src="~/matrica/assets/libs/feather-icons/feather.min.js"></script>
+
+
+
+<div class="row">
+    <div class="col-lg-4 offset-lg-8">
+
+<div class="card overflow-hidden shadow p-0 mb-5 bg-white rounded" style="position: relative; height: 100%; width: 100%;">
+    <div class="card-header">
+        <div class="row align-items-center">
+            <div class="col">
+                <h4 class="card-title">Recent Activity</h4>
+            </div>
+            <!--end col-->
+            @* 
+          <div class="col-auto">
+             <div class="dropdown">
+                <a href="#" class="btn btn-sm btn-outline-light dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                All<i class="las la-angle-down ms-1"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-end">
+                   <a class="dropdown-item" href="#">Purchases</a>
+                   <a class="dropdown-item" href="#">Emails</a>
+                </div>
+             </div>
+          </div>
+          <!--end col--> *@
+        </div>
+        <!--end row-->
+    </div>
+    <!--end card-header-->
+    <div class="card-body p-0">
+        <div class="p-3" style="height:100%; width:80%" data-simplebar="init">
+            <div class="simplebar-wrapper" style="margin: -16px;">
+                <div class="simplebar-height-auto-observer-wrapper">
+                    <div class="simplebar-height-auto-observer"></div>
+                </div>
+                <div class="simplebar-mask">
+                    <div class="simplebar-offset" style="right: -16.6667px; bottom: 0px;">
+                        <div class="simplebar-content-wrapper" style="height: 100%; overflow: hidden scroll;">
+                            <div class="simplebar-content" style="padding: 16px;">
+                                <div class="activity">
+                                    <div class="activity-info">
+                                        <div class="row">
+                                                    <div class="col-2 icon-info-activity">
+                                                
+                                                    <i class="las la-user-clock bg-soft-warning"></i>
+                                                
+                                            </div>
+                                            <div class="col-10">
+                                                <div class="row">
+                                                            <div class="col-12 activity-info-text">
+                                                       
+                                                                        <div class="row d-flex justify-content-between align-items-center">
+                                                                    <div class="col-8">
+                                                                        <p class="text-muted mb-0 font-13">
+                                                                            <span>Donald</span>
+                                                                            updated the status of <a href="">Refund #1234</a> to awaiting customer response
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="col-4">
+                                                                        <small class="text-info">10 Min ago</small>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="activity-info">
+                                        <div class="row">
+                                                    <div class="col-2 icon-info-activity">
+                                                
+                                                    <i class="mdi mdi-timer-off bg-soft-success"></i>
+                                                
+                                            </div>
+                                            <div class="col-10">
+                                                <div class="row">
+                                                            <div class="col-12 activity-info-text">
+                                                        
+                                                                <div class="row d-flex justify-content-between align-items-center">
+                                                                    <div class="col-8">
+                                                                        <p class="text-muted mb-0 font-13 ">
+                                                                            <span>Lucy Peterson</span>
+                                                                            was added to the group, group name is <a href="">Overtake</a>
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="col-4">
+                                                                        <small class="text-info ">50 Min ago</small>
+                                                                    </div>
+                                                                </div>
+                                                           
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                            <div class="activity-info">
+                                                <div class="row">
+                                                    <div class="col-2 icon-info-activity">
+                                                        
+                                                            <img src="~/matrica/assets/images/users/user-5.png" alt="" class="rounded-circle thumb-sm">
+                                                        
+                                                    </div>
+                                                    <div class="col-10">
+                                                        <div class="row ">
+                                                            <div class="col-12 activity-info-text">
+
+
+                                                                <div class="row d-flex justify-content-between align-items-center">
+                                                                            <div class="col-8">
+                                                                                <p class="text-muted mb-0 font-13">
+                                                                                    <span>Joseph Rust</span>
+                                                                                    opened new showcase <a href="">Mannat #112233</a> with theme market
+                                                                                </p>
+                                                                            </div>
+                                                                            <div class="col-4">
+                                                                                <small class="text-info">10 hours ago</small>
+                                                                            </div>
+                                                                    </div>
+                                                            </div>
+                                                               
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                       
+                                    <div class="activity-info">
+                                        <div class="row">
+                                                    <div class="col-2 icon-info-activity">
+                                                
+                                                    <img src="~/matrica/assets/images/users/user-4.png" alt="" class="rounded-circle thumb-sm">
+                                                
+                                            </div>
+                                            <div class="col-10">
+                                               
+                                                            <div class="row">
+                                                                <div class="col-12 activity-info-text">
+                                                                        <div class="row d-flex justify-content-between align-items-center">
+                                                                    <div class="col-8">
+                                                                        <p class="text-muted mb-0 font-13 ">
+                                                                            <span>Donald</span>
+                                                                            updated the status of <a href="">Refund #1234</a> to awaiting customer response
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="col-4">
+                                                                        <small class="text-info ">Yesterday</small>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                   
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="activity-info">
+                                        <div class="row">
+                                            <div class="col-2">
+                                                <div class="icon-info-activity">
+                                                    <i class="mdi mdi-alert-outline bg-soft-warning"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-10">
+                                                <div class="row">
+                                                            <div class="col-12 activity-info-text">
+                                                        
+                                                                        <div class="row d-flex justify-content-between align-items-center">
+                                                                    <div class="col-8">
+                                                                        <p class="text-muted mb-0 font-13 ">
+                                                                            <span>Lucy Peterson</span>
+                                                                            was added to the group, group name is <a href="">Overtake</a>
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="col-4">
+                                                                        <small class="text-info">14 Nov 2021</small>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                      
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="activity-info">
+                                        <div class="row">
+                                            <div class="col-2">
+                                                <div class="icon-info-activity">
+                                                    <img src="~/matrica/assets/images/users/user-4.png" alt="" class="rounded-circle thumb-sm">
+                                                </div>
+                                            </div>
+                                            <div class="col-10">
+                                                <div class="row">
+                                                            <div class="col-12 activity-info-text">
+                                                        
+                                                                        <div class="row d-flex justify-content-between align-items-center">
+                                                                    <div class="col-8">
+                                                                        <p class="text-muted mb-0 font-13 ">
+                                                                            <span>Joseph Rust</span>
+                                                                            opened new showcase <a href="">Mannat #112233</a> with theme market
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="col-4">
+                                                                        <small class="text-info">15 Nov 2021</small>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="activity-info">
+                                        <div class="row">
+                                            <div class="col-2">
+                                                <div class="icon-info-activity">
+                                                    <i class="mdi mdi-timer-off bg-soft-success"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-10">
+                                                <div class="row">
+                                                            <div class="col-12 activity-info-text">
+                                                        
+                                                                        <div class="row d-flex justify-content-between align-items-center">
+                                                                    <div class="col-8">
+                                                                        <p class="text-muted mb-0 font-13 ">
+                                                                            <span>Lucy Peterson</span>
+                                                                            was added to the group, group name is <a href="">Overtake</a>
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="col-4 d-flex justify-content-between align-items-center">
+                                                                        <small class="text-info ">11 Nov 2021</small>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--end activity-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="simplebar-placeholder" style="width: 100%; height: 100px;"></div>
+            </div>
+            <div class="simplebar-track simplebar-horizontal" style="visibility: hidden;">
+                <div class="simplebar-scrollbar" style="transform: translate3d(0px, 0px, 0px); display: none;" ></div>
+            </div>
+            <div class="simplebar-track simplebar-vertical" style="visibility: visible;">
+                <div class="simplebar-scrollbar" style="height: 343px; transform: translate3d(0px, 41px, 0px); display: block;" ></div>
+            </div>
+        </div>
+        <!--end analytics-dash-activity-->
+    </div>
+    <!--end card-body-->
+</div>
+
+    </div>
+</div>

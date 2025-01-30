@@ -16,9 +16,10 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<!-- App css -->
 	<link href="~/matrica/assets/css/bootstrap-material.min.css" rel="stylesheet" type="text/css">
+	<link href="~/matrica/assets/fonts/font-awesome/css/fontawesome.min.css" rel="stylesheet" />
 	<link href="~/matrica/assets/css/icons.min.css" rel="stylesheet" type="text/css">
 	<link href="~/matrica/assets/css/app-material.min.css" rel="stylesheet" type="text/css">
-	<link href="~/matrica/assets/fonts/font-awesome/css/fontawesome.min.css" rel="stylesheet" />
+	
 
 	@* <link href="~/matrica/assets/css/app.css" rel="stylesheet" type="text/css" /> *@
 	<link href="~/matrica/assets/css/app-font.css" rel="stylesheet" type="text/css" />
@@ -81,7 +82,7 @@
 													<div class="collapse show" id="sidebarAdministrator">
 														<ul class="nav flex-column">
 															<li class="nav-item menuitem-active">
-																<a class="nav-link active" asp-area="Ticket" asp-controller="Administrater" asp-action="Dashboard" aria-expanded="true">Dashboard</a>
+																<a class="nav-link " asp-area="Ticket" asp-controller="Administrater" asp-action="Dashboard" aria-expanded="true">Dashboard</a>
 															</li><!--end nav-item-->
 															<li class="nav-item">
 																<a class="nav-link" asp-area="Ticket" asp-controller="Ticket" asp-action="TPCreate"> Process</a>
@@ -115,7 +116,7 @@
 													<div class="collapse" id="sidebarTeamLead">
 														<ul class="nav flex-column">
 															<li class="nav-item menuitem-active">
-																<a class="nav-link active" asp-area="Ticket" asp-controller="TeamLead" asp-action="Dashboard" aria-expanded="true">Dashboard</a>
+																<a class="nav-link " asp-area="Ticket" asp-controller="TeamLead" asp-action="Dashboard" aria-expanded="true">Dashboard</a>
 															</li><!--end nav-item-->
 															<li class="nav-item">
 																<a class="nav-link" asp-area="Ticket" asp-controller="TeamLead" asp-action="CreateTicketTL">Create Ticket</a>
@@ -143,7 +144,7 @@
 													<div class="collapse" id="sidebarSupport">
 														<ul class="nav flex-column">
 															<li class="nav-item menuitem-active">
-																<a class="nav-link active" asp-area="Ticket" asp-controller="SupportTeam" asp-action="Dashboard" aria-expanded="true">Dashboard</a>
+																<a class="nav-link " asp-area="Ticket" asp-controller="SupportTeam" asp-action="Dashboard" aria-expanded="true">Dashboard</a>
 															</li><!--end nav-item-->
 															<li class="nav-item">
 																<a class="nav-link" asp-area="Ticket" asp-controller="SupportTeam" asp-action="CreateTicketST">Create Ticket</a>
@@ -171,7 +172,7 @@
 													<div class="collapse" id="sidebarEmployee">
 														<ul class="nav flex-column">
 															<li class="nav-item menuitem-active">
-																<a class="nav-link active" asp-area="Ticket" asp-controller="Employee" asp-action="Dashboard" aria-expanded="true">Dashboard</a>
+																<a class="nav-link " asp-area="Ticket" asp-controller="Employee" asp-action="Dashboard" aria-expanded="true">Dashboard</a>
 															</li><!--end nav-item-->
 															<li class="nav-item">
 																<a class="nav-link" asp-area="Ticket" asp-controller="Employee" asp-action="CreateTicketE">Create Ticket</a>
@@ -199,7 +200,7 @@
 													<div class="collapse" id="sidebarCustom">
 														<ul class="nav flex-column">
 															<li class="nav-item menuitem-active">
-																<a class="nav-link active" asp-area="Ticket" asp-controller="HumanResource" asp-action="Dashboard" aria-expanded="true">Dashboard</a>
+																<a class="nav-link " asp-area="Ticket" asp-controller="HumanResource" asp-action="Dashboard" aria-expanded="true">Dashboard</a>
 															</li><!--end nav-item-->
 															<li class="nav-item">
 																<a class="nav-link" asp-area="Ticket" asp-controller="HumanResource" asp-action="CreateTicketHR">Create Ticket</a>
@@ -251,11 +252,7 @@
 						<div class="dropdown-divider mb-0"></div>
 						@if (User.Identity.IsAuthenticated)
 						{
-							<form asp-controller="Account" asp-action="Logout" method="post" style="display:inline;">
-								<button type="submit" class="dropdown-item">
-									<i class="ti ti-power font-16 me-1 align-text-bottom"></i> Logout
-								</button>
-							</form>
+							<a class="dropdown-item" asp-area="" asp-controller="Account" asp-action="Logout"><i class="ti ti-power font-16 me-1 align-text-bottom"></i>Logout</a>							
 						}
 					</div>
 				</li><!--end topbar-profile-->

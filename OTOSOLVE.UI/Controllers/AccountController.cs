@@ -109,7 +109,6 @@ public class AccountController : Controller
     public async Task<IActionResult> Logout()
     {
         await HttpContext.SignOutAsync("AvivClaimCookie");
-
-        return RedirectToAction("Login", "Account");
+        return RedirectToAction("Login", "Account", new { area = "" });
     }
 }

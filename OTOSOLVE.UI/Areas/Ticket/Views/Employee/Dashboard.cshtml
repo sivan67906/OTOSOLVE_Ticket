@@ -218,7 +218,8 @@
                                 <!--end card-header-->
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="chart-container" style="position: relative; height: 361px; width: 70%;">
+                                        <div class="chart-container" style="position: relative; height: 361px; width: 100%;">
+                                            <div id="ticketDonutChart1" class="row"></div>
                                             <canvas id="ticketDonutChart"></canvas>
                                         </div>
                                     </div>
@@ -811,10 +812,10 @@
         new Chart(ctx, config);
     </script>
     <script type="text/javascript">
-        const ctx1 = document.getElementById('ticketDonutChart').getContext('2d');
+        const ctx11 = document.getElementById('ticketDonutChart').getContext('2d');
 
         // Data for the Donut Chart
-        const data1 = {
+        const data11 = {
             labels: ['Open Ticket', 'On-Hold Ticket', 'Rejected Ticket', 'Overdue Ticket'],
             datasets: [{
                 label: 'Ticket',
@@ -836,32 +837,16 @@
         };
 
         // Configuration for the Donut Chart
-        const config1 = {
+        const config11 = {
             type: 'doughnut',
-            data: data1,
+            data: data11,
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
                 plugins: {
                     legend: {
-                         //display: false // Hide the default legend
-                        position: 'top',
-                        labels: {
-                            color: '#333',
-                            font: {
-                                size: 14,
-                                family: 'Arial', // Optional: Change font family
-                                weight: 'normal', // Optional: Make labels bold
-                            },
-
-                        usePointStyle: true, // Enables using point styles
-                        pointStyle: 'circle', // Changes shape to circle (dot)
-                        boxWidth: 12, // Width of the marker
-                        boxHeight: 12, // Height of the marker
-                        padding: 20, // Space between labels
-                        }
-                        },
-
+                        display: false // Hide the default legend
+                    },
                     tooltip: {
                         backgroundColor: 'rgba(255, 255, 255, 0.9)', // Tooltip background color
                         titleColor: '#333',
@@ -871,44 +856,53 @@
                     }
                 },
                 cutout: '90%' // Thickness of the donut ring
-
             }
         };
 
         // Create the chart
-        new Chart(ctx1, config1);
+        const myChart = new Chart(ctx11, config11);
 
-        // Generate Labels in the Div
-            // const labelsContainer = document.getElementById('labelsContainer');
-            // data1.labels.forEach((label, index) => {
-            //     const color = data1.datasets[0].backgroundColor[index];
-            //     const value = data1.datasets[0].data[index];
+        // Generate Custom Legend
+        const customLegendContainer = document.getElementById('ticketDonutChart1');
+        data11.labels.forEach((label, index) => {
+            const color = data11.datasets[0].backgroundColor[index];
+            const value = data11.datasets[0].data[index];
 
-            //     // Create label element
-            //     const labelElement = document.createElement('div');
-            //     labelElement.classList.add('gap-2');
+            // Create legend item
+            const legendItem = document.createElement('div');
+            legendItem.classList.add('col-lg-3', 'col-md-6', 'col-12', 'mb-1', 'text-truncate'); // Bootstrap grid classes for responsiveness
 
-            //     // Add color box
-            //     const colorBox = document.createElement('span');
-            //     colorBox.style.width = '16px';
-            //     colorBox.style.height = '16px';
-            //     colorBox.style.backgroundColor = color;
-            //     colorBox.style.borderRadius = '50%';
-            //     colorBox.style.display = 'inline-block';
+             legendItem.style.cursor = 'pointer'; // Add pointer cursor to indicate clickability
 
-            //     // Add text
-            //     const text = document.createElement('span');
-            //     text.innerText = `${label}: ${value}`;
+            // Create color box
+            const colorBox = document.createElement('span');
+            colorBox.style.width = '16px';
+            colorBox.style.height = '16px';
+            colorBox.style.backgroundColor = color;
+            colorBox.style.borderRadius = '50%';
+            colorBox.style.display = 'inline-block';
+            colorBox.style.marginRight = '8px';
 
-            //     // Append to the label element
-            //     labelElement.appendChild(colorBox);
-            //     labelElement.appendChild(text);
+            // Create text
+            const text = document.createElement('span');
+            text.innerText = `${label}: ${value}`;
 
-            //     // Append label element to the container
-            //     labelsContainer.appendChild(labelElement);
-            //     });
+            // Append color box and text to legend item
+            legendItem.appendChild(colorBox);
+            legendItem.appendChild(text);
+
+            // Add click event to toggle visibility
+            legendItem.addEventListener('click', () => {
+                const meta = myChart.getDatasetMeta(0); // Get metadata for the dataset
+                meta.data[index].hidden = !meta.data[index].hidden; // Toggle visibility
+                myChart.update(); // Update the chart
+            });
+            // Append legend item to the container
+            customLegendContainer.appendChild(legendItem);
+        });
+
         // Calculate total tickets and display below the chart
-         const totalTickets = data1.datasets[0].data.reduce((sum, value) => sum + value, 0);
-         document.getElementById('totalTickets').innerText = `Total Tickets: ${totalTickets}`;
+        const totalTickets = data11.datasets[0].data.reduce((sum, value) => sum + value, 0);
+        document.getElementById('totalTickets').innerText = `Total Tickets: ${totalTickets}`;
     </script>
 }
