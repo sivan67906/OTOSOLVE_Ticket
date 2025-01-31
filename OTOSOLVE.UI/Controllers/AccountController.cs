@@ -23,8 +23,8 @@ public class AccountController : Controller
             // Creating Security Context
             var claims = new List<Claim>
     {
-        new Claim(ClaimTypes.Name, "Firstlin"),
-        new Claim(ClaimTypes.Role, "Admin"),
+        new Claim(ClaimTypes.Name, "Firstlin S Joseph"),
+        new Claim(ClaimTypes.Role, "Administrator"),
     };
             var identity = new ClaimsIdentity(claims, "AvivClaimCookie");
             ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(identity);

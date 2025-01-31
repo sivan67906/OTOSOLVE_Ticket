@@ -20,7 +20,8 @@ builder.Services.AddAuthentication().AddCookie("AvivClaimCookie", options =>
 
 builder.Services.AddAuthorization(options =>
 {
-    options.AddPolicy("AdminPolicy", policy => policy.RequireRole("Admin"));
+    options.AddPolicy("AdminPolicy", policy => policy.RequireRole("Administrator"));
+    options.AddPolicy("AdministratorTicketPolicy", policy => policy.RequireRole("AdministratorTicket"));
     options.AddPolicy("TeamLeadPolicy", policy => policy.RequireRole("TeamLead"));
     options.AddPolicy("SupportPolicy", policy => policy.RequireRole("SupportTeam"));
     options.AddPolicy("HRPolicy", policy => policy.RequireRole("HR"));
