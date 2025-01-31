@@ -31,7 +31,7 @@ public class AccountController : Controller
 
             await HttpContext.SignInAsync("AvivClaimCookie", claimsPrincipal);
 
-            return RedirectToAction("Dashboard", "Administrater", new { area = "Ticket" });
+            return RedirectToAction("Index", "Administrator", new { area = "Ticket" });
         }
 
         else if ((loginModel.Email.ToString() == "teamlead@oto.com") && (loginModel.Password == "teamlead@123"))

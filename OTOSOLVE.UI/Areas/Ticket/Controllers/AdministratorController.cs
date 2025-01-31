@@ -15,9 +15,9 @@ public class AdministratorController : Controller
 
         List<BreadcrumbItem> breadcrumbs =
         [
-            new BreadcrumbItem { Name = "Admin", Url = Url.Action("TicketView", "Ticket", new { area = "Ticket" }) },
-            new BreadcrumbItem { Name = "Dashboard", Url = Url.Action("Dashboard", "Ticket", new { area = "Ticket" }) },
-            new BreadcrumbItem { Name = "Index", Url = Url.Action("Dashboard", "Ticket", new { area = "Ticket" }) }
+            new BreadcrumbItem { Name = "Admin", Url = Url.Action("Index", "Administrator", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "Dashboard", Url = Url.Action("Index", "Administrator", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "Index", Url = Url.Action("Index", "Administrator", new { area = "Ticket" }) }
         ];
         ViewBag.Breadcrumbs = breadcrumbs;
 
@@ -35,15 +35,15 @@ public class AdministratorController : Controller
         return View();
     }
 
-    public IActionResult CreateTicket()
+    public IActionResult CreateTicket() // CTicket
     {
         ViewData["pTitle"] = "Create Ticket";
 
         List<BreadcrumbItem> breadcrumbs =
         [
-            new BreadcrumbItem { Name = "Ticket", Url = Url.Action("TicketView", "Ticket", new { area = "Ticket" }) },
-            new BreadcrumbItem { Name = "Management", Url = Url.Action("TPView", "Ticket", new { area = "Ticket" }) },
-            new BreadcrumbItem { Name = "Create", Url = Url.Action("TProcess", "Ticket", new { area = "Ticket" }) }
+            new BreadcrumbItem { Name = "Dashboard", Url = Url.Action("Index", "Administrator", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "ViewTickets", Url = Url.Action("ViewTickets", "Administrator", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "CreateTicket", Url = Url.Action("CreateTicket", "Administrator", new { area = "Ticket" }) }
         ];
         ViewBag.Breadcrumbs = breadcrumbs;
 
@@ -56,9 +56,9 @@ public class AdministratorController : Controller
 
         List<BreadcrumbItem> breadcrumbs =
         [
-            new BreadcrumbItem { Name = "Ticket", Url = Url.Action("TCreate", "Ticket", new { area = "Ticket" }) },
-            new BreadcrumbItem { Name = "List", Url = Url.Action("TicketView", "Ticket", new { area = "Ticket" }) },
-            new BreadcrumbItem { Name = "View", Url = Url.Action("TicketView", "Ticket", new { area = "Ticket" }) }
+            new BreadcrumbItem { Name = "Dashboard", Url = Url.Action("Index", "Administrator", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "Tickets", Url = Url.Action("CreateTicket", "Administrator", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "View", Url = Url.Action("ViewTickets", "Administrator", new { area = "Ticket" }) }
         ];
         ViewBag.Breadcrumbs = breadcrumbs;
 
@@ -71,9 +71,9 @@ public class AdministratorController : Controller
 
         List<BreadcrumbItem> breadcrumbs =
         [
-            new BreadcrumbItem { Name = "Ticket", Url = Url.Action("TicketView", "Ticket", new { area = "Ticket" }) },
-            new BreadcrumbItem { Name = "Process", Url = Url.Action("TPView", "Ticket", new { area = "Ticket" }) },
-            new BreadcrumbItem { Name = "Create", Url = Url.Action("TPCreate", "Ticket", new { area = "Ticket" }) }
+            new BreadcrumbItem { Name = "Dashboard", Url = Url.Action("Index", "Administrator", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "Ticket", Url = Url.Action("CreateTicket", "Administrator", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "Create Procedure", Url = Url.Action("CreateProcedure", "Administrator", new { area = "Ticket" }) }
         ];
         ViewBag.Breadcrumbs = breadcrumbs;
         return View();
@@ -85,25 +85,25 @@ public class AdministratorController : Controller
 
         List<BreadcrumbItem> breadcrumbs =
         [
-            new BreadcrumbItem { Name = "Ticket", Url = Url.Action("TicketView", "Ticket", new { area = "Ticket" }) },
-            new BreadcrumbItem { Name = "Process", Url = Url.Action("TPView", "Ticket", new { area = "Ticket" }) },
-            new BreadcrumbItem { Name = "View", Url = Url.Action("TProcess", "Ticket", new { area = "Ticket" }) }
+            new BreadcrumbItem { Name = "Dashboard", Url = Url.Action("Index", "Administrator", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "Create Procedure", Url = Url.Action("CreateProcedure", "Administrator", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "View", Url = Url.Action("ViewProcedures", "Administrator", new { area = "Ticket" }) }
         ];
         ViewBag.Breadcrumbs = breadcrumbs;
 
         return View();
     }
 
-    
+
     public IActionResult CreateStrategy()
     {
         ViewData["pTitle"] = "Create Strategy";
 
         List<BreadcrumbItem> breadcrumbs =
         [
-            new BreadcrumbItem { Name = "Ticket", Url = Url.Action("TicketView", "Ticket", new { area = "Ticket" }) },
-            new BreadcrumbItem { Name = "WorkFlow Rule", Url = Url.Action("WFView", "Ticket", new { area = "Ticket" }) },
-            new BreadcrumbItem { Name = "Create", Url = Url.Action("TMWorkFlowRule", "Ticket", new { area = "Ticket" }) }
+            new BreadcrumbItem { Name = "Dashboard", Url = Url.Action("Index", "Administrator", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "Strategies", Url = Url.Action("ViewStrategies", "Administrator", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "Create", Url = Url.Action("CreateStrategy", "Administrator", new { area = "Ticket" }) }
         ];
         ViewBag.Breadcrumbs = breadcrumbs;
         return View();
@@ -115,9 +115,23 @@ public class AdministratorController : Controller
 
         List<BreadcrumbItem> breadcrumbs =
         [
-            new BreadcrumbItem { Name = "Ticket", Url = Url.Action("TCreate", "Ticket", new { area = "Ticket" }) },
-            new BreadcrumbItem { Name = "WorkFlow", Url = Url.Action("TMWorkFlowRule", "Ticket", new { area = "Ticket" }) },
-            new BreadcrumbItem { Name = "View", Url = Url.Action("WFView", "Ticket", new { area = "Ticket" }) }
+            new BreadcrumbItem { Name = "Dashboard", Url = Url.Action("Index", "Administrator", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "Strategy", Url = Url.Action("CreateStrategy", "Administrator", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "View", Url = Url.Action("ViewStrategies", "Administrator", new { area = "Ticket" }) }
+        ];
+        ViewBag.Breadcrumbs = breadcrumbs;
+
+        return View();
+    }
+    public IActionResult HierarchyTree()
+    {
+        ViewData["pTitle"] = "Hierarchy Tree";
+
+        List<BreadcrumbItem> breadcrumbs =
+        [
+            new BreadcrumbItem { Name = "Dashboard", Url = Url.Action("Index", "Administrator", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "Strategy", Url = Url.Action("CreateStrategy", "Administrator", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "View", Url = Url.Action("ViewStrategies", "Administrator", new { area = "Ticket" }) }
         ];
         ViewBag.Breadcrumbs = breadcrumbs;
 
