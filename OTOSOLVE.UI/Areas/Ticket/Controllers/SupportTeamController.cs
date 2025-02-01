@@ -9,23 +9,14 @@ public class SupportTeamController : Controller
 {
     public IActionResult Index()
     {
-        return View();
-    }
-    public IActionResult Dashboard()
-    {
         // Page Titles
         ViewData["pTitle"] = "Dashboard";
 
-        //// Breadcrumb
-        //ViewData["bGParent"] = "Admin";
-        //ViewData["bParent"] = "Dashboard";
-        //ViewData["bChild"] = "Index";
-
         List<BreadcrumbItem> breadcrumbs =
         [
-            new BreadcrumbItem { Name = "Admin", Url = Url.Action("TicketViewST", "Ticket", new { area = "Ticket" }) },
-            new BreadcrumbItem { Name = "Dashboard", Url = Url.Action("Dashboard", "Ticket", new { area = "Ticket" }) },
-            new BreadcrumbItem { Name = "Index", Url = Url.Action("Dashboard", "Ticket", new { area = "Ticket" }) }
+            new BreadcrumbItem { Name = "Admin", Url = Url.Action("Index", "SupportTeam", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "Dashboard", Url = Url.Action("Index", "SupportTeam", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "Index", Url = Url.Action("Index", "SupportTeam", new { area = "Ticket" }) }
         ];
         ViewBag.Breadcrumbs = breadcrumbs;
 
@@ -39,57 +30,95 @@ public class SupportTeamController : Controller
         ViewBag.Months = months;
         ViewBag.TicketRequests = ticketRequests;
         ViewBag.TicketApprovals = ticketApprovals;
+
         return View();
     }
-    public IActionResult CreateTicketST()
+
+    public IActionResult CreateTicket() // CTicket
     {
-        ViewData["pTitle"] = "Ticket Process Creation";
-        List<BreadcrumbItem> breadcrumbs =
-        [
-            new BreadcrumbItem { Name = "Ticket", Url = Url.Action("TicketViewST", "Ticket", new { area = "Ticket" }) },
-            new BreadcrumbItem { Name = "Process", Url = Url.Action("ProcessViewST", "Ticket", new { area = "Ticket" }) },
-            new BreadcrumbItem { Name = "Create", Url = Url.Action("CreateTicketST", "Ticket", new { area = "Ticket" }) }
-        ];
-        ViewBag.Breadcrumbs = breadcrumbs;
-        return View();
-    }
-    public IActionResult ProcessViewST()
-    {
-        ViewData["pTitle"] = "Ticket Process Index";
+        ViewData["pTitle"] = "Create Ticket";
 
         List<BreadcrumbItem> breadcrumbs =
         [
-            new BreadcrumbItem { Name = "Ticket", Url = Url.Action("TCreate", "Ticket", new { area = "Ticket" }) },
-            new BreadcrumbItem { Name = "Process", Url = Url.Action("CreateTicketST", "Ticket", new { area = "Ticket" }) },
-            new BreadcrumbItem { Name = "View", Url = Url.Action("ProcessViewST", "Ticket", new { area = "Ticket" }) }
+            new BreadcrumbItem { Name = "Dashboard", Url = Url.Action("Index", "SupportTeam", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "ViewTickets", Url = Url.Action("ViewTickets", "SupportTeam", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "CreateTicket", Url = Url.Action("CreateTicket", "SupportTeam", new { area = "Ticket" }) }
         ];
         ViewBag.Breadcrumbs = breadcrumbs;
+
         return View();
     }
-    public IActionResult WorkFlowST()
+    public IActionResult AssignTicket() // CTicket
     {
-        ViewData["pTitle"] = "WorkFlow Rule Index";
+        ViewData["pTitle"] = "Create Ticket";
 
         List<BreadcrumbItem> breadcrumbs =
         [
-            new BreadcrumbItem { Name = "Ticket", Url = Url.Action("TCreate", "Ticket", new { area = "Ticket" }) },
-            new BreadcrumbItem { Name = "WorkFlow", Url = Url.Action("WorkFlowST", "Ticket", new { area = "Ticket" }) },
-            new BreadcrumbItem { Name = "View", Url = Url.Action("WorkFlowST", "Ticket", new { area = "Ticket" }) }
+            new BreadcrumbItem { Name = "Dashboard", Url = Url.Action("Index", "SupportTeam", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "ViewTickets", Url = Url.Action("ViewTickets", "SupportTeam", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "CreateTicket", Url = Url.Action("CreateTicket", "SupportTeam", new { area = "Ticket" }) }
         ];
         ViewBag.Breadcrumbs = breadcrumbs;
+
         return View();
     }
-    public IActionResult TicketViewST()
+
+    public IActionResult ViewTickets()
     {
-        ViewData["pTitle"] = "Tickets Index";
+        ViewData["pTitle"] = "View Tickets";
 
         List<BreadcrumbItem> breadcrumbs =
         [
-            new BreadcrumbItem { Name = "Ticket", Url = Url.Action("TCreate", "Ticket", new { area = "Ticket" }) },
-            new BreadcrumbItem { Name = "List", Url = Url.Action("TicketViewST", "Ticket", new { area = "Ticket" }) },
-            new BreadcrumbItem { Name = "View", Url = Url.Action("TicketViewST", "Ticket", new { area = "Ticket" }) }
+            new BreadcrumbItem { Name = "Dashboard", Url = Url.Action("Index", "SupportTeam", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "Tickets", Url = Url.Action("CreateTicket", "SupportTeam", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "View", Url = Url.Action("ViewTickets", "SupportTeam", new { area = "Ticket" }) }
         ];
         ViewBag.Breadcrumbs = breadcrumbs;
+
+        return View();
+    }
+
+    public IActionResult ViewProcedures()
+    {
+        ViewData["pTitle"] = "View Procedures";
+
+        List<BreadcrumbItem> breadcrumbs =
+        [
+            new BreadcrumbItem { Name = "Dashboard", Url = Url.Action("Index", "SupportTeam", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "Create Procedure", Url = Url.Action("CreateProcedure", "SupportTeam", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "View", Url = Url.Action("ViewProcedures", "SupportTeam", new { area = "Ticket" }) }
+        ];
+        ViewBag.Breadcrumbs = breadcrumbs;
+
+        return View();
+    }
+
+    public IActionResult ViewStrategies()
+    {
+        ViewData["pTitle"] = "Strategies Index";
+
+        List<BreadcrumbItem> breadcrumbs =
+        [
+            new BreadcrumbItem { Name = "Dashboard", Url = Url.Action("Index", "SupportTeam", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "Strategy", Url = Url.Action("CreateStrategy", "SupportTeam", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "View", Url = Url.Action("ViewStrategies", "SupportTeam", new { area = "Ticket" }) }
+        ];
+        ViewBag.Breadcrumbs = breadcrumbs;
+
+        return View();
+    }
+    public IActionResult ViewTeam()
+    {
+        ViewData["pTitle"] = "Team";
+
+        List<BreadcrumbItem> breadcrumbs =
+        [
+            new BreadcrumbItem { Name = "Create Team", Url = Url.Action("CreateTeam", "SupportTeam", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "Create Team Member", Url = Url.Action("CreateTeamMember", "SupportTeam", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "View", Url = Url.Action("ViewStrategies", "SupportTeam", new { area = "Ticket" }) }
+        ];
+        ViewBag.Breadcrumbs = breadcrumbs;
+
         return View();
     }
 }

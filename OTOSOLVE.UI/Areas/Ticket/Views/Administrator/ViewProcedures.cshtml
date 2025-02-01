@@ -11,11 +11,11 @@
 			<div class="card-header">
 				<div class="row align-items-center">
 					<div class="col">
-						<h4 class="card-title">Ticket Process Index</h4>
+						<h4 class="card-title">Procedure Index</h4>
 					</div><!--end col-->
 					<div class="col-auto">
-						<a asp-area="Ticket" asp-controller="Ticket" asp-action="TPCreate" class="btn btn-de-primary">
-							<i class="fas fa-plus me-2"></i>Add Process
+						<a asp-area="Ticket" asp-controller="Administrator" asp-action="CreateProcedure" class="btn btn-de-primary">
+							<i class="fas fa-plus me-2"></i>Add Procedure
 						</a>
 					</div><!--end col-->
 				</div> <!--end row-->
@@ -37,7 +37,7 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
+								<tr onclick="window.location.href='EditProcedures';" style="cursor:pointer;">
 									<td>Order Management</td>
 									<td>Sales</td>
 									<td>Manager</td>
@@ -51,8 +51,8 @@
 										</a>
 									</td>
 								</tr>
-								<tr>
-									<td>Inventory Tracking</td>
+								<tr onclick="window.location.href='EditProcedures';" style="cursor:pointer;">
+									<td>Order Management</td>
 									<td>Operations</td>
 									<td>Supervisor</td>
 									<td>Editor</td>
@@ -65,8 +65,8 @@
 										</a>
 									</td>
 								</tr>
-								<tr>
-									<td>Customer Support</td>
+								<tr onclick="window.location.href='EditProcedures';" style="cursor:pointer;">
+									<td>Order Management</td>
 									<td>Support</td>
 									<td>Executive</td>
 									<td>Viewer</td>
@@ -79,7 +79,7 @@
 										</a>
 									</td>
 								</tr>
-								<tr>
+								<tr onclick ="window.location.href='EditProcedures';" style="cursor:pointer;">
 									<td>Billing System</td>
 									<td>Finance</td>
 									<td>Analyst</td>
@@ -93,13 +93,13 @@
 										</a>
 									</td>
 								</tr>
-								<tr>
+								<tr onclick="window.location.href='EditProcedures';" style="cursor:pointer;">
 									<td>HR Portal</td>
 									<td>Human Resources</td>
 									<td>Coordinator</td>
 									<td>Viewer</td>
 									<td>Michael Johnson</td>
-									<td>Notification Recipient</td>
+									<td>Approver</td>
 									<td>
 										<a id="deleteLS" name="Id" href="#" class="ms-2" data-toggle="ajax-modal"
 										   data-url="@Url.Action($"Delete/")">
@@ -107,7 +107,19 @@
 										</a>
 									</td>
 								</tr>
-								<tr>
+								<tr onclick="window.location.href='EditProcedures';" style="cursor:pointer;">
+									<td>HR Portal</td>
+									<td>Finance</td>
+									<td>Analyst</td>
+									<td>Editor</td>
+									<td>Emily Clark</td>
+									<td>Notification Recipient</td>
+									<td>
+										<a id="deleteLS" name="Id" href="#" class="ms-2" data-toggle="ajax-modal"
+										   data-url="@Url.Action($"Delete/")">
+											<i class="las la-trash-alt text-secondary font-16"></i>
+										</a>
+									</td>
 								</tr>
 							</tbody>
 						</table>

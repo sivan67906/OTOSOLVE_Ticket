@@ -79,6 +79,16 @@
 															<li class="nav-item menuitem-active">
 																<a class="nav-link " asp-area="Ticket" asp-controller="Administrator" asp-action="Index" aria-expanded="true">Dashboard</a>
 															</li><!--end nav-item-->
+															<li class="menu-label mt-0">T<span>eam</span></li>
+															<li class="nav-item">
+																<a class="nav-link" asp-area="Ticket" asp-controller="Administrator" asp-action="CreateTeam">Create Team</a>
+															</li><!--end nav-item-->
+															<li class="nav-item">
+																<a class="nav-link" asp-area="Ticket" asp-controller="Administrator" asp-action="CreateTeamMember">Create Team Member</a>
+															</li><!--end nav-item-->
+															<li class="nav-item">
+																<a class="nav-link" asp-area="Ticket" asp-controller="Administrator" asp-action="ViewTeam">View Team</a>
+															</li><!--end nav-item-->
 															<li class="menu-label mt-0">P<span>rocedure</span></li>
 															<li class="nav-item">
 																<a class="nav-link" asp-area="Ticket" asp-controller="Administrator" asp-action="CreateProcedure"> Create Procedure</a>
@@ -88,7 +98,7 @@
 															</li><!--end nav-item-->
 															<li class="menu-label mt-0">S<span>trategy</span></li>
 															<li class="nav-item">
-																	<a class="nav-link" asp-area="Ticket" asp-controller="Administrator" asp-action="CreateStrategy"> Create Strategy</a>
+																<a class="nav-link" asp-area="Ticket" asp-controller="Administrator" asp-action="CreateStrategy"> Create Strategy</a>
 															</li><!--end nav-item-->
 															<li class="nav-item">
 																<a class="nav-link" asp-area="Ticket" asp-controller="Administrator" asp-action="ViewStrategies">View Strategies</a>
@@ -99,19 +109,6 @@
 															</li><!--end nav-item-->
 															<li class="nav-item">
 																<a class="nav-link" asp-area="Ticket" asp-controller="Administrator" asp-action="ViewTickets">View Tickets</a>
-															</li><!--end nav-item-->
-															<li class="nav-item">
-																	<a class="nav-link" asp-area="Ticket" asp-controller="Administrator" asp-action="HierarchyTree">Hierarchy Tree</a>
-															</li><!--end nav-item-->
-															<li class="menu-label mt-0">T<span>eam</span></li>
-															<li class="nav-item">
-																<a class="nav-link" asp-area="Ticket" asp-controller="Administrator" asp-action="CreateTeam">Create Team</a>
-															</li><!--end nav-item-->
-															<li class="nav-item">
-																<a class="nav-link" asp-area="Ticket" asp-controller="Administrator" asp-action="CreateTeamMember">Create Team Member</a>
-															</li><!--end nav-item-->
-															<li class="nav-item">
-																<a class="nav-link" asp-area="Ticket" asp-controller="Administrator" asp-action="ViewTeam">View Team</a>
 															</li><!--end nav-item-->
 														</ul><!--end nav-->
 													</div><!--end sidebarDashboards-->
@@ -127,19 +124,29 @@
 													<div class="collapse" id="sidebarTeamLead">
 														<ul class="nav flex-column">
 															<li class="nav-item menuitem-active">
-																<a class="nav-link " asp-area="Ticket" asp-controller="TeamLead" asp-action="Dashboard" aria-expanded="true">Dashboard</a>
+																<a class="nav-link " asp-area="Ticket" asp-controller="TeamLead" asp-action="Index" aria-expanded="true">Dashboard</a>
+															</li><!--end nav-item-->
+															<li class="menu-label mt-0">T<span>eam</span></li>
+															
+															<li class="nav-item">
+																<a class="nav-link" asp-area="Ticket" asp-controller="TeamLead" asp-action="ViewTeam">View Team</a>
+															</li><!--end nav-item-->
+															<li class="menu-label mt-0">P<span>rocedure</span></li>
+															
+															<li class="nav-item">
+																<a class="nav-link" asp-area="Ticket" asp-controller="TeamLead" asp-action="ViewProcedures">View Procedures</a>
+															</li><!--end nav-item-->
+															<li class="menu-label mt-0">S<span>trategy</span></li>
+															
+															<li class="nav-item">
+																<a class="nav-link" asp-area="Ticket" asp-controller="TeamLead" asp-action="ViewStrategies">View Strategies</a>
+															</li><!--end nav-item-->
+															<li class="menu-label mt-0">T<span>icket</span></li>
+															<li class="nav-item">
+																<a class="nav-link" asp-area="Ticket" asp-controller="TeamLead" asp-action="AssignTickets">Assign Tickets</a>
 															</li><!--end nav-item-->
 															<li class="nav-item">
-																<a class="nav-link" asp-area="Ticket" asp-controller="TeamLead" asp-action="CreateTicketTL">Create Ticket</a>
-															</li><!--end nav-item-->
-															<li class="nav-item">
-																<a class="nav-link" asp-area="Ticket" asp-controller="TeamLead" asp-action="ProcessViewTL">Process View</a>
-															</li><!--end nav-item-->
-															<li class="nav-item">
-																<a class="nav-link" asp-area="Ticket" asp-controller="TeamLead" asp-action="WorkFlowTL">Workflow Rule View</a>
-															</li><!--end nav-item-->
-															<li class="nav-item">
-																<a class="nav-link" asp-area="Ticket" asp-controller="TeamLead" asp-action="TicketViewTL">Ticket View</a>
+																<a class="nav-link" asp-area="Ticket" asp-controller="TeamLead" asp-action="ViewTickets">View Tickets</a>
 															</li><!--end nav-item-->
 														</ul><!--end nav-->
 													</div><!--end sidebarDashboards-->
@@ -155,19 +162,27 @@
 													<div class="collapse" id="sidebarSupport">
 														<ul class="nav flex-column">
 															<li class="nav-item menuitem-active">
-																<a class="nav-link " asp-area="Ticket" asp-controller="SupportTeam" asp-action="Dashboard" aria-expanded="true">Dashboard</a>
+																<a class="nav-link " asp-area="Ticket" asp-controller="SupportTeam" asp-action="Index" aria-expanded="true">Dashboard</a>
 															</li><!--end nav-item-->
+															<li class="menu-label mt-0">T<span>eam</span></li>
+
 															<li class="nav-item">
-																<a class="nav-link" asp-area="Ticket" asp-controller="SupportTeam" asp-action="CreateTicketST">Create Ticket</a>
+																<a class="nav-link" asp-area="Ticket" asp-controller="SupportTeam" asp-action="ViewTeam">View Team</a>
 															</li><!--end nav-item-->
+															<li class="menu-label mt-0">P<span>rocedure</span></li>
+
 															<li class="nav-item">
-																<a class="nav-link" asp-area="Ticket" asp-controller="SupportTeam" asp-action="ProcessViewST">Process View</a>
+																<a class="nav-link" asp-area="Ticket" asp-controller="SupportTeam" asp-action="ViewProcedures">View Procedures</a>
 															</li><!--end nav-item-->
+															<li class="menu-label mt-0">S<span>trategy</span></li>
+
 															<li class="nav-item">
-																<a class="nav-link" asp-area="Ticket" asp-controller="SupportTeam" asp-action="WorkFlowST">Workflow Rule View</a>
+																<a class="nav-link" asp-area="Ticket" asp-controller="SupportTeam" asp-action="ViewStrategies">View Strategies</a>
 															</li><!--end nav-item-->
+															<li class="menu-label mt-0">T<span>icket</span></li>
+
 															<li class="nav-item">
-																<a class="nav-link" asp-area="Ticket" asp-controller="SupportTeam" asp-action="TicketViewST">Ticket View</a>
+																<a class="nav-link" asp-area="Ticket" asp-controller="SupportTeam" asp-action="ViewTickets">Tickets</a>
 															</li><!--end nav-item-->
 														</ul><!--end nav-->
 													</div><!--end sidebarDashboards-->

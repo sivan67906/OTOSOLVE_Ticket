@@ -47,7 +47,7 @@ public class AccountController : Controller
 
             await HttpContext.SignInAsync("AvivClaimCookie", claimsPrincipal);
 
-            return RedirectToAction("Dashboard", "TeamLead", new { area = "Ticket" });
+            return RedirectToAction("Index", "TeamLead", new { area = "Ticket" });
         }
 
         else if ((loginModel.Email.ToString() == "support@oto.com") && (loginModel.Password == "support@123"))
@@ -63,7 +63,7 @@ public class AccountController : Controller
 
             await HttpContext.SignInAsync("AvivClaimCookie", claimsPrincipal);
 
-            return RedirectToAction("Dashboard", "SupportTeam", new { area = "Ticket" });
+            return RedirectToAction("Index", "SupportTeam", new { area = "Ticket" });
         }
 
         else if ((loginModel.Email.ToString() == "hr@oto.com") && (loginModel.Password == "hr@123"))
@@ -79,7 +79,7 @@ public class AccountController : Controller
 
             await HttpContext.SignInAsync("AvivClaimCookie", claimsPrincipal);
 
-            return RedirectToAction("Dashboard", "HumanResource", new { area = "Ticket" });
+            return RedirectToAction("Index", "HumanResource", new { area = "Ticket" });
         }
 
         else if ((loginModel.Email.ToString() == "employee@oto.com") && (loginModel.Password == "employee@123"))
@@ -95,7 +95,7 @@ public class AccountController : Controller
 
             await HttpContext.SignInAsync("AvivClaimCookie", claimsPrincipal);
 
-            return RedirectToAction("Dashboard", "Employee", new { area = "Ticket" });
+            return RedirectToAction("Index", "Vendor", new { area = "Ticket" });
         }
 
         return View();

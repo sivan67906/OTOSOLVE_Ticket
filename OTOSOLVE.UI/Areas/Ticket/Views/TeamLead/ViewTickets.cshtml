@@ -1,0 +1,407 @@
+﻿
+<div class="modal fade" id="mdlTPShow">
+    <div class="modal-dialog modal-xl" id="PlaceHolderHere">
+    </div>
+</div>
+<div class="card shadow p-0 mb-5 bg-white rounded" style=" position: relative; height: 100%; width: 100%;">
+    <div class="card-header">
+        <div class="row align-items-center">
+            <div class="col align-items-center">
+                <h4 class="card-title">Today Tickets</h4>
+            </div><!--end col-->
+            <div class="col-auto">
+            </div>
+        </div>  <!--end row-->
+    </div><!--end card-header-->
+    <div class="card-body">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="mb-3 text-start">
+                            <label for="example-text-input">
+                                Ticket Assignee
+                                <span class="f-14 mr-1 text-danger">*</span>
+                            </label>
+                            <input class="form-control mt-2" type="text" value="" id="ticketname">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="mb-3 text-start">
+                            <label for="example-text-input">
+                                Status
+                                <span class="f-14 mr-1 text-danger">*</span>
+                            </label>
+                            <select id="Dropdown" class="form-select mt-2">
+                                <option value="" disabled selected>--</option>
+                                <option value="PO">Approved</option>
+                                <option value="dateBetween">On-holding</option>
+                                <option value="dateBetween">Overdue</option>
+                                <option value="dateBetween">Open</option>
+                                <option value="dateBetween">Reject</option>
+                                <option value="dateBetween">Unassigned</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="mb-3 text-start">
+                            <label for="example-text-input">
+                                Search By
+                                <span class="f-14 mr-1 text-danger">*</span>
+                            </label>
+                            <select id="filterDropdown" onchange="updateSearchFields()" class="form-select mt-2">
+                                <option value="" disabled selected>--</option>
+                                <option value="Cat">Category</option>
+                                <option value="Role">Role</option>
+                                <option value="Emp">Employee</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="row" id="searchFields">
+                    <div class="col-lg-12" id="divCat">
+                        <div class="mb-3 text-start">
+                            <label for="nameSearch">
+                                Category
+                                <span class="f-14 mr-1 text-danger">*</span>
+                            </label>
+                            <select id="Dropdown" class="form-select mt-2">
+                                <option value="" disabled selected>--</option>
+                                <option value="Cat1">IT Support</option>
+                                <option value="Role1">Finance</option>
+                                <option value="Emp1">General Query</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-12" id="divRole">
+                        <div class="mb-3 text-start">
+                            <label for="startDate endDate">
+                                Role
+                                <span class="f-14 mr-1 text-danger">*</span>
+                            </label>
+                            <select id="Dropdown" class="form-select mt-2">
+                                <option value="" disabled selected>--</option>
+                                <option value="Cat2">Manger</option>
+                                <option value="Role2">Team Leader</option>
+                                <option value="Emp2">Others</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-12" id="divEmp">
+                        <div class="mb-3 text-start">
+                            <label for="startDate endDate">
+                                Employee
+                                <span class="f-14 mr-1 text-danger">*</span>
+                            </label>
+                            <select id="Dropdown" class="form-select mt-2">
+                                <option value="" disabled selected>--</option>
+                                <option value="Cat3">George</option>
+                                <option value="Role3">Victor</option>
+                                <option value="Emp3">Lenin</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 offset-lg-9">
+                    <div class="col-lg-12 text-end mt-1">
+                        <button type="button" class="btn btn-warning bg-opacity-75"><i class="mdi mdi-filter me-2"></i>Filter</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card shadow p-0 mb-5 bg-white rounded" style=" position: relative; height: 100%; width: 100%;">
+    <div class="card-header">
+        <div class="row align-items-center">
+            <div class="col align-items-center">
+                <h4 class="card-title">List of Tickets</h4>
+            </div><!--end col-->
+            <div class="col-auto">
+                <a asp-area="Ticket" asp-controller="Administrator" asp-action="CreateTicket" class="btn btn-de-primary">
+                    <i class="fas fa-plus me-2"></i>Add Ticket
+                </a>
+            </div>
+        </div>  <!--end row-->
+    </div><!--end card-header-->
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-centered">
+                <thead class="thead-light">
+                    <tr>
+                        <th style="max-width: 95px;">
+                            S.No
+                        </th>
+                        <th>ID</th>
+                        <th>Customers</th>
+                        <th>Assignee</th>
+                        <th>Followers</th>
+                        <th><label class="d-none d-xl-block">Subject</label></th>
+                        <th>Priority</th>
+                        <th>Status</th>
+                        <th>Due Date</th>
+
+                    </tr><!--end tr-->
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>
+                            1
+                        </td>
+                        <td>#1236</td>
+                        <td><span class="text-truncate">Robert Y. Merchant</span></td>
+                        <td style="display: flex; width: 100%;">
+                            <img src="~/matrica/assets/images/users/user-10.png" alt="" class="thumb-sm rounded-circle me-2 w-25 h-25">
+                            <span style="align-content: center;width: 76%;" class="text-truncate">Donald Gardner</span>
+                        </td>
+                        <td>
+                            <div class="img-group">
+                                <a class="user-avatar" href="#">
+                                    <img src="~/matrica/assets/images/users/user-8.jpg" alt="user" class="thumb-xs rounded-circle">
+                                </a>
+                                <a class="user-avatar ms-n3" href="#">
+                                    <img src="~/matrica/assets/images/users/user-5.jpg" alt="user" class="thumb-xs rounded-circle">
+                                </a>
+                                <a class="user-avatar ms-n3" href="#">
+                                    <img src="~/matrica/assets/images/users/user-2.jpg" alt="user" class="thumb-xs rounded-circle">
+                                </a>
+                                <a class="user-avatar ms-n3" href="#">
+                                    <img src="~/matrica/assets/images/users/user-4.jpg" alt="user" class="thumb-xs rounded-circle">
+                                </a>
+                                <a href="" class="user-avatar">
+                                    <span class="thumb-xs justify-content-center d-flex align-items-center bg-soft-info rounded-circle fw-semibold">+6</span>
+                                </a>
+                            </div>
+                        </td>
+                        <td><span class="text-truncate d-none d-xl-block">Bug-report simply dummy text of the printing and typesetting</span></td>
+                        <td>Normal</td>
+                        <td><span class="badge badge-soft-warning p-2">New</span></td>
+                        <td>03-Feb-25</td>
+                    </tr><!--end tr-->
+                    <tr>
+                        <td>
+                            2
+                        </td>
+                        <td>#3569</td>
+                        <td><span class="text-truncate">Smith W. Gates</span></td>
+                        <td style="display: flex; width: 100%;">
+                            <img src="~/matrica/assets/images/users/user-9.png" alt="" class="thumb-sm rounded-circle me-2">
+                            <span style="align-content: center;width: 76%;" class="text-truncate">Kevin J. Heal</span>
+                        </td>
+                        <td>
+                            <div class="img-group">
+                                <a class="user-avatar" href="#">
+                                    <img src="~/matrica/assets/images/users/user-8.jpg" alt="user" class="thumb-xs rounded-circle">
+                                </a>
+                                <a class="user-avatar ms-n3" href="#">
+                                    <img src="~/matrica/assets/images/users/user-5.jpg" alt="user" class="thumb-xs rounded-circle">
+                                </a>
+                                <a class="user-avatar ms-n3" href="#">
+                                    <img src="~/matrica/assets/images/users/user-4.jpg" alt="user" class="thumb-xs rounded-circle">
+                                </a>
+                                <a class="user-avatar ms-n3" href="#">
+                                    <img src="~/matrica/assets/images/users/user-6.jpg" alt="user" class="thumb-xs rounded-circle">
+                                </a>
+                                <a href="" class="user-avatar">
+                                    <span class="thumb-xs justify-content-center d-flex align-items-center bg-soft-info rounded-circle fw-semibold">+6</span>
+                                </a>
+                            </div>
+                        </td>
+                        <td><span class="text-truncate d-none d-xl-block">The application continuous is a long established fact that a reader.</span></td>
+                        <td class="text-danger">Critical</td>
+                        <td><span class="badge badge-soft-success p-2">Solved</span></td>
+                        <td>01-Feb-25</td>
+                    </tr><!--end tr-->
+                    <tr>
+                        <td>
+                            3
+                        </td>
+                        <td>#9874</td>
+                        <td><span class="text-truncate">James T. Lever</span></td>
+                        <td style="display: flex; width: 100%;">
+                            <img src="~/matrica/assets/images/users/user-8.png" alt="" class="thumb-sm rounded-circle me-2">
+                            <span style="align-content: center;width: 76%;" class="text-truncate">Frank M. Lyons</span>
+                        </td>
+                        <td>
+                            <div class="img-group">
+                                <a class="user-avatar" href="#">
+                                    <img src="~/matrica/assets/images/users/user23.jpg" alt="user" class="thumb-xs rounded-circle">
+                                </a>
+                                <a class="user-avatar ms-n3" href="#">
+                                    <img src="~/matrica/assets/images/users/user5.jpg" alt="user" class="thumb-xs rounded-circle">
+                                </a>
+                                <a class="user-avatar ms-n3" href="#">
+                                    <img src="~/matrica/assets/images/users/user4.jpg" alt="user" class="thumb-xs rounded-circle">
+                                </a>
+                                <a class="user-avatar ms-n3" href="#">
+                                    <img src="~/matrica/assets/images/users/user-1.jpg" alt="user" class="thumb-xs rounded-circle">
+                                </a>
+                                <a href="" class="user-avatar">
+                                    <span class="thumb-xs justify-content-center d-flex align-items-center bg-soft-info rounded-circle fw-semibold">+6</span>
+                                </a>
+                            </div>
+                        </td>
+                        <td><span class="text-truncate d-none d-xl-block">See how it work start are many variations of passages of Lorem Ipsum available.</span></td>
+                        <td>Low</td>
+                        <td><span class="badge badge-soft-primary p-2">Open</span></td>
+                        <td>31-Jan-25</td>
+                    </tr><!--end tr-->
+                    <tr>
+                        <td>
+                            4
+                        </td>
+                        <td>#5412</td>
+                        <td><span class="text-truncate">Justin U. Brudo</span></td>
+                        <td style="display: flex; width: 100%;">
+                            <img src="~/matrica/assets/images/users/user-7.png" alt="" class="thumb-sm rounded-circle me-2">
+                            <span style="align-content: center;width: 76%;" class="text-truncate">Robert C. Golding</span>
+                        </td>
+                        <td>
+                            <div class="img-group">
+                                <a class="user-avatar" href="#">
+                                    <img src="~/matrica/assets/images/users/user-3.jpg" alt="user" class="thumb-xs rounded-circle">
+                                </a>
+                                <a class="user-avatar ms-n3" href="#">
+                                    <img src="~/matrica/assets/images/users/user-5.jpg" alt="user" class="thumb-xs rounded-circle">
+                                </a>
+                                <a class="user-avatar ms-n3" href="#">
+                                    <img src="~/matrica/assets/images/users/user-9.jpg" alt="user" class="thumb-xs rounded-circle">
+                                </a>
+                                <a class="user-avatar ms-n3" href="#">
+                                    <img src="~/matrica/assets/images/users/user-6.jpg" alt="user" class="thumb-xs rounded-circle">
+                                </a>
+                                <a href="" class="user-avatar">
+                                    <span class="thumb-xs justify-content-center d-flex align-items-center bg-soft-info rounded-circle fw-semibold">+6</span>
+                                </a>
+                            </div>
+                        </td>
+                        <td><span class="text-truncate d-none d-xl-block">I can't upload file first line of Ipsum lorem ipsum dolor sit amet.</span></td>
+                        <td>Medium</td>
+                        <td><span class="badge badge-soft-warning p-2">New</span></td>
+                        <td>04-Feb-25</td>
+                    </tr><!--end tr-->
+                    <tr>
+                        <td>
+                            5
+                        </td>
+                        <td>#3258</td>
+                        <td><span class="text-truncate">Davidson</span></td>
+                        <td style="display: flex; width: 100%;">
+                            <img src="~/matrica/assets/images/users/user-6.png" alt="" class="thumb-sm rounded-circle me-2">
+                            <span style="align-content: center;width: 76%;" class="text-truncate">Hyman M. Cross</span>
+                        </td>
+                        <td>
+                            <div class="img-group">
+                                <a class="user-avatar" href="#">
+                                    <img src="~/matrica/assets/images/users/user-1.jpg" alt="user" class="thumb-xs rounded-circle">
+                                </a>
+                                <a class="user-avatar ms-n3" href="#">
+                                    <img src="~/matrica/assets/images/users/user-2.jpg" alt="user" class="thumb-xs rounded-circle">
+                                </a>
+                                <a class="user-avatar ms-n3" href="#">
+                                    <img src="~/matrica/assets/images/users/user-4.jpg" alt="user" class="thumb-xs rounded-circle">
+                                </a>
+                                <a class="user-avatar ms-n3" href="#">
+                                    <img src="~/matrica/assets/images/users/user-6.jpg" alt="user" class="thumb-xs rounded-circle">
+                                </a>
+                                <a href="" class="user-avatar">
+                                    <span class="thumb-xs justify-content-center d-flex align-items-center bg-soft-info rounded-circle fw-semibold">+6</span>
+                                </a>
+                            </div>
+                        </td>
+                        <td><span class="text-truncate d-none d-xl-block">How do i upgrade my profile?</span></td>
+                        <td>Low</td>
+                        <td><span class="badge badge-soft-success p-2">Solved</span></td>
+                        <td>30-Jan-25</td>
+                    </tr><!--end tr-->
+                    <tr>
+                        <td>
+                            6
+                        </td>
+                        <td>#6636</td>
+                        <td><span class="text-truncate">Robert J. Rock</span></td>
+                        <td style="display: flex; width: 100%;">
+                            <img src="~/matrica/assets/images/users/user-5.png" alt="" class="thumb-sm rounded-circle me-2">
+                            <span style="align-content: center;width: 76%;" class="text-truncate">Phillip T. Morse</span>
+                        </td>
+                        <td>
+
+                            <div class="img-group">
+                                <a class="user-avatar" href="#">
+                                    <img src="~/matrica/assets/images/users/user-8.jpg" alt="user" class="thumb-xs rounded-circle">
+                                </a>
+                                <a class="user-avatar ms-n3" href="#">
+                                    <img src="~/matrica/assets/images/users/user-5.jpg" alt="user" class="thumb-xs rounded-circle">
+                                </a>
+                                <a class="user-avatar ms-n3" href="#">
+                                    <img src="~/matrica/assets/images/users/user-4.jpg" alt="user" class="thumb-xs rounded-circle">
+                                </a>
+                                <a class="user-avatar ms-n3" href="#">
+                                    <img src="~/matrica/assets/images/users/user-6.jpg" alt="user" class="thumb-xs rounded-circle">
+                                </a>
+                                <a href="" class="user-avatar">
+                                    <span class="thumb-xs justify-content-center d-flex align-items-center bg-soft-info rounded-circle fw-semibold">+6</span>
+                                </a>
+                            </div>
+                        </td>
+                        <td><span class="text-truncate d-none d-xl-block">Can i help you in this project?</span></td>
+                        <td class="text-danger">Critical</td>
+                        <td><span class="badge badge-soft-primary p-2">Open</span></td>
+                        <td>03-Feb-25</td>
+                    </tr><!--end tr-->
+                </tbody>
+
+            </table>
+
+        </div>
+    </div><!--end card-body-->
+</div>
+@section Scripts {
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/matrica/assets/js/pages/app-custom.js" type="text/javascript"></script>
+
+
+    <script type="text/javascript">
+            $(document).ready (function () {
+            // Hide all input fields initially
+              document.getElementById("searchFields").classList.add('d-none');
+            });
+
+            function updateSearchFields() {
+            const dropdown = document.getElementById("filterDropdown");
+            const selectedValue = dropdown.value;
+              document.getElementById("searchFields").classList.remove('d-none');
+
+                // Show relevant input fields based on selected value
+                if (selectedValue === "Cat") {
+                    document.getElementById("divCat").classList.remove("d-none");
+                    document.getElementById("divRole").classList.add("d-none");
+                    document.getElementById("divEmp").classList.add("d-none");
+                } else if (selectedValue === "Role") {
+                    document.getElementById("divCat").classList.add("d-none");
+                    document.getElementById("divRole").classList.remove("d-none");
+                    document.getElementById("divEmp").classList.add("d-none");
+                }
+                else if (selectedValue === "Emp") {
+                    document.getElementById("divCat").classList.add("d-none");
+                    document.getElementById("divRole").classList.add("d-none");
+                    document.getElementById("divEmp").classList.remove("d-none");
+                }
+        }
+
+    </script>
+}

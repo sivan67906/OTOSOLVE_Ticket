@@ -18,11 +18,11 @@
 			<div class="card-header">
 				<div class="row align-items-center">
 					<div class="col">
-						<h4 class="card-title">WorkFlow Rule Creation</h4>
+						<h4 class="card-title">Strategy Creation</h4>
 					</div><!--end col-->
 					<div class="col-auto">
-						<a asp-area="Ticket" asp-controller="Ticket" asp-action="WFView" class="btn btn-de-primary">
-							<i class="mdi mdi-eye-outline me-2"></i>View WorkFlow Rules
+						<a asp-area="Ticket" asp-controller="Administrator" asp-action="ViewStrategies" class="btn btn-de-primary">
+							<i class="mdi mdi-eye-outline me-2"></i>View Strategy
 						</a>
 					</div><!--end col-->
 				</div> <!--end row-->
@@ -32,7 +32,7 @@
 				<div class="row">
 					<div class="form-group">
 						<label for="workFlowRuleName" class="form-label">Name</label>
-						<input type="text" class="form-control" id="workFlowRuleName" placeholder="Enter workflow rule name">
+						<input type="text" class="form-control" id="workFlowRuleName" placeholder=" Strategy name">
 					</div>
 					<div class="row mt-2">
 						<div class="col-xl-4 fs-5 text-muted">
@@ -41,7 +41,7 @@
 						<div class="col-xl-2">
 						</div>
 						<div class="col-xl-4 fs-5 text-muted">
-							Work Flow Rule Order
+							Strategy Order
 						</div>
 						<div class="col-xl-2">
 						</div>

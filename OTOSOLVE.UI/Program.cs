@@ -25,7 +25,7 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("TeamLeadPolicy", policy => policy.RequireRole("TeamLead"));
     options.AddPolicy("SupportPolicy", policy => policy.RequireRole("SupportTeam"));
     options.AddPolicy("HRPolicy", policy => policy.RequireRole("HR"));
-    options.AddPolicy("EmployeePolicy", policy => policy.RequireRole("Employee"));
+    options.AddPolicy("VendorPolicy", policy => policy.RequireRole("Employee"));
 });
 
 

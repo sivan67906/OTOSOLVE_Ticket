@@ -11,11 +11,11 @@
 			<div class="card-header">
 				<div class="row align-items-center">
 					<div class="col">
-						<h4 class="card-title">Work Flow Index</h4>
+						<h4 class="card-title">Strategy Index</h4>
 					</div><!--end col-->
 					<div class="col-auto">
-						<a asp-area="Ticket" asp-controller="Ticket" asp-action="TMWorkFlowRule" class="btn btn-de-primary">
-							<i class="fas fa-plus me-2"></i>Add WorkFlow Rule
+						<a asp-area="Ticket" asp-controller="Administrator" asp-action="CreateStrategy" class="btn btn-de-primary">
+							<i class="fas fa-plus me-2"></i>Add Strategy
 						</a>
 					</div><!--end col-->
 				</div> <!--end row-->
@@ -27,17 +27,15 @@
 							<thead class="thead-light">
 								<tr>
 									<th class="d-none"></th>
-									<th>Workflow Name</th>
-									<th>Sequence</th>
-									<th>Process Name</th>
+									<th>Strategy Name</th>
+									<th>Procedure Name</th>
 									<th>Action</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
+								<tr onclick="window.location.href='EditStrategies';" style="cursor:pointer;">
 									<td>Employee Onboarding</td>
-									<td>Rec_HR_Finance</td>
-									<td>Document Verification</td>
+									<td>Pr_Finance</td>
 									<td>
 
 										<a id="deleteLS" name="Id" href="#" class="ms-2" data-toggle="ajax-modal"
@@ -46,10 +44,9 @@
 										</a>
 									</td>
 								</tr>
-								<tr>
-									<td>Order Fulfillment</td>
-									<td>Sales_Fin_Admin</td>
-									<td>Inventory Check</td>
+								<tr onclick="window.location.href='EditStrategies';" style="cursor:pointer;">
+									<td>Employee Onboarding</td>
+									<td>Pr_HR</td>
 									<td>
 
 										<a id="deleteLS" name="Id" href="#" class="ms-2" data-toggle="ajax-modal"
@@ -58,10 +55,9 @@
 										</a>
 									</td>
 								</tr>
-								<tr>
-									<td>Customer Support</td>
-									<td>Sup_HR_Admin</td>
-									<td>Ticket Assignment</td>
+								<tr onclick="window.location.href='EditStrategies';" style="cursor:pointer;">
+									<td>Employee Onboarding</td>
+									<td>Pr_Admin</td>
 									<td>
 
 										<a id="deleteLS" name="Id" href="#" class="ms-2" data-toggle="ajax-modal"
@@ -70,10 +66,9 @@
 										</a>
 									</td>
 								</tr>
-								<tr>
+								<tr onclick="window.location.href='EditStrategies';" style="cursor:pointer;">
 									<td>Financial Reporting</td>
-									<td>Fin_Admin</td>
-									<td>Data Compilation</td>
+									<td>Pr_Finance</td>
 									<td>
 
 										<a id="deleteLS" name="Id" href="#" class="ms-2" data-toggle="ajax-modal"
@@ -82,10 +77,9 @@
 										</a>
 									</td>
 								</tr>
-								<tr>
+								<tr onclick="window.location.href='EditStrategies';" style="cursor:pointer;">
 									<td>Performance Review</td>
-									<td>User_Admin</td>
-									<td>Feedback Collection</td>
+									<td>Pr_Admin</td>
 									<td>
 
 										<a id="deleteLS" name="Id" href="#" class="ms-2" data-toggle="ajax-modal"
