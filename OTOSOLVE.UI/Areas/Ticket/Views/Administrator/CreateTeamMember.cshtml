@@ -1,0 +1,237 @@
+﻿@model OTOSOLVE.UI.Areas.Environment.ViewModels.TicketVM
+
+
+<div class="row">
+	<div class="col-12 col-lg-12">
+		<div class="card" style="">
+			<div class="card-header">
+				<div class="row align-items-center">
+					<div class="col">
+						<h4 class="card-title">Create Ticket Process</h4>
+					</div><!--end col-->
+					<div class="col-auto">
+						<a asp-area="Ticket" asp-controller="Ticket" asp-action="TPView" class="btn btn-de-primary">
+							<i class="mdi mdi-eye-outline me-2"></i>View Ticket Processes
+						</a>
+					</div><!--end col-->
+				</div> <!--end row-->
+			</div><!--end card-header-->
+
+			<div class="card-body" style="padding-bottom: 8px !important;">
+				<div class="row">
+					<div class="mt-3" id="divTicketProcessMain">
+						<div class="card" id="divTktHierarcyProcess" style="margin-bottom: 8px !important;">
+							<div class="card-header shadow">
+								<div class="form-group mt-2">
+									<div class="row">
+										<div class="col-lg-3">
+											<label class="form-label mt-2" for="sltDepartment">Select Team</label>
+											<select id="sltDepartment" class="form-select">
+												<option>--</option>
+												<option>Human Resources</option>
+												<option>Marketing</option>
+												<option>Finance</option>
+												<option>Customer Support</option>
+											</select>
+										</div><!--end col-->
+										<div class="col-lg-3">
+											<label class="form-label mt-2" for="sltDesignation">Select Employee</label>
+											<select id="sltDesignation" class="form-select">
+												<option>--</option>
+												<option>Karyn Borbas</option>
+												<option>
+													Chris Rup
+												</option>
+												<option>Noah_Chandler</option>
+												<option>Felix Wagner</option>
+												<option>Mark Hudson</option>
+											</select>
+										</div><!--end col-->
+										<div class="col-lg-3 text-end">
+											<button id="addTicketAccess" class="btn btn-de-primary" data-save="">
+												<i class="mdi mdi-check-all me-2"></i>
+												Add more User
+											</button>
+										</div><!--end col-->
+									</div><!--end row-->
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<div class="card" style="">
+			<div class="card-body" style="padding-top: 0px !important; padding-bottom: 0px !important;">
+				<div class="card" style="margin-bottom: 8px !important;">
+					<div class="card-header">
+						<div class="row align-items-center">
+							<div class="col">
+								<h4 class="card-title">Team Memeber List</h4>
+							</div><!--end col-->
+						</div>  <!--end row-->
+					</div><!--end card-header-->
+					<div class="card-body">
+						<div class="table-responsive">
+							<table class="table mb-0" id="tblCurrentTktProcessData">
+								<thead class="thead-light">
+									<tr>
+										<th>#</th>
+										<th>Team Name</th>
+										<th>HOD</th>
+										<th>Member</th>
+										<th>Action</th>
+									</tr><!--end tr-->
+								</thead>
+
+								<tbody>
+									<tr><td class="text-warning mdi-format-align-justify">No data found</td></tr>
+								</tbody>
+							</table>
+						</div>
+					</div><!--end card-body-->
+				</div>
+			</div>
+			<div class="card-footer">
+				<div class="row text-end ">
+					<div class="col-lg-12 ">
+						<button id="submitTicketProcess" class="btn btn-de-primary"><i class="mdi mdi-check-all me-2"></i>Create</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+@section Scripts {
+	<script src="~/lib/jquery/dist/jquery.js"></script>
+	<script type="text/javascript">
+			 $(document).ready(function() {
+			var sequenceNumber = 1; // Initialize sequence number
+					 //SweetAlert Declaration
+		const swalWithBootstrapButtons = Swal.mixin({
+			customClass: {
+				confirmButton: "btn btn-de-primary",
+				cancelButton: "btn btn-de-danger me-2"
+			},
+			buttonsStyling: false
+		});
+
+
+			$('#addTicketAccess').click(function(event){
+				event.preventDefault(); // Prevent form from submitting normally
+
+				// Get form values
+				
+				var sltDepartment = $('#sltDepartment option:selected').text();
+				var sltDesignation = $('#sltDesignation option:selected').text();
+				
+
+				$('#tblCurrentTktProcessData tbody tr').each(function(){
+					var noData = $(this).find('td:eq(0)').text(); // Get the value of the 1th column
+							if (noData == 'No data found') {
+						$('#tblCurrentTktProcessData tbody').empty();
+					}
+				});
+
+				// Append values to the table
+							// Append values to the table
+				var newRow = '<tr><td>' + sequenceNumber + '</td><td>' + sltDepartment + '</td><td>' + sltDesignation
+				+ '</td><td><a href="#" class="ms-2" onclick="deleteRowData(this);" data-toggle="tooltip" data-placement="top" title="Delete"><i class="las la-trash-alt text-secondary font-16"></i></a> </td></tr>';
+
+				$('#tblCurrentTktProcessData tbody').append(newRow);
+
+				// Increment sequence number for next entry
+				sequenceNumber++;
+				resetTblSequence();
+			});
+
+			$('#submitTicketProcess').click(function() {
+				var checkedApprover = false;
+					// var groupid = $(this).attr('id');
+					// var originalgroupid = groupid.replace("radio-group", "");
+					// if ($('input[name="accessLevelOptions' + originalgroupid + '"]:checked').val() == 'Approver') {
+					// 	checkedApprover = true;
+					// }
+
+
+					$('#tblCurrentTktProcessData tbody tr').each(function(){
+					var accessLevel = $(this).find('td:eq(6)').text(); // Get the value of the 4th column (Age)
+					if (accessLevel == 'Approver') {
+						checkedApprover = true;
+					}
+				});
+				resetTblSequence();
+					if (checkedApprover) {
+					// Perform your desired action here
+						swalWithBootstrapButtons.fire({ title: "Process Created!",
+							 text: "Process created successfully!",
+						 icon: "success",
+							  allowOutsideClick: false}).then(okay => {
+						   if (okay) {
+							location.reload();
+						  }
+						});
+				} else {
+					swalWithBootstrapButtons.fire({ title: "Approver Warning!",
+					 text: "Choose atleast one approver!",
+					 icon: "warning",
+						  allowOutsideClick: false}).then(okay => {
+					   if (okay) {
+						// location.reload();
+					  }
+					});
+				}
+			});
+
+
+			});
+
+
+			function resetTblSequence(){
+				$('#tblCurrentTktProcessData tbody tr').each(function(index){
+					$(this).find('td:eq(0)').text(index + 1); // Update the sequence number
+				});
+			}
+
+			const swalWithBootstrapButtons1 = Swal.mixin({
+			customClass: {
+				confirmButton: "btn btn-de-primary",
+				cancelButton: "btn btn-de-danger me-2"
+			},
+			buttonsStyling: false
+		});
+
+
+			function deleteRowData(comp){
+			swalWithBootstrapButtons1.fire({
+				title: "Are you sure?",
+				text: "Do You want to delete this?",
+				icon: "warning",
+				showCancelButton: true,
+				confirmButtonText: '<i class="mdi mdi-check-all me-2"></i>Delete',
+				cancelButtonText: '<i class="mdi mdi-window-close me-2"></i>Close',
+				// confirmButtonText: "Yes, delete it!",
+				// cancelButtonText: "No, cancel!",
+				reverseButtons: true,
+				allowOutsideClick: false
+			}).then((result) => {
+				if (result.isConfirmed) {
+					$(comp).closest('tr')[0].remove();
+					 swalWithBootstrapButtons1.fire({
+								title: "Deleted!",
+								text: "Deleted successfully!",
+								icon: "success",
+								allowOutsideClick: false
+							}).then(okay => {
+								if (okay) {
+									resetTblSequence();
+								}
+							});
+				}
+			});
+		}
+
+	</script>
+}

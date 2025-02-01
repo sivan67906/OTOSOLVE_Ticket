@@ -1,0 +1,126 @@
+﻿@model OTOSOLVE.UI.Areas.Environment.ViewModels.TicketVM
+@section Styles {
+	<style type="text/css">
+		.highlight {
+			background-color: #FFD700; /* Gold color */
+		}
+
+		select.form-control option {
+			color: #656d9a !important; /* Dark text color for options */
+			padding: 5px;
+			font-size: 12px;
+		}
+	</style>
+}
+<div class="row">
+	<div class="col-12 col-lg-12">
+		<div class="card" style="">
+			<div class="card-header">
+				<div class="row align-items-center">
+					<div class="col">
+						<h4 class="card-title">WorkFlow Rule Creation</h4>
+					</div><!--end col-->
+					<div class="col-auto">
+						<a asp-area="Ticket" asp-controller="Ticket" asp-action="WFView" class="btn btn-de-primary">
+							<i class="mdi mdi-eye-outline me-2"></i>View WorkFlow Rules
+						</a>
+					</div><!--end col-->
+				</div> <!--end row-->
+			</div><!--end card-header-->
+
+			<div class="card-body">
+				<div class="row">
+					<div class="form-group">
+						<label for="workFlowRuleName" class="form-label">Name</label>
+						<input type="text" class="form-control" id="workFlowRuleName" placeholder="Enter workflow rule name">
+					</div>
+					<div class="row mt-2">
+						<div class="col-xl-4 fs-5 text-muted">
+							Process List
+						</div>
+						<div class="col-xl-2">
+						</div>
+						<div class="col-xl-4 fs-5 text-muted">
+							Work Flow Rule Order
+						</div>
+						<div class="col-xl-2">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xl-4">
+							<select id="sltLeftList" class="form-control" multiple size="10" data-exclude="true" style="height: 100%;">
+								<option value="1">Pr_Finance</option>
+								<option value="2">Pr_Admin</option>
+								<option value="3">Pr_HR</option>
+								<option value="4">Pr_Network</option>
+								<option value="5">Pr_Recruitment</option>
+							</select>
+						</div>
+						<div class="col-xl-2 d-flex flex-column justify-content-center">
+							<button id="moveAllRight" class="btn btn-de-primary mb-2">Move All Right &gt;&gt;</button>
+							<button id="moveRight" class="btn btn-de-primary mb-2">Move Right &gt;</button>
+							<button id="moveAllLeft" class="btn btn-de-primary mb-2">&lt;&lt; Move All Left</button>
+							<button id="moveLeft" class="btn btn-de-primary">&lt; Move Left</button>
+						</div>
+						<div class="col-xl-4">
+							<select id="sltRightList" class="form-control" multiple size="10" style="height: 100%;">
+							</select>
+						</div>
+						<div class="col-xl-2" style="align-content: space-evenly;">
+							<button id="moveUp" style="width: 70%;" class="btn btn-de-primary mb-2">Move Up &#9650;</button>
+							<button id="moveDown" style="width: 70%;" class="btn btn-de-primary mb-2">Move Down &#9660;</button>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<div class="card-footer">
+				<div class="row text-end ">
+					<div class="col-lg-12 ">
+						<button id="submitBtn" class="btn btn-de-primary"><i class="mdi mdi-check-all me-2"></i>Create</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+@section Scripts {
+	<script src="~/lib/jquery/dist/jquery.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+		$('#moveRight').click(function (i, selected) {
+			var selIndex = 0;
+			$('#sltLeftList option:selected').each(function () { selIndex = selIndex + 1 });
+			if (selIndex != 0) {
+				$('#sltLeftList option:selected').remove().appendTo('#sltRightList').removeAttr('selected');
+			} else { alert('Please Select List'); }
+		});
+		$('#moveLeft').click(function (i, selected) {
+			var selIndex = 0;
+			$('#sltRightList option:selected').each(function () { selIndex = selIndex + 1 });
+			if (selIndex != 0) {
+				$('#sltRightList option:selected').remove().appendTo('#sltLeftList').removeAttr('selected');
+			} else { alert('Please Select List'); }
+		});
+		$('#moveAllRight').click(function () { $('#sltLeftList option').remove().appendTo('#sltRightList').removeAttr('selected'); });
+		$('#moveAllLeft').click(function () { $('#sltRightList option').remove().appendTo('#sltLeftList').removeAttr('selected'); });
+		$('#moveUp').click(function (i, selected) {
+			var selIndex = 0; $('#sltRightList option:selected').each(function () { selIndex = selIndex + 1; });
+			if (selIndex != 0) {
+				$('#sltRightList option:selected').each(function () { $(this).insertBefore($(this).prev()); });
+			} else { alert('Please Select List'); }
+		});
+		$('#moveDown').click(function (i, selected) {
+			var selIndex = 0; $('#sltRightList option:selected').each(function () { selIndex = selIndex + 1; });
+			if (selIndex != 0) {
+				$('#sltRightList option:selected').each(function () { $(this).insertAfter($(this).next()); });
+			} else { alert('Please Select List'); }
+		});
+		$('#sltLeftList').dblclick(function () { $('#sltLeftList option:selected').remove().appendTo('#sltRightList').removeAttr('selected'); });
+		$('#sltRightList').dblclick(function () { $('#sltRightList option:selected').remove().appendTo('#sltLeftList').removeAttr('selected'); });
+
+
+			});
+	</script>
+}

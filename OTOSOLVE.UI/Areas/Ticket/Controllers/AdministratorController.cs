@@ -79,6 +79,20 @@ public class AdministratorController : Controller
         return View();
     }
 
+    public IActionResult EditProcedures()
+    {
+        ViewData["pTitle"] = "Edit Procedure";
+
+        List<BreadcrumbItem> breadcrumbs =
+        [
+            new BreadcrumbItem { Name = "Dashboard", Url = Url.Action("Index", "Administrator", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "Create Procedure", Url = Url.Action("CreateProcedure", "Administrator", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "View", Url = Url.Action("ViewProcedures", "Administrator", new { area = "Ticket" }) }
+        ];
+        ViewBag.Breadcrumbs = breadcrumbs;
+
+        return View();
+    }
     public IActionResult ViewProcedures()
     {
         ViewData["pTitle"] = "View Procedures";
@@ -111,7 +125,21 @@ public class AdministratorController : Controller
 
     public IActionResult ViewStrategies()
     {
-        ViewData["pTitle"] = "WorkFlow Rule Index";
+        ViewData["pTitle"] = "Strategies Index";
+
+        List<BreadcrumbItem> breadcrumbs =
+        [
+            new BreadcrumbItem { Name = "Dashboard", Url = Url.Action("Index", "Administrator", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "Strategy", Url = Url.Action("CreateStrategy", "Administrator", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "View", Url = Url.Action("ViewStrategies", "Administrator", new { area = "Ticket" }) }
+        ];
+        ViewBag.Breadcrumbs = breadcrumbs;
+
+        return View();
+    }
+    public IActionResult EditStrategies()
+    {
+        ViewData["pTitle"] = "Strategies Detail";
 
         List<BreadcrumbItem> breadcrumbs =
         [
@@ -124,6 +152,48 @@ public class AdministratorController : Controller
         return View();
     }
     public IActionResult HierarchyTree()
+    {
+        ViewData["pTitle"] = "Hierarchy Tree";
+
+        List<BreadcrumbItem> breadcrumbs =
+        [
+            new BreadcrumbItem { Name = "Dashboard", Url = Url.Action("Index", "Administrator", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "Strategy", Url = Url.Action("CreateStrategy", "Administrator", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "View", Url = Url.Action("ViewStrategies", "Administrator", new { area = "Ticket" }) }
+        ];
+        ViewBag.Breadcrumbs = breadcrumbs;
+
+        return View();
+    }
+    public IActionResult CreateTeam()
+    {
+        ViewData["pTitle"] = "Hierarchy Tree";
+
+        List<BreadcrumbItem> breadcrumbs =
+        [
+            new BreadcrumbItem { Name = "Dashboard", Url = Url.Action("Index", "Administrator", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "Strategy", Url = Url.Action("CreateStrategy", "Administrator", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "View", Url = Url.Action("ViewStrategies", "Administrator", new { area = "Ticket" }) }
+        ];
+        ViewBag.Breadcrumbs = breadcrumbs;
+
+        return View();
+    }
+    public IActionResult CreateTeamMember()
+    {
+        ViewData["pTitle"] = "Hierarchy Tree";
+
+        List<BreadcrumbItem> breadcrumbs =
+        [
+            new BreadcrumbItem { Name = "Dashboard", Url = Url.Action("Index", "Administrator", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "Strategy", Url = Url.Action("CreateStrategy", "Administrator", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "View", Url = Url.Action("ViewStrategies", "Administrator", new { area = "Ticket" }) }
+        ];
+        ViewBag.Breadcrumbs = breadcrumbs;
+
+        return View();
+    }
+    public IActionResult ViewTeam()
     {
         ViewData["pTitle"] = "Hierarchy Tree";
 

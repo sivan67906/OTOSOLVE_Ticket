@@ -1,10 +1,5 @@
 ﻿
 
-
-
-
-
-
 <script src="https://cdn.jsdelivr.net/npm/apextree"></script>
 
 <div class="card">
@@ -22,7 +17,8 @@
       id: 'ms',
       data: {
         imageURL: 'https://i.pravatar.cc/300?img=68',
-        name: 'Margret Swanson',
+        name: 'Daniel White',
+        role: 'Admin',
       },
       options: {
         nodeBGColor: '#cdb4db',
@@ -89,7 +85,7 @@
             {
               id: 'Felix_Wagner',
               data: {
-                imageURL: '~/wwwroot/matrica/assets/images/profile/user4.jpg',
+                imageURL: '~matrica/assets/images/profile//user4.jpg',
                 name: 'Felix Wagner',
               },
               options: {
@@ -116,7 +112,7 @@
         <img style='width: 50px;height: 50px;border-radius: 50%;' src='${content.imageURL}' alt='no image' />
         <div style="font-weight: bold; font-family: Arial; font-size: 14px">${content.name}</div>
        </div>`,
-      canvasStyle: 'border: 1px solid black;background: #f6f6f6;',
+      canvasStyle: 'border: 1px solid black;background: #f6f6f6; width: 100%; height: 100%',
       enableToolbar: true,
     };
     const tree = new ApexTree(document.getElementById('svg-tree'), options);
