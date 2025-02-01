@@ -41,7 +41,7 @@ public class AdministratorController : Controller
 
         List<BreadcrumbItem> breadcrumbs =
         [
-            new BreadcrumbItem { Name = "Dashboard", Url = Url.Action("Index", "Administrator", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "Home", Url = Url.Action("Index", "Administrator", new { area = "Ticket" }) },
             new BreadcrumbItem { Name = "ViewTickets", Url = Url.Action("ViewTickets", "Administrator", new { area = "Ticket" }) },
             new BreadcrumbItem { Name = "CreateTicket", Url = Url.Action("CreateTicket", "Administrator", new { area = "Ticket" }) }
         ];
@@ -56,7 +56,7 @@ public class AdministratorController : Controller
 
         List<BreadcrumbItem> breadcrumbs =
         [
-            new BreadcrumbItem { Name = "Dashboard", Url = Url.Action("Index", "Administrator", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "Home", Url = Url.Action("Index", "Administrator", new { area = "Ticket" }) },
             new BreadcrumbItem { Name = "Tickets", Url = Url.Action("CreateTicket", "Administrator", new { area = "Ticket" }) },
             new BreadcrumbItem { Name = "View", Url = Url.Action("ViewTickets", "Administrator", new { area = "Ticket" }) }
         ];
@@ -71,7 +71,7 @@ public class AdministratorController : Controller
 
         List<BreadcrumbItem> breadcrumbs =
         [
-            new BreadcrumbItem { Name = "Dashboard", Url = Url.Action("Index", "Administrator", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "Home", Url = Url.Action("Index", "Administrator", new { area = "Ticket" }) },
             new BreadcrumbItem { Name = "Ticket", Url = Url.Action("CreateTicket", "Administrator", new { area = "Ticket" }) },
             new BreadcrumbItem { Name = "Create Procedure", Url = Url.Action("CreateProcedure", "Administrator", new { area = "Ticket" }) }
         ];
@@ -85,7 +85,7 @@ public class AdministratorController : Controller
 
         List<BreadcrumbItem> breadcrumbs =
         [
-            new BreadcrumbItem { Name = "Dashboard", Url = Url.Action("Index", "Administrator", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "Home", Url = Url.Action("Index", "Administrator", new { area = "Ticket" }) },
             new BreadcrumbItem { Name = "Create Procedure", Url = Url.Action("CreateProcedure", "Administrator", new { area = "Ticket" }) },
             new BreadcrumbItem { Name = "View", Url = Url.Action("ViewProcedures", "Administrator", new { area = "Ticket" }) }
         ];
@@ -99,7 +99,7 @@ public class AdministratorController : Controller
 
         List<BreadcrumbItem> breadcrumbs =
         [
-            new BreadcrumbItem { Name = "Dashboard", Url = Url.Action("Index", "Administrator", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "Home", Url = Url.Action("Index", "Administrator", new { area = "Ticket" }) },
             new BreadcrumbItem { Name = "Create Procedure", Url = Url.Action("CreateProcedure", "Administrator", new { area = "Ticket" }) },
             new BreadcrumbItem { Name = "View", Url = Url.Action("ViewProcedures", "Administrator", new { area = "Ticket" }) }
         ];
@@ -115,7 +115,7 @@ public class AdministratorController : Controller
 
         List<BreadcrumbItem> breadcrumbs =
         [
-            new BreadcrumbItem { Name = "Dashboard", Url = Url.Action("Index", "Administrator", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "Home", Url = Url.Action("Index", "Administrator", new { area = "Ticket" }) },
             new BreadcrumbItem { Name = "Strategies", Url = Url.Action("ViewStrategies", "Administrator", new { area = "Ticket" }) },
             new BreadcrumbItem { Name = "Create", Url = Url.Action("CreateStrategy", "Administrator", new { area = "Ticket" }) }
         ];
@@ -129,7 +129,7 @@ public class AdministratorController : Controller
 
         List<BreadcrumbItem> breadcrumbs =
         [
-            new BreadcrumbItem { Name = "Dashboard", Url = Url.Action("Index", "Administrator", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "Home", Url = Url.Action("Index", "Administrator", new { area = "Ticket" }) },
             new BreadcrumbItem { Name = "Strategy", Url = Url.Action("CreateStrategy", "Administrator", new { area = "Ticket" }) },
             new BreadcrumbItem { Name = "View", Url = Url.Action("ViewStrategies", "Administrator", new { area = "Ticket" }) }
         ];
@@ -143,7 +143,7 @@ public class AdministratorController : Controller
 
         List<BreadcrumbItem> breadcrumbs =
         [
-            new BreadcrumbItem { Name = "Dashboard", Url = Url.Action("Index", "Administrator", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "Home", Url = Url.Action("Index", "Administrator", new { area = "Ticket" }) },
             new BreadcrumbItem { Name = "Strategy", Url = Url.Action("CreateStrategy", "Administrator", new { area = "Ticket" }) },
             new BreadcrumbItem { Name = "View", Url = Url.Action("ViewStrategies", "Administrator", new { area = "Ticket" }) }
         ];
@@ -158,7 +158,7 @@ public class AdministratorController : Controller
 
         List<BreadcrumbItem> breadcrumbs =
         [
-            new BreadcrumbItem { Name = "Dashboard", Url = Url.Action("Index", "Administrator", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "Home", Url = Url.Action("Index", "Administrator", new { area = "Ticket" }) },
             new BreadcrumbItem { Name = "Team", Url = Url.Action("CreateTeamMember", "Administrator", new { area = "Ticket" }) },
             new BreadcrumbItem { Name = "View", Url = Url.Action("ViewStrategies", "Administrator", new { area = "Ticket" }) }
         ];
@@ -172,7 +172,7 @@ public class AdministratorController : Controller
 
         List<BreadcrumbItem> breadcrumbs =
         [
-            new BreadcrumbItem { Name = "Dashboard", Url = Url.Action("Index", "Administrator", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "Home", Url = Url.Action("Index", "Administrator", new { area = "Ticket" }) },
             new BreadcrumbItem { Name = "Create Team", Url = Url.Action("CreateTeam", "Administrator", new { area = "Ticket" }) },
             new BreadcrumbItem { Name = "View", Url = Url.Action("ViewStrategies", "Administrator", new { area = "Ticket" }) }
         ];
@@ -186,8 +186,8 @@ public class AdministratorController : Controller
 
         List<BreadcrumbItem> breadcrumbs =
         [
-            new BreadcrumbItem { Name = "Create Team", Url = Url.Action("CreateTeam", "Administrator", new { area = "Ticket" }) },
-            new BreadcrumbItem { Name = "Create Team Member", Url = Url.Action("CreateTeamMember", "Administrator", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "Home", Url = Url.Action("Index", "Administrator", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "Team", Url = Url.Action("CreateTeamMember", "Administrator", new { area = "Ticket" }) },
             new BreadcrumbItem { Name = "View", Url = Url.Action("ViewStrategies", "Administrator", new { area = "Ticket" }) }
         ];
         ViewBag.Breadcrumbs = breadcrumbs;
