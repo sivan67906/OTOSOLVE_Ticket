@@ -1,7 +1,68 @@
 ﻿<style>
     .text-end {
-        text-align: right !important;
+    text-align: right !important;
+}
+
+/* Default styling for large screens */
+.main-timeline .timeline-content {
+    width: 48%;
+}
+
+.main-timeline .year {
+    right: 38%;
+}
+
+.main-timeline .timeline:nth-child(2n) .year {
+    left: 38%;
+}
+
+/* Medium screens (tablets, 992px and below) */
+    @@media (max-width: 992px) {
+    .main-timeline .timeline-content {
+        width: 60%;
     }
+
+    .main-timeline .year {
+        right: 30%;
+    }
+
+    .main-timeline .timeline:nth-child(2n) .year {
+        left: 30%;
+    }
+}
+
+/* Small screens (mobile, 768px and below) */
+    @@media (max-width: 768px) {
+    .main-timeline .timeline-content {
+        width: 90%;
+        text-align: center;
+    }
+
+    .main-timeline .year {
+        position: relative;
+        right: auto;
+        left: auto;
+        margin-bottom: 10px;
+        text-align: center;
+        display: block;
+    }
+
+    .main-timeline .timeline:nth-child(2n) .year {
+        left: auto;
+    }
+
+    /* Ensure text wraps properly */
+    .main-timeline .timeline-content h5,
+    .main-timeline .timeline-content p {
+        text-align: center;
+    }
+
+    .d-flex.justify-content-end {
+        justify-content: center !important;
+    }
+}
+
+
 
 </style>
 <div class="card">
@@ -10,10 +71,10 @@
     </div><!--end card-header-->
     <div class="card-body">
         <div class="main-timeline mt-3">
-            <div class="timeline  mt-2">
+            <div class="timeline mt-2">
                 <span class="timeline-icon rounded-5 bg-success"></span>
                 <span class="year">Jan 2025</span>
-                <div class="timeline-content text-end">
+                <div class="timeline-content bg-white text-end">
                     <div class="d-flex align-items-center justify-content-end text-truncate">
                     <h5 class="card-title text-end h5">
                         Printer Ticket Approved</h5>
@@ -28,7 +89,7 @@
             <div class="timeline  mt-2">
                 <span class="timeline-icon rounded-5 bg-danger"></span>
                 <span class="year">Jan 2025</span>
-                <div class="timeline-content">
+                <div class="timeline-content bg-white">
                     <h5 class="title">Ticket Overdue</h5>
                     <span class="badge bg-danger text-white post">29 Jan 2025</span>
                     <p class="description">
@@ -40,7 +101,7 @@
             <div class="timeline mt-2">
                 <span class="timeline-icon rounded-5 bg-warning"></span>
                 <span class="year">Jan 2025</span>
-                <div class="timeline-content text-end">
+                <div class="timeline-content text-end bg-white">
                     <div class="d-flex align-items-center justify-content-end text-truncate">
                     <p class="card-title text-end h5 text-truncate">Ticket On-Hold</p>
                     <span class="badge bg-warning text-white post ms-3">31 Jan 2025</span>
@@ -53,7 +114,7 @@
             <div class="timeline mt-2">
                 <span class="timeline-icon rounded-5 bg-secondary"></span>
                 <span class="year">Jan 2025</span>
-                <div class="timeline-content">
+                <div class="timeline-content bg-white">
                     <h5 class="title">Ticket Unassigned</h5>
                     <span class="badge bg-secondary text-white post">31 Jan 2025</span>
                     <p class="description">
@@ -64,7 +125,7 @@
             <div class="timeline mt-2">
                 <span class="timeline-icon rounded-5 bg-pink"></span>
                 <span class="year">Jan 2025</span>
-                <div class="timeline-content text-end">
+                <div class="timeline-content text-end bg-white">
                     <div class="d-flex align-items-center justify-content-end text-truncate">
                         <p class="card-title h5 mb-0">Ticket Resolved</p>
                         <span class="badge bg-info text-white post ms-3">1 Feb 2025</span>
