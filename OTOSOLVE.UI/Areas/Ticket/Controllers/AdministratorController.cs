@@ -201,7 +201,7 @@ public class AdministratorController : Controller
         List<BreadcrumbItem> breadcrumbs =
         [
             new BreadcrumbItem { Name = "Home", Url = Url.Action("Index", "Administrator", new { area = "Ticket" }) },
-            new BreadcrumbItem { Name = "Ticket", Url = Url.Action("ViewTickets", "Administrator", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "TimeLine", Url = Url.Action("TimeLine", "Administrator", new { area = "Ticket" }) },
             new BreadcrumbItem { Name = "View", Url = Url.Action("TimeLine", "Administrator", new { area = "Ticket" }) }
         ];
         ViewBag.Breadcrumbs = breadcrumbs;

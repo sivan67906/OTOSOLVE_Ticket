@@ -20,11 +20,7 @@
 					<div class="col">
 						<h4 class="card-title">Procedure Index</h4>
 					</div><!--end col-->
-					<div class="col-auto">
-						<a asp-area="Ticket" asp-controller="Administrator" asp-action="CreateProcedure" class="btn btn-de-primary">
-							<i class="fas fa-plus me-2"></i>Add Procedure
-						</a>
-					</div><!--end col-->
+					
 				</div> <!--end row-->
 			</div><!--end card-header-->
 			<div class="card-body">
@@ -34,7 +30,7 @@
 							<thead class="thead-light">
 								<tr>
 									<th class="d-none"></th>
-									<th>ProcessName</th>
+									<th>Procedure Name</th>
 									<th>Department</th>
 									<th>Designation</th>
 									<th>Role</th>
@@ -46,16 +42,7 @@
 							<tbody>
 								<tr class="accordion-header">
 									<td colspan="6"><i class="fa fa-minus-square accordion-symbol"></i>Order Management</td>
-									<td>
-										<button type="button" class="custombuttonaslink" onclick="window.location.href='EditProcedures';"
-												data-target="#mdlBusinessCategoryShow" data-url="@Url.Action($"EditProcedures")">
-											<i class="las la-pen text-secondary font-16"></i>
-										</button>
-										<a href="#" class="ms-2" onclick="deleteRowData(event, this);"
-										   data-toggle="tooltip" data-placement="top" title="Delete">
-											<i class="las la-trash-alt text-secondary font-16"></i>
-										</a>
-									</td>
+									
 								</tr>
 								<tr onclick="" style="cursor:pointer;" class="accordion-content">
 									<td></td>
@@ -88,29 +75,11 @@
 									<td>Editor</td>
 									<td>Emily Clark</td>
 									<td>Approver</td>
-									<td>
-										<button type="button" class="custombuttonaslink" onclick="window.location.href='EditProcedures';"
-												data-target="#mdlBusinessCategoryShow" data-url="@Url.Action($"EditProcedures")">
-											<i class="las la-pen text-secondary font-16"></i>
-										</button>
-										<a href="#" class="ms-2" onclick="deleteRowData(event, this);"
-										   data-toggle="tooltip" data-placement="top" title="Delete">
-											<i class="las la-trash-alt text-secondary font-16"></i>
-										</a>
-									</td>
+									
 								</tr>
 								<tr class="accordion-header">
 									<td colspan="6"><i class="fa fa-minus-square accordion-symbol"></i>HR Portal</td>
-									<td>
-										<button type="button" class="custombuttonaslink" onclick="window.location.href='EditProcedures';"
-												data-target="#mdlBusinessCategoryShow" data-url="@Url.Action($"EditProcedures")">
-											<i class="las la-pen text-secondary font-16"></i>
-										</button>
-										<a href="#" class="ms-2" onclick="deleteRowData(event, this);"
-										   data-toggle="tooltip" data-placement="top" title="Delete">
-											<i class="las la-trash-alt text-secondary font-16"></i>
-										</a>
-									</td>
+									
 								</tr>
 								<tr onclick="" style="cursor:pointer;" class="accordion-content">
 									<td></td>

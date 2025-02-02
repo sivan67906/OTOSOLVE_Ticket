@@ -7278,7 +7278,7 @@ input.add-file-input {
 .main-timeline .timeline-icon {
   width: 18px;
   height: 18px;
-  border-radius: 50%;
+  border-radius: 1%;
   background: #ffffff;
   border: 2px solid #fafbfb;
   -webkit-box-sizing: content-box;
@@ -7296,7 +7296,7 @@ input.add-file-input {
   display: block;
   width: 8px;
   height: 8px;
-  border-radius: 50%;
+  border-radius: 1%;
   background: #41cbd8;
   margin: auto;
   position: absolute;
@@ -7323,12 +7323,12 @@ input.add-file-input {
 
 .main-timeline .year:before {
   content: "";
-  border-left: 18px solid #41cbd8;
+  border-left: 8px solid #41cbd8;
   border-top: 18px solid transparent;
   border-bottom: 18px solid transparent;
   position: absolute;
   top: 0;
-  right: -18px;
+  right: -8px;
 }
 
 .main-timeline .timeline-content {
@@ -7379,15 +7379,15 @@ input.add-file-input {
 
 .main-timeline .timeline:nth-child(2n) .year {
   left: auto;
-  right: 35%;
+  right: 40%;
 }
 
 .main-timeline .timeline:nth-child(2n) .year:before {
   border: 18px solid transparent;
   border-left: none;
-  border-right: 18px solid #41cbd8;
+  border-right: 8px solid #41cbd8;
   right: auto;
-  left: -18px;
+  left: -8px;
 }
 
 .main-timeline .timeline:nth-child(2n) .timeline-content {
@@ -7407,7 +7407,7 @@ input.add-file-input {
     left: 30%;
   }
   .main-timeline .timeline:nth-child(2n) .year {
-    right: 30%;
+    right: 40%;
   }
 }
 @media only screen and (max-width: 990px) {
@@ -7454,9 +7454,9 @@ input.add-file-input {
   }
   .main-timeline .timeline:nth-child(2n) .year:before {
     border-right: none;
-    border-left: 18px solid #41cbd8;
+    border-left: 8px solid #41cbd8;
     left: auto;
-    right: -18px;
+    right: -8px;
   }
   .main-timeline .timeline-content {
     padding: 20px;

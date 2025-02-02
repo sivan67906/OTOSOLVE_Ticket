@@ -14,7 +14,7 @@
 						<h4 class="card-title">Ticket Creation</h4>
 					</div><!--end col-->
 					<div class="col-auto">
-						<a asp-area="Ticket" asp-controller="Ticket" asp-action="TicketView" class="btn btn-de-primary">
+						<a asp-area="Ticket" asp-controller="SuppertTeam" asp-action="ViewTickets" class="btn btn-de-primary">
 							<i class="mdi mdi-eye-outline me-2"></i>View Tickets
 						</a>
 					</div><!--end col-->
@@ -171,7 +171,7 @@
 					</div>
 
 					<div class="form-group row mt-2">
-						<label class="col-xl-2">Is Workflow mapped</label>
+						<label class="col-xl-2">Is Strategy</label>
 						<div id="radio-group" class="col-xl-10 mt-2 radio-group" data-group="">
 							<div class="form-check form-check-inline">
 								<input class="form-check-input" type="radio" name="mappedOptions" id="ipYes" value="Yes">
@@ -184,21 +184,21 @@
 						</div>
 					</div>
 					<div class="row col-lg-12 mt-2" id="divWorkFlowRule" style="display: none;">
-						<div class="col-lg-2">Select Workflow Rule</div>
+						<div class="col-lg-2">Select Strategy</div>
 						<div class="col-lg-4">
 							<select id="" class="form-select" aria-label="Default select example">
 								<option value="0" selected="selected">--</option>
-								<option value="1">Workflow_Mapping_Finance</option>
-								<option value="2">Workflow_Mapping_Network</option>
-								<option value="3">Workflow_Mapping_Internal</option>
-								<option value="4">Workflow_Mapping_HR</option>
-								<option value="5">Workflow_Mapping_Inventory</option>
+								<option value="1">Strategy_Finance</option>
+								<option value="2">Strategy_Network</option>
+								<option value="3">Strategy_Internal</option>
+								<option value="4">Strategy_HR</option>
+								<option value="5">Strategy_Inventory</option>
 							</select>
 						</div>
 						<div class="col-lg-6"></div>
 					</div>
 					<div class="row col-lg-12 mt-2" id="divProcess" style="display: none;">
-						<div class="col-lg-2">Select Ticket Process</div>
+						<div class="col-lg-2">Select Ticket Procedure</div>
 						<div class="col-lg-4">
 							<select id="" class="form-select" aria-label="Default select example">
 								<option value="0" selected="selected">--</option>
