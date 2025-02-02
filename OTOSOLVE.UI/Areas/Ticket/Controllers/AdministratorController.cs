@@ -194,4 +194,9 @@ public class AdministratorController : Controller
 
         return View();
     }
+    public IActionResult Trail()
+    {
+
+        return View();
+    }
 }

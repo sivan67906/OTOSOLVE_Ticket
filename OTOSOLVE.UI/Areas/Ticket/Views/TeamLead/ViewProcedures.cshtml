@@ -1,4 +1,11 @@
-﻿
+﻿@section Styles {
+	<style type="text/css">
+		.accordion-symbol {
+			margin-right: 10px;
+		}
+	</style>
+}
+
 <div class="modal fade" id="mdlTPShow">
 	<div class="modal-dialog modal-xl" id="PlaceHolderHere">
 	</div>
@@ -13,11 +20,7 @@
 					<div class="col">
 						<h4 class="card-title">Procedure Index</h4>
 					</div><!--end col-->
-					<div class="col-auto">
-						<a asp-area="Ticket" asp-controller="Administrator" asp-action="CreateProcedure" class="btn btn-de-primary">
-							<i class="fas fa-plus me-2"></i>Add Procedure
-						</a>
-					</div><!--end col-->
+					
 				</div> <!--end row-->
 			</div><!--end card-header-->
 			<div class="card-body">
@@ -33,93 +36,65 @@
 									<th>Role</th>
 									<th>Employee</th>
 									<th>Access Level</th>
-									<th>Action</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr onclick="window.location.href='EditProcedures';" style="cursor:pointer;">
-									<td>Order Management</td>
+								<tr class="accordion-header">
+									<td colspan="6"><i class="fa fa-minus-square accordion-symbol"></i>Order Management</td>
+									
+								</tr>
+								<tr onclick="" style="cursor:pointer;" class="accordion-content">
+									<td></td>
 									<td>Sales</td>
 									<td>Manager</td>
 									<td>Administrator</td>
 									<td>John Doe</td>
 									<td>Approver</td>
-									<td>
-										<a id="deleteLS" name="Id" href="#" class="ms-2" data-toggle="ajax-modal"
-										   data-url="@Url.Action($"Delete/")">
-											<i class="las la-trash-alt text-secondary font-16"></i>
-										</a>
-									</td>
 								</tr>
-								<tr onclick="window.location.href='EditProcedures';" style="cursor:pointer;">
-									<td>Order Management</td>
+								<tr onclick="" style="cursor:pointer;" class="accordion-content">
+									<td></td>
 									<td>Operations</td>
 									<td>Supervisor</td>
 									<td>Editor</td>
 									<td>Jane Smith</td>
 									<td>Approver</td>
-									<td>
-										<a id="deleteLS" name="Id" href="#" class="ms-2" data-toggle="ajax-modal"
-										   data-url="@Url.Action($"Delete/")">
-											<i class="las la-trash-alt text-secondary font-16"></i>
-										</a>
-									</td>
 								</tr>
-								<tr onclick="window.location.href='EditProcedures';" style="cursor:pointer;">
-									<td>Order Management</td>
+								<tr onclick="" style="cursor:pointer;" class="accordion-content">
+									<td></td>
 									<td>Support</td>
 									<td>Executive</td>
 									<td>Viewer</td>
 									<td>Robert Brown</td>
 									<td>Notification Recipient</td>
-									<td>
-										<a id="deleteLS" name="Id" href="#" class="ms-2" data-toggle="ajax-modal"
-										   data-url="@Url.Action($"Delete/")">
-											<i class="las la-trash-alt text-secondary font-16"></i>
-										</a>
-									</td>
 								</tr>
-								<tr onclick="window.location.href='EditProcedures';" style="cursor:pointer;">
+								<tr onclick="" style="cursor:pointer;">
 									<td>Billing System</td>
 									<td>Finance</td>
 									<td>Analyst</td>
 									<td>Editor</td>
 									<td>Emily Clark</td>
 									<td>Approver</td>
-									<td>
-										<a id="deleteLS" name="Id" href="#" class="ms-2" data-toggle="ajax-modal"
-										   data-url="@Url.Action($"Delete/")">
-											<i class="las la-trash-alt text-secondary font-16"></i>
-										</a>
-									</td>
+									
 								</tr>
-								<tr onclick="window.location.href='EditProcedures';" style="cursor:pointer;">
-									<td>HR Portal</td>
+								<tr class="accordion-header">
+									<td colspan="6"><i class="fa fa-minus-square accordion-symbol"></i>HR Portal</td>
+									
+								</tr>
+								<tr onclick="" style="cursor:pointer;" class="accordion-content">
+									<td></td>
 									<td>Human Resources</td>
 									<td>Coordinator</td>
 									<td>Viewer</td>
 									<td>Michael Johnson</td>
 									<td>Approver</td>
-									<td>
-										<a id="deleteLS" name="Id" href="#" class="ms-2" data-toggle="ajax-modal"
-										   data-url="@Url.Action($"Delete/")">
-											<i class="las la-trash-alt text-secondary font-16"></i>
-										</a>
-									</td>
 								</tr>
-								<tr onclick="window.location.href='EditProcedures';" style="cursor:pointer;">
-									<td>HR Portal</td>
+								<tr onclick="" style="cursor:pointer;" class="accordion-content">
+									<td></td>
 									<td>Finance</td>
 									<td>Analyst</td>
 									<td>Editor</td>
 									<td>Emily Clark</td>
 									<td>Notification Recipient</td>
-									<td>
-										<a id="deleteLS" name="Id" href="#" class="ms-2" data-toggle="ajax-modal"
-										   data-url="@Url.Action($"Delete/")">
-											<i class="las la-trash-alt text-secondary font-16"></i>
-										</a>
-									</td>
 								</tr>
 							</tbody>
 						</table>
@@ -133,5 +108,65 @@
 @section Scripts {
 	<script src="~/lib/jquery/dist/jquery.js"></script>
 	<script src="~/matrica/assets/js/pages/app-custom.js" type="text/javascript"></script>
+	<script>
+			$('.accordion-header').click(function() {
+				const header = $(this);
+				let nextRow = header.next();
+				if (($(this).find('.fa-minus-square')).hasClass('fa-minus-square') == true) {
+					$(this).find('.fa-minus-square').removeClass('fa-minus-square').addClass('fa-plus-square');
+				}
+				else {
+					$(this).find('.fa-plus-square').removeClass('fa-plus-square').addClass('fa-minus-square');
+				}
 
+				while (nextRow.length && nextRow.hasClass('accordion-content')) {
+					nextRow.toggle();
+					nextRow = nextRow.next();
+				}
+			});
+			const swalWithBootstrapButtons1 = Swal.mixin({
+			customClass: {
+				confirmButton: "btn btn-de-primary",
+				cancelButton: "btn btn-de-danger me-2"
+			},
+			buttonsStyling: false
+		});
+
+		function deleteRowData(event, comp){
+				if (event && event.stopPropagation) {
+				  event.stopPropagation(); // Prevents the event from bubbling up to the tr
+				}
+			swalWithBootstrapButtons1.fire({
+				title: "Are you sure?",
+				text: "Do You want to delete this?",
+				icon: "warning",
+				showCancelButton: true,
+				confirmButtonText: '<i class="mdi mdi-check-all me-2"></i>Delete',
+				cancelButtonText: '<i class="mdi mdi-window-close me-2"></i>Close',
+				reverseButtons: true,
+				allowOutsideClick: false
+			}).then((result) => {
+				if (result.isConfirmed) {
+
+				const header = $(comp);
+						let nextRow = header.parents('.accordion-header').next();
+				while (nextRow.length && nextRow.hasClass('accordion-content')) {
+					nextRow.remove();
+					nextRow = header.parents('.accordion-header').next();
+				}
+				$(comp).closest('tr')[0].remove();
+
+					 swalWithBootstrapButtons1.fire({
+								title: "Deleted!",
+								text: "Deleted successfully!",
+								icon: "success",
+								allowOutsideClick: false
+							}).then(okay => {
+								if (okay) {
+								}
+							});
+				}
+			});
+		}
+	</script>
 }

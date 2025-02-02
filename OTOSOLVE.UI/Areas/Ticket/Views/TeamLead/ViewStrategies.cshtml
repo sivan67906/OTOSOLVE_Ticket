@@ -1,5 +1,12 @@
-﻿
-<div class="modal fade" id="mdlWFShow">
+﻿@section Styles {
+	<style type="text/css">
+		.accordion-symbol {
+			margin-right: 10px;
+		}
+	</style>
+}
+
+<div class="modal fade" id="mdlTPShow">
 	<div class="modal-dialog modal-xl" id="PlaceHolderHere">
 	</div>
 </div>
@@ -13,11 +20,7 @@
 					<div class="col">
 						<h4 class="card-title">Strategy Index</h4>
 					</div><!--end col-->
-					<div class="col-auto">
-						<a asp-area="Ticket" asp-controller="Administrator" asp-action="CreateStrategy" class="btn btn-de-primary">
-							<i class="fas fa-plus me-2"></i>Add Strategy
-						</a>
-					</div><!--end col-->
+					
 				</div> <!--end row-->
 			</div><!--end card-header-->
 			<div class="card-body">
@@ -29,66 +32,37 @@
 									<th class="d-none"></th>
 									<th>Strategy Name</th>
 									<th>Procedure Name</th>
-									<th>Action</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr onclick="window.location.href='EditStrategies';" style="cursor:pointer;">
-									<td>Employee Onboarding</td>
+								<tr class="accordion-header">
+									<td colspan="2"><i class="fa fa-minus-square accordion-symbol"></i>Employee Onboarding</td>
+									
+								</tr>
+								<tr onclick="" style="cursor:pointer;" class="accordion-content">
+									<td></td>
 									<td>Pr_Finance</td>
-									<td>
-
-										<a id="deleteLS" name="Id" href="#" class="ms-2" data-toggle="ajax-modal"
-										   data-url="@Url.Action($"Delete")">
-											<i class="las la-trash-alt text-secondary font-16"></i>
-										</a>
-									</td>
 								</tr>
-								<tr onclick="window.location.href='EditStrategies';" style="cursor:pointer;">
-									<td>Employee Onboarding</td>
+								<tr onclick="" style="cursor:pointer;" class="accordion-content">
+									<td></td>
 									<td>Pr_HR</td>
-									<td>
-
-										<a id="deleteLS" name="Id" href="#" class="ms-2" data-toggle="ajax-modal"
-										   data-url="@Url.Action($"Delete")">
-											<i class="las la-trash-alt text-secondary font-16"></i>
-										</a>
-									</td>
 								</tr>
-								<tr onclick="window.location.href='EditStrategies';" style="cursor:pointer;">
-									<td>Employee Onboarding</td>
+								<tr onclick="" style="cursor:pointer;" class="accordion-content">
+									<td></td>
 									<td>Pr_Admin</td>
-									<td>
-
-										<a id="deleteLS" name="Id" href="#" class="ms-2" data-toggle="ajax-modal"
-										   data-url="@Url.Action($"Delete")">
-											<i class="las la-trash-alt text-secondary font-16"></i>
-										</a>
-									</td>
 								</tr>
-								<tr onclick="window.location.href='EditStrategies';" style="cursor:pointer;">
+								<tr onclick="" style="cursor:pointer;">
 									<td>Financial Reporting</td>
 									<td>Pr_Finance</td>
-									<td>
-
-										<a id="deleteLS" name="Id" href="#" class="ms-2" data-toggle="ajax-modal"
-										   data-url="@Url.Action($"Delete")">
-											<i class="las la-trash-alt text-secondary font-16"></i>
-										</a>
-									</td>
+									
 								</tr>
-								<tr onclick="window.location.href='EditStrategies';" style="cursor:pointer;">
-									<td>Performance Review</td>
+								<tr onclick ="" style="cursor:pointer;">
+									
+									<td> Performance Review</td>
 									<td>Pr_Admin</td>
-									<td>
-
-										<a id="deleteLS" name="Id" href="#" class="ms-2" data-toggle="ajax-modal"
-										   data-url="@Url.Action($"Delete")">
-											<i class="las la-trash-alt text-secondary font-16"></i>
-										</a>
-									</td>
+									
 								</tr>
-
+								
 							</tbody>
 						</table>
 					</div>
@@ -98,7 +72,68 @@
 	</div>
 </div>
 
+@section Scripts {
+	<script src="~/lib/jquery/dist/jquery.js"></script>
+	<script src="~/matrica/assets/js/pages/app-custom.js" type="text/javascript"></script>
+	<script>
+			$('.accordion-header').click(function() {
+				const header = $(this);
+				let nextRow = header.next();
+				if (($(this).find('.fa-minus-square')).hasClass('fa-minus-square') == true) {
+					$(this).find('.fa-minus-square').removeClass('fa-minus-square').addClass('fa-plus-square');
+				}
+				else {
+					$(this).find('.fa-plus-square').removeClass('fa-plus-square').addClass('fa-minus-square');
+				}
 
-<script src="~/lib/jquery/dist/jquery.js"></script>
-<script src="~/matrica/assets/js/pages/app-custom.js" type="text/javascript"></script>
+				while (nextRow.length && nextRow.hasClass('accordion-content')) {
+					nextRow.toggle();
+					nextRow = nextRow.next();
+				}
+			});
+			const swalWithBootstrapButtons1 = Swal.mixin({
+			customClass: {
+				confirmButton: "btn btn-de-primary",
+				cancelButton: "btn btn-de-danger me-2"
+			},
+			buttonsStyling: false
+		});
 
+		function deleteRowData(event, comp){
+				if (event && event.stopPropagation) {
+				  event.stopPropagation(); // Prevents the event from bubbling up to the tr
+				}
+			swalWithBootstrapButtons1.fire({
+				title: "Are you sure?",
+				text: "Do You want to delete this?",
+				icon: "warning",
+				showCancelButton: true,
+				confirmButtonText: '<i class="mdi mdi-check-all me-2"></i>Delete',
+				cancelButtonText: '<i class="mdi mdi-window-close me-2"></i>Close',
+				reverseButtons: true,
+				allowOutsideClick: false
+			}).then((result) => {
+				if (result.isConfirmed) {
+
+				const header = $(comp);
+						let nextRow = header.parents('.accordion-header').next();
+				while (nextRow.length && nextRow.hasClass('accordion-content')) {
+					nextRow.remove();
+					nextRow = header.parents('.accordion-header').next();
+				}
+				$(comp).closest('tr')[0].remove();
+
+					 swalWithBootstrapButtons1.fire({
+								title: "Deleted!",
+								text: "Deleted successfully!",
+								icon: "success",
+								allowOutsideClick: false
+							}).then(okay => {
+								if (okay) {
+								}
+							});
+				}
+			});
+		}
+	</script>
+}
