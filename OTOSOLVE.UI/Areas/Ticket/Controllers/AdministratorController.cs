@@ -15,7 +15,7 @@ public class AdministratorController : Controller
 
         List<BreadcrumbItem> breadcrumbs =
         [
-            new BreadcrumbItem { Name = "Admin", Url = Url.Action("Index", "Administrator", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "Home", Url = Url.Action("Index", "Administrator", new { area = "Ticket" }) },
             new BreadcrumbItem { Name = "Dashboard", Url = Url.Action("Index", "Administrator", new { area = "Ticket" }) },
             new BreadcrumbItem { Name = "Index", Url = Url.Action("Index", "Administrator", new { area = "Ticket" }) }
         ];
@@ -194,8 +194,17 @@ public class AdministratorController : Controller
 
         return View();
     }
-    public IActionResult Trail()
+    public IActionResult TimeLine()
     {
+        ViewData["pTitle"] = "TimeLine";
+
+        List<BreadcrumbItem> breadcrumbs =
+        [
+            new BreadcrumbItem { Name = "Home", Url = Url.Action("Index", "Administrator", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "Ticket", Url = Url.Action("ViewTickets", "Administrator", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "View", Url = Url.Action("TimeLine", "Administrator", new { area = "Ticket" }) }
+        ];
+        ViewBag.Breadcrumbs = breadcrumbs;
 
         return View();
     }

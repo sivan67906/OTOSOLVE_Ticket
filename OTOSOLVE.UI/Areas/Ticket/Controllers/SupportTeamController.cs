@@ -14,7 +14,7 @@ public class SupportTeamController : Controller
 
         List<BreadcrumbItem> breadcrumbs =
         [
-            new BreadcrumbItem { Name = "Admin", Url = Url.Action("Index", "SupportTeam", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "Home", Url = Url.Action("Index", "SupportTeam", new { area = "Ticket" }) },
             new BreadcrumbItem { Name = "Dashboard", Url = Url.Action("Index", "SupportTeam", new { area = "Ticket" }) },
             new BreadcrumbItem { Name = "Index", Url = Url.Action("Index", "SupportTeam", new { area = "Ticket" }) }
         ];
@@ -40,7 +40,7 @@ public class SupportTeamController : Controller
 
         List<BreadcrumbItem> breadcrumbs =
         [
-            new BreadcrumbItem { Name = "Dashboard", Url = Url.Action("Index", "SupportTeam", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "Home", Url = Url.Action("Index", "SupportTeam", new { area = "Ticket" }) },
             new BreadcrumbItem { Name = "ViewTickets", Url = Url.Action("ViewTickets", "SupportTeam", new { area = "Ticket" }) },
             new BreadcrumbItem { Name = "CreateTicket", Url = Url.Action("CreateTicket", "SupportTeam", new { area = "Ticket" }) }
         ];
@@ -50,11 +50,11 @@ public class SupportTeamController : Controller
     }
     public IActionResult AssignTicket() // CTicket
     {
-        ViewData["pTitle"] = "Create Ticket";
+        ViewData["pTitle"] = "My Tickets";
 
         List<BreadcrumbItem> breadcrumbs =
         [
-            new BreadcrumbItem { Name = "Dashboard", Url = Url.Action("Index", "SupportTeam", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "Home", Url = Url.Action("Index", "SupportTeam", new { area = "Ticket" }) },
             new BreadcrumbItem { Name = "ViewTickets", Url = Url.Action("ViewTickets", "SupportTeam", new { area = "Ticket" }) },
             new BreadcrumbItem { Name = "CreateTicket", Url = Url.Action("CreateTicket", "SupportTeam", new { area = "Ticket" }) }
         ];
@@ -69,7 +69,7 @@ public class SupportTeamController : Controller
 
         List<BreadcrumbItem> breadcrumbs =
         [
-            new BreadcrumbItem { Name = "Dashboard", Url = Url.Action("Index", "SupportTeam", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "Home", Url = Url.Action("Index", "SupportTeam", new { area = "Ticket" }) },
             new BreadcrumbItem { Name = "Tickets", Url = Url.Action("CreateTicket", "SupportTeam", new { area = "Ticket" }) },
             new BreadcrumbItem { Name = "View", Url = Url.Action("ViewTickets", "SupportTeam", new { area = "Ticket" }) }
         ];
@@ -84,8 +84,8 @@ public class SupportTeamController : Controller
 
         List<BreadcrumbItem> breadcrumbs =
         [
-            new BreadcrumbItem { Name = "Dashboard", Url = Url.Action("Index", "SupportTeam", new { area = "Ticket" }) },
-            new BreadcrumbItem { Name = "Create Procedure", Url = Url.Action("CreateProcedure", "SupportTeam", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "Home", Url = Url.Action("Index", "SupportTeam", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "Strategy", Url = Url.Action("ViewStrategies", "SupportTeam", new { area = "Ticket" }) },
             new BreadcrumbItem { Name = "View", Url = Url.Action("ViewProcedures", "SupportTeam", new { area = "Ticket" }) }
         ];
         ViewBag.Breadcrumbs = breadcrumbs;
@@ -99,8 +99,8 @@ public class SupportTeamController : Controller
 
         List<BreadcrumbItem> breadcrumbs =
         [
-            new BreadcrumbItem { Name = "Dashboard", Url = Url.Action("Index", "SupportTeam", new { area = "Ticket" }) },
-            new BreadcrumbItem { Name = "Strategy", Url = Url.Action("CreateStrategy", "SupportTeam", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "Home", Url = Url.Action("Index", "SupportTeam", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "Procedure", Url = Url.Action("ViewProcedures", "SupportTeam", new { area = "Ticket" }) },
             new BreadcrumbItem { Name = "View", Url = Url.Action("ViewStrategies", "SupportTeam", new { area = "Ticket" }) }
         ];
         ViewBag.Breadcrumbs = breadcrumbs;
@@ -113,9 +113,9 @@ public class SupportTeamController : Controller
 
         List<BreadcrumbItem> breadcrumbs =
         [
-            new BreadcrumbItem { Name = "Create Team", Url = Url.Action("CreateTeam", "SupportTeam", new { area = "Ticket" }) },
-            new BreadcrumbItem { Name = "Create Team Member", Url = Url.Action("CreateTeamMember", "SupportTeam", new { area = "Ticket" }) },
-            new BreadcrumbItem { Name = "View", Url = Url.Action("ViewStrategies", "SupportTeam", new { area = "Ticket" }) }
+            new BreadcrumbItem { Name = "Home", Url = Url.Action("Index", "SupportTeam", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "Ticket", Url = Url.Action("ViewTickets", "SupportTeam", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "View", Url = Url.Action("ViewTeam", "SupportTeam", new { area = "Ticket" }) }
         ];
         ViewBag.Breadcrumbs = breadcrumbs;
 

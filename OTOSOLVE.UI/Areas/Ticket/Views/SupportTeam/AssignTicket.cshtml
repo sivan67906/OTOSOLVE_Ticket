@@ -1,0 +1,300 @@
+﻿
+<div class="modal fade" id="mdlTPShow">
+    <div class="modal-dialog modal-xl" id="PlaceHolderHere">
+    </div>
+</div>
+<div class="card shadow p-0 mb-5 bg-white rounded" style=" position: relative; height: 100%; width: 100%;">
+    <div class="card-header">
+        <div class="row align-items-center">
+            <div class="col align-items-center">
+                <h4 class="card-title">List of Tickets</h4>
+            </div><!--end col-->
+            <div class="col-auto">
+                <a asp-area="Ticket" asp-controller="supportTeam" asp-action="CreateTicket" class="btn btn-de-primary">
+                    <i class="fas fa-plus me-2"></i>Add Ticket
+                </a>
+            </div>
+        </div>  <!--end row-->
+    </div><!--end card-header-->
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-centered">
+                <thead class="thead-light">
+                    <tr>
+                        <th style="max-width: 95px;">
+                            S.No
+                        </th>
+                        <th>ID</th>
+                        <th>Customers</th>
+                        <th>Assignee</th>
+                        <th>Followers</th>
+                        <th><label class="d-none d-xl-block">Subject</label></th>
+                        <th>Team</th>
+                        <th>Priority</th>
+                        <th>Status</th>
+                        <th>Due Date</th>
+                        <th>Action</th>
+                    </tr><!--end tr-->
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>
+                            1
+                        </td>
+                        <td>#1236</td>
+                        <td><span class="text-truncate">Robert Y. Merchant</span></td>
+                        <td style="display: flex; width: 100%;">
+                            <img src="~/matrica/assets/images/users/user-10.png" alt="" class="thumb-sm rounded-circle me-2 w-25 h-25">
+                            <span style="align-content: center;width: 76%;" class="text-truncate">Donald Gardner</span>
+                        </td>
+                        <td>
+                            <div class="img-group">
+                                <a class="user-avatar" href="#">
+                                    <img src="~/matrica/assets/images/users/user8.jpg" alt="user" class="thumb-xs rounded-circle">
+                                </a>
+                                <a class="user-avatar ms-n3" href="#">
+                                    <img src="~/matrica/assets/images/users/user15.jpg" alt="user" class="thumb-xs rounded-circle">
+                                </a>
+                                <a class="user-avatar ms-n3" href="#">
+                                    <img src="~/matrica/assets/images/users/user-2.jpg" alt="user" class="thumb-xs rounded-circle">
+                                </a>
+                                <a class="user-avatar ms-n3" href="#">
+                                    <img src="~/matrica/assets/images/users/user4.jpg" alt="user" class="thumb-xs rounded-circle">
+                                </a>
+                                <a href="" class="user-avatar">
+                                    <span class="thumb-xs justify-content-center d-flex align-items-center bg-soft-info rounded-circle fw-semibold">+6</span>
+                                </a>
+                            </div>
+                        </td>
+                        <td><span class="text-truncate d-none d-xl-block">Bug-report simply dummy text of the printing and typesetting</span></td>
+                        <td>Support</td>
+                        <td>Normal</td>
+                        <td><span class="badge badge-soft-success p-2">New Ticket</span></td>
+                        <td>03-Feb-25</td>
+                        <td>
+                            <button type="button" class="custombuttonaslink" onclick="window.location.href='EditAssignTicket';"
+                                    data-target="#mdlBusinessCategoryShow" data-url="@Url.Action($"EditAssignTicket")">
+                                <i class="las la-pen text-secondary font-16"></i>
+                            </button>
+                        </td>
+                    </tr><!--end tr-->
+                    <tr>
+                        <td>
+                            2
+                        </td>
+                        <td>#3569</td>
+                        <td><span class="text-truncate">Smith W. Gates</span></td>
+                        <td style="display: flex; width: 100%;">
+                            <img src="~/matrica/assets/images/users/user-9.png" alt="" class="thumb-sm rounded-circle me-2">
+                            <span style="align-content: center;width: 76%;" class="text-truncate">Kevin J. Heal</span>
+                        </td>
+                        <td>
+                            <div class="img-group">
+                                <a class="user-avatar" href="#">
+                                    <img src="~/matrica/assets/images/users/user18.jpg" alt="user" class="thumb-xs rounded-circle">
+                                </a>
+                                <a class="user-avatar ms-n3" href="#">
+                                    <img src="~/matrica/assets/images/users/user19.jpg" alt="user" class="thumb-xs rounded-circle">
+                                </a>
+                                <a class="user-avatar ms-n3" href="#">
+                                    <img src="~/matrica/assets/images/users/user14.jpg" alt="user" class="thumb-xs rounded-circle">
+                                </a>
+                                <a class="user-avatar ms-n3" href="#">
+                                    <img src="~/matrica/assets/images/users/user6.jpg" alt="user" class="thumb-xs rounded-circle">
+                                </a>
+                                <a href="" class="user-avatar">
+                                    <span class="thumb-xs justify-content-center d-flex align-items-center bg-soft-info rounded-circle fw-semibold">+6</span>
+                                </a>
+                            </div>
+                        </td>
+                        <td><span class="text-truncate d-none d-xl-block">The application continuous is a long established fact that a reader.</span></td>
+                        <td>Testing</td>
+                        <td class="text-danger">Critical</td>
+                        <td><span class="badge badge-soft-success p-2">New Ticket</span></td>
+                        <td>01-Feb-25</td>
+                        <td>
+                            <button type="button" class="custombuttonaslink" onclick="window.location.href='EditAssignTicket';"
+                                    data-target="#mdlBusinessCategoryShow" data-url="@Url.Action($"EditAssignTicket")">
+                                <i class="las la-pen text-secondary font-16"></i>
+                            </button>
+                        </td>
+                    </tr><!--end tr-->
+                    <tr>
+                        <td>
+                            3
+                        </td>
+                        <td>#9874</td>
+                        <td><span class="text-truncate">James T. Lever</span></td>
+                        <td style="display: flex; width: 100%;">
+                            <img src="~/matrica/assets/images/users/user-8.png" alt="" class="thumb-sm rounded-circle me-2">
+                            <span style="align-content: center;width: 76%;" class="text-truncate">Frank M. Lyons</span>
+                        </td>
+                        <td>
+                            <div class="img-group">
+                                <a class="user-avatar" href="#">
+                                    <img src="~/matrica/assets/images/users/user13.jpg" alt="user" class="thumb-xs rounded-circle">
+                                </a>
+                                <a class="user-avatar ms-n3" href="#">
+                                    <img src="~/matrica/assets/images/users/user-5.jpg" alt="user" class="thumb-xs rounded-circle">
+                                </a>
+                                <a class="user-avatar ms-n3" href="#">
+                                    <img src="~/matrica/assets/images/users/user21.jpg" alt="user" class="thumb-xs rounded-circle">
+                                </a>
+                                <a class="user-avatar ms-n3" href="#">
+                                    <img src="~/matrica/assets/images/users/user11.jpg" alt="user" class="thumb-xs rounded-circle">
+                                </a>
+                                <a href="" class="user-avatar">
+                                    <span class="thumb-xs justify-content-center d-flex align-items-center bg-soft-info rounded-circle fw-semibold">+6</span>
+                                </a>
+                            </div>
+                        </td>
+                        <td><span class="text-truncate d-none d-xl-block">See how it work start are many variations of passages of Lorem Ipsum available.</span></td>
+                        <td>Finance</td>
+                        <td>Low</td>
+                        <td><span class="badge badge-soft-primary p-2">Open</span></td>
+                        <td>31-Jan-25</td>
+                        <td>
+                            <button type="button" class="custombuttonaslink" onclick="window.location.href='EditAssignTicket';"
+                                    data-target="#mdlBusinessCategoryShow" data-url="@Url.Action($"EditAssignTicket")">
+                                <i class="las la-pen text-secondary font-16"></i>
+                            </button>
+                        </td>
+                    </tr><!--end tr-->
+                    <tr>
+                        <td>
+                            4
+                        </td>
+                        <td>#5412</td>
+                        <td><span class="text-truncate">Justin U. Brudo</span></td>
+                        <td style="display: flex; width: 100%;">
+                            <img src="~/matrica/assets/images/users/user-7.png" alt="" class="thumb-sm rounded-circle me-2">
+                            <span style="align-content: center;width: 76%;" class="text-truncate">Robert C. Golding</span>
+                        </td>
+                        <td>
+                            <div class="img-group">
+                                <a class="user-avatar" href="#">
+                                    <img src="~/matrica/assets/images/users/user23.jpg" alt="user" class="thumb-xs rounded-circle">
+                                </a>
+                                <a class="user-avatar ms-n3" href="#">
+                                    <img src="~/matrica/assets/images/users/user25.jpg" alt="user" class="thumb-xs rounded-circle">
+                                </a>
+                                <a class="user-avatar ms-n3" href="#">
+                                    <img src="~/matrica/assets/images/users/user9.jpg" alt="user" class="thumb-xs rounded-circle">
+                                </a>
+                                <a class="user-avatar ms-n3" href="#">
+                                    <img src="~/matrica/assets/images/users/user6.jpg" alt="user" class="thumb-xs rounded-circle">
+                                </a>
+                                <a href="" class="user-avatar">
+                                    <span class="thumb-xs justify-content-center d-flex align-items-center bg-soft-info rounded-circle fw-semibold">+6</span>
+                                </a>
+                            </div>
+                        </td>
+                        <td><span class="text-truncate d-none d-xl-block">I can't upload file first line of Ipsum lorem ipsum dolor sit amet.</span></td>
+                        <td>Support</td>
+                        <td>Medium</td>
+                        <td><span class="badge badge-soft-success p-2">New Ticket</span></td>
+                        <td>04-Feb-25</td>
+                        <td>
+                            <button type="button" class="custombuttonaslink" onclick="window.location.href='EditAssignTicket';"
+                                    data-target="#mdlBusinessCategoryShow" data-url="@Url.Action($"EditAssignTicket")">
+                                <i class="las la-pen text-secondary font-16"></i>
+                            </button>
+                        </td>
+                    </tr><!--end tr-->
+                    <tr>
+                        <td>
+                            5
+                        </td>
+                        <td>#3258</td>
+                        <td><span class="text-truncate">Davidson</span></td>
+                        <td style="display: flex; width: 100%;">
+                            <img src="~/matrica/assets/images/users/user-6.png" alt="" class="thumb-sm rounded-circle me-2">
+                            <span style="align-content: center;width: 76%;" class="text-truncate">Hyman M. Cross</span>
+                        </td>
+                        <td>
+                            <div class="img-group">
+                                <a class="user-avatar" href="#">
+                                    <img src="~/matrica/assets/images/users/user21.jpg" alt="user" class="thumb-xs rounded-circle">
+                                </a>
+                                <a class="user-avatar ms-n3" href="#">
+                                    <img src="~/matrica/assets/images/users/user22.jpg" alt="user" class="thumb-xs rounded-circle">
+                                </a>
+                                <a class="user-avatar ms-n3" href="#">
+                                    <img src="~/matrica/assets/images/users/user24.jpg" alt="user" class="thumb-xs rounded-circle">
+                                </a>
+                                <a class="user-avatar ms-n3" href="#">
+                                    <img src="~/matrica/assets/images/users/user-6.jpg" alt="user" class="thumb-xs rounded-circle">
+                                </a>
+                                <a href="" class="user-avatar">
+                                    <span class="thumb-xs justify-content-center d-flex align-items-center bg-soft-info rounded-circle fw-semibold">+6</span>
+                                </a>
+                            </div>
+                        </td>
+                        <td><span class="text-truncate d-none d-xl-block">How do i upgrade my profile?</span></td>
+                        <td>Support</td>
+                        <td>Low</td>
+                        <td><span class="badge badge-soft-success p-2">New Ticket</span></td>
+                        <td>30-Jan-25</td>
+                        <td>
+                            <button type="button" class="custombuttonaslink" onclick="window.location.href='EditAssignTicket';"
+                                    data-target="#mdlBusinessCategoryShow" data-url="@Url.Action($"EditAssignTicket")">
+                                <i class="las la-pen text-secondary font-16"></i>
+                            </button>
+                        </td>
+                    </tr><!--end tr-->
+                    <tr>
+                        <td>
+                            6
+                        </td>
+                        <td>#6636</td>
+                        <td><span class="text-truncate">Robert J. Rock</span></td>
+                        <td style="display: flex; width: 100%;">
+                            <img src="~/matrica/assets/images/users/user-5.png" alt="" class="thumb-sm rounded-circle me-2">
+                            <span style="align-content: center;width: 76%;" class="text-truncate">Phillip T. Morse</span>
+                        </td>
+                        <td>
+
+                            <div class="img-group">
+                                <a class="user-avatar" href="#">
+                                    <img src="~/matrica/assets/images/users/user8.jpg" alt="user" class="thumb-xs rounded-circle">
+                                </a>
+                                <a class="user-avatar ms-n3" href="#">
+                                    <img src="~/matrica/assets/images/users/user5.jpg" alt="user" class="thumb-xs rounded-circle">
+                                </a>
+                                <a class="user-avatar ms-n3" href="#">
+                                    <img src="~/matrica/assets/images/users/user4.jpg" alt="user" class="thumb-xs rounded-circle">
+                                </a>
+                                <a class="user-avatar ms-n3" href="#">
+                                    <img src="~/matrica/assets/images/users/user-9.jpg" alt="user" class="thumb-xs rounded-circle">
+                                </a>
+                                <a href="" class="user-avatar">
+                                    <span class="thumb-xs justify-content-center d-flex align-items-center bg-soft-info rounded-circle fw-semibold">+6</span>
+                                </a>
+                            </div>
+                        </td>
+                        <td><span class="text-truncate d-none d-xl-block">Can i help you in this project?</span></td>
+                        <td>Purchase</td>
+                        <td class="text-danger">Critical</td>
+                        <td><span class="badge badge-soft-primary p-2">Open</span></td>
+                        <td>03-Feb-25</td>
+                        <td>
+                            <button type="button" class="custombuttonaslink" onclick="window.location.href='EditAssignTicket';"
+                                    data-target="#mdlBusinessCategoryShow" data-url="@Url.Action($"EditAssignTicket")">
+                                <i class="las la-pen text-secondary font-16"></i>
+                            </button>
+                        </td>
+                    </tr><!--end tr-->
+                </tbody>
+
+            </table>
+
+        </div>
+    </div><!--end card-body-->
+</div>
+@section Scripts {
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/matrica/assets/js/pages/app-custom.js" type="text/javascript"></script>
+
+    </script>
+}

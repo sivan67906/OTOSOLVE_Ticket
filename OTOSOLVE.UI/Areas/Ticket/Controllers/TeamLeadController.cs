@@ -15,7 +15,7 @@ public class TeamLeadController : Controller
 
         List<BreadcrumbItem> breadcrumbs =
         [
-            new BreadcrumbItem { Name = "Admin", Url = Url.Action("Index", "TeamLead", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "Home", Url = Url.Action("Index", "TeamLead", new { area = "Ticket" }) },
             new BreadcrumbItem { Name = "Dashboard", Url = Url.Action("Index", "TeamLead", new { area = "Ticket" }) },
             new BreadcrumbItem { Name = "Index", Url = Url.Action("Index", "TeamLead", new { area = "Ticket" }) }
         ];
@@ -51,13 +51,27 @@ public class TeamLeadController : Controller
     }
     public IActionResult AssignTicket() // CTicket
     {
-        ViewData["pTitle"] = "Create Ticket";
+        ViewData["pTitle"] = "Assign Ticket";
 
         List<BreadcrumbItem> breadcrumbs =
         [
-            new BreadcrumbItem { Name = "Dashboard", Url = Url.Action("Index", "TeamLead", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "Home", Url = Url.Action("Index", "TeamLead", new { area = "Ticket" }) },
             new BreadcrumbItem { Name = "ViewTickets", Url = Url.Action("ViewTickets", "TeamLead", new { area = "Ticket" }) },
-            new BreadcrumbItem { Name = "CreateTicket", Url = Url.Action("CreateTicket", "TeamLead", new { area = "Ticket" }) }
+            new BreadcrumbItem { Name = "CreateTicket", Url = Url.Action("AssignTicket", "TeamLead", new { area = "Ticket" }) }
+        ];
+        ViewBag.Breadcrumbs = breadcrumbs;
+
+        return View();
+    }
+    public IActionResult EditAssignTicket() // CTicket
+    {
+        ViewData["pTitle"] = "Edit Assign Ticket";
+
+        List<BreadcrumbItem> breadcrumbs =
+        [
+            new BreadcrumbItem { Name = "Home", Url = Url.Action("Index", "TeamLead", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "ViewTickets", Url = Url.Action("ViewTickets", "TeamLead", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "CreateTicket", Url = Url.Action("AssignTicket", "TeamLead", new { area = "Ticket" }) }
         ];
         ViewBag.Breadcrumbs = breadcrumbs;
 
@@ -70,7 +84,7 @@ public class TeamLeadController : Controller
 
         List<BreadcrumbItem> breadcrumbs =
         [
-            new BreadcrumbItem { Name = "Dashboard", Url = Url.Action("Index", "TeamLead", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "Home", Url = Url.Action("Index", "TeamLead", new { area = "Ticket" }) },
             new BreadcrumbItem { Name = "Tickets", Url = Url.Action("CreateTicket", "TeamLead", new { area = "Ticket" }) },
             new BreadcrumbItem { Name = "View", Url = Url.Action("ViewTickets", "TeamLead", new { area = "Ticket" }) }
         ];
@@ -85,8 +99,8 @@ public class TeamLeadController : Controller
 
         List<BreadcrumbItem> breadcrumbs =
         [
-            new BreadcrumbItem { Name = "Dashboard", Url = Url.Action("Index", "TeamLead", new { area = "Ticket" }) },
-            new BreadcrumbItem { Name = "Create Procedure", Url = Url.Action("CreateProcedure", "TeamLead", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "Home", Url = Url.Action("Index", "TeamLead", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "Procedure", Url = Url.Action("ViewStrategies", "TeamLead", new { area = "Ticket" }) },
             new BreadcrumbItem { Name = "View", Url = Url.Action("ViewProcedures", "TeamLead", new { area = "Ticket" }) }
         ];
         ViewBag.Breadcrumbs = breadcrumbs;
@@ -100,8 +114,8 @@ public class TeamLeadController : Controller
 
         List<BreadcrumbItem> breadcrumbs =
         [
-            new BreadcrumbItem { Name = "Dashboard", Url = Url.Action("Index", "TeamLead", new { area = "Ticket" }) },
-            new BreadcrumbItem { Name = "Strategy", Url = Url.Action("CreateStrategy", "TeamLead", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "Home", Url = Url.Action("Index", "TeamLead", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "Strategy", Url = Url.Action("ViewProcedures", "TeamLead", new { area = "Ticket" }) },
             new BreadcrumbItem { Name = "View", Url = Url.Action("ViewStrategies", "TeamLead", new { area = "Ticket" }) }
         ];
         ViewBag.Breadcrumbs = breadcrumbs;
@@ -110,13 +124,13 @@ public class TeamLeadController : Controller
     }
     public IActionResult ViewTeam()
     {
-        ViewData["pTitle"] = "Team";
+        ViewData["pTitle"] = "Team Structure";
 
         List<BreadcrumbItem> breadcrumbs =
         [
-            new BreadcrumbItem { Name = "Create Team", Url = Url.Action("CreateTeam", "TeamLead", new { area = "Ticket" }) },
-            new BreadcrumbItem { Name = "Create Team Member", Url = Url.Action("CreateTeamMember", "TeamLead", new { area = "Ticket" }) },
-            new BreadcrumbItem { Name = "View", Url = Url.Action("ViewStrategies", "TeamLead", new { area = "Ticket" }) }
+            new BreadcrumbItem { Name = "Home", Url = Url.Action("Index", "TeamLead", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "Ticket", Url = Url.Action("CreateTicket", "TeamLead", new { area = "Ticket" }) },
+            new BreadcrumbItem { Name = "View", Url = Url.Action("ViewTeam", "TeamLead", new { area = "Ticket" }) }
         ];
         ViewBag.Breadcrumbs = breadcrumbs;
 
